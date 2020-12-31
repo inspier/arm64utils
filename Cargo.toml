@@ -3,7 +3,6 @@ name = "arm64utils"
 version = "0.1.0"
 authors = ["inspier <devdevin541@gmail.com>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
+repository = "https://github.com/inspier/arm64utils"
+description = "Useful arm64 related utilities for Switch related work."
+license = "MIT"

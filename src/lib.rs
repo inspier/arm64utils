@@ -4,5213 +4,5213 @@
 pub mod instruction;
 use crate::instruction::InstructionKind;
 
-pub fn is_ldst_immpre(d: u32) -> bool {
+pub const fn is_ldst_immpre(d: u32) -> bool {
     (d & 0x3b200c00) == 0x38000c00
 }
-pub fn is_memop(d: u32) -> bool {
+pub const fn is_memop(d: u32) -> bool {
     (d & 0x3b200c00) == 0x38200000
 }
-pub fn is_ldst_regoff(d: u32) -> bool {
+pub const fn is_ldst_regoff(d: u32) -> bool {
     (d & 0x3b200c00) == 0x38200800
 }
-pub fn is_ldst_pac(d: u32) -> bool {
+pub const fn is_ldst_pac(d: u32) -> bool {
     (d & 0x3b200400) == 0x38200400
 }
-pub fn is_ldst_pos(d: u32) -> bool {
+pub const fn is_ldst_pos(d: u32) -> bool {
     (d & 0x3b000000) == 0x39000000
 }
-pub fn is_dp_2src(d: u32) -> bool {
+pub const fn is_dp_2src(d: u32) -> bool {
     (d & 0x5fe00000) == 0x1ac00000
 }
-pub fn is_dp_1src(d: u32) -> bool {
+pub const fn is_dp_1src(d: u32) -> bool {
     (d & 0x5fe00000) == 0x5ac00000
 }
-pub fn is_log_shift(d: u32) -> bool {
+pub const fn is_log_shift(d: u32) -> bool {
     (d & 0x1f000000) == 0x0a000000
 }
-pub fn is_addsub_shift(d: u32) -> bool {
+pub const fn is_addsub_shift(d: u32) -> bool {
     (d & 0x1f200000) == 0x0b000000
 }
-pub fn is_addsub_ext(d: u32) -> bool {
+pub const fn is_addsub_ext(d: u32) -> bool {
     (d & 0x1f200000) == 0x0b200000
 }
-pub fn is_addsub_carry(d: u32) -> bool {
+pub const fn is_addsub_carry(d: u32) -> bool {
     (d & 0x1fe00000) == 0x1a000000
 }
-pub fn is_condcmp_reg(d: u32) -> bool {
+pub const fn is_condcmp_reg(d: u32) -> bool {
     (d & 0x1fe00800) == 0x1a400000
 }
-pub fn is_condcmp_imm(d: u32) -> bool {
+pub const fn is_condcmp_imm(d: u32) -> bool {
     (d & 0x1fe00800) == 0x1a400800
 }
-pub fn is_condsel(d: u32) -> bool {
+pub const fn is_condsel(d: u32) -> bool {
     (d & 0x1fe00000) == 0x1a800000
 }
-pub fn is_dp_3src(d: u32) -> bool {
+pub const fn is_dp_3src(d: u32) -> bool {
     (d & 0x1f000000) == 0x1b000000
 }
-pub fn is_cryptoaes(d: u32) -> bool {
+pub const fn is_cryptoaes(d: u32) -> bool {
     (d & 0xff3e0c00) == 0x4e280800
 }
-pub fn is_cryptosha3(d: u32) -> bool {
+pub const fn is_cryptosha3(d: u32) -> bool {
     (d & 0xff208c00) == 0x5e000000
 }
-pub fn is_cryptosha2(d: u32) -> bool {
+pub const fn is_cryptosha2(d: u32) -> bool {
     (d & 0xff3e0c00) == 0x5e280800
 }
-pub fn is_asisdone(d: u32) -> bool {
+pub const fn is_asisdone(d: u32) -> bool {
     (d & 0xdfe08400) == 0x5e000400
 }
-pub fn is_asisdsamefp16(d: u32) -> bool {
+pub const fn is_asisdsamefp16(d: u32) -> bool {
     (d & 0xdf60c400) == 0x5e400400
 }
-pub fn is_asisdmiscfp16(d: u32) -> bool {
+pub const fn is_asisdmiscfp16(d: u32) -> bool {
     (d & 0xdf7e0c00) == 0x5e780800
 }
-pub fn is_asisdsame2(d: u32) -> bool {
+pub const fn is_asisdsame2(d: u32) -> bool {
     (d & 0xdf208400) == 0x5e008400
 }
-pub fn is_asisdmisc(d: u32) -> bool {
+pub const fn is_asisdmisc(d: u32) -> bool {
     (d & 0xdf3e0c00) == 0x5e200800
 }
-pub fn is_asisdpair(d: u32) -> bool {
+pub const fn is_asisdpair(d: u32) -> bool {
     (d & 0xdf3e0c00) == 0x5e300800
 }
-pub fn is_asisddiff(d: u32) -> bool {
+pub const fn is_asisddiff(d: u32) -> bool {
     (d & 0xdf200c00) == 0x5e200000
 }
-pub fn is_asisdsame(d: u32) -> bool {
+pub const fn is_asisdsame(d: u32) -> bool {
     (d & 0xdf200400) == 0x5e200400
 }
-pub fn is_asisdshf(d: u32) -> bool {
+pub const fn is_asisdshf(d: u32) -> bool {
     (d & 0xdf800400) == 0x5f000400
 }
-pub fn is_asisdelem(d: u32) -> bool {
+pub const fn is_asisdelem(d: u32) -> bool {
     (d & 0xdf000400) == 0x5f000000
 }
-pub fn is_asimdtbl(d: u32) -> bool {
+pub const fn is_asimdtbl(d: u32) -> bool {
     (d & 0xbf208c00) == 0x0e000000
 }
-pub fn is_asimdperm(d: u32) -> bool {
+pub const fn is_asimdperm(d: u32) -> bool {
     (d & 0xbf208c00) == 0x0e000800
 }
-pub fn is_asimdext(d: u32) -> bool {
+pub const fn is_asimdext(d: u32) -> bool {
     (d & 0xbf208400) == 0x2e000000
 }
-pub fn is_asimdins(d: u32) -> bool {
+pub const fn is_asimdins(d: u32) -> bool {
     (d & 0x9fe08400) == 0x0e000400
 }
-pub fn is_asimdsamefp16(d: u32) -> bool {
+pub const fn is_asimdsamefp16(d: u32) -> bool {
     (d & 0x9f60c400) == 0x0e400400
 }
-pub fn is_asimdmiscfp16(d: u32) -> bool {
+pub const fn is_asimdmiscfp16(d: u32) -> bool {
     (d & 0x9f7e0c00) == 0x0e780800
 }
-pub fn is_asimdsame2(d: u32) -> bool {
+pub const fn is_asimdsame2(d: u32) -> bool {
     (d & 0x9f208400) == 0x0e008400
 }
-pub fn is_asimdmisc(d: u32) -> bool {
+pub const fn is_asimdmisc(d: u32) -> bool {
     (d & 0x9f3e0c00) == 0x0e200800
 }
-pub fn is_asimdall(d: u32) -> bool {
+pub const fn is_asimdall(d: u32) -> bool {
     (d & 0x9f3e0c00) == 0x0e300800
 }
-pub fn is_asimddiff(d: u32) -> bool {
+pub const fn is_asimddiff(d: u32) -> bool {
     (d & 0x9f200c00) == 0x0e200000
 }
-pub fn is_asimdsame(d: u32) -> bool {
+pub const fn is_asimdsame(d: u32) -> bool {
     (d & 0x9f200400) == 0x0e200400
 }
-pub fn is_asimdimm(d: u32) -> bool {
+pub const fn is_asimdimm(d: u32) -> bool {
     (d & 0x9ff80400) == 0x0f000400
 }
-pub fn is_asimdshf(d: u32) -> bool {
+pub const fn is_asimdshf(d: u32) -> bool {
     (d & 0x9f800400) == 0x0f000400 && (d & 0x780000) != 0x000000
 }
-pub fn is_asimdelem(d: u32) -> bool {
+pub const fn is_asimdelem(d: u32) -> bool {
     (d & 0x9f000400) == 0x0f000000
 }
-pub fn is_crypto3_imm2(d: u32) -> bool {
+pub const fn is_crypto3_imm2(d: u32) -> bool {
     (d & 0xffe0c000) == 0xce408000
 }
-pub fn is_cryptosha512_3(d: u32) -> bool {
+pub const fn is_cryptosha512_3(d: u32) -> bool {
     (d & 0xffe0b000) == 0xce608000
 }
-pub fn is_crypto4(d: u32) -> bool {
+pub const fn is_crypto4(d: u32) -> bool {
     (d & 0xff808000) == 0xce000000
 }
-pub fn is_crypto3_imm6(d: u32) -> bool {
+pub const fn is_crypto3_imm6(d: u32) -> bool {
     (d & 0xffe00000) == 0xce800000
 }
-pub fn is_cryptosha512_2(d: u32) -> bool {
+pub const fn is_cryptosha512_2(d: u32) -> bool {
     (d & 0xfffff000) == 0xcec08000
 }
-pub fn is_float2fix(d: u32) -> bool {
+pub const fn is_float2fix(d: u32) -> bool {
     (d & 0x5f200000) == 0x1e000000
 }
-pub fn is_float2int(d: u32) -> bool {
+pub const fn is_float2int(d: u32) -> bool {
     (d & 0x5f20fc00) == 0x1e200000
 }
-pub fn is_floatdp1(d: u32) -> bool {
+pub const fn is_floatdp1(d: u32) -> bool {
     (d & 0x5f207c00) == 0x1e204000
 }
-pub fn is_floatcmp(d: u32) -> bool {
+pub const fn is_floatcmp(d: u32) -> bool {
     (d & 0x5f203c00) == 0x1e202000
 }
-pub fn is_floatimm(d: u32) -> bool {
+pub const fn is_floatimm(d: u32) -> bool {
     (d & 0x5f201c00) == 0x1e201000
 }
-pub fn is_floatccmp(d: u32) -> bool {
+pub const fn is_floatccmp(d: u32) -> bool {
     (d & 0x5f200c00) == 0x1e200400
 }
-pub fn is_floatdp2(d: u32) -> bool {
+pub const fn is_floatdp2(d: u32) -> bool {
     (d & 0x5f200c00) == 0x1e200800
 }
-pub fn is_floatsel(d: u32) -> bool {
+pub const fn is_floatsel(d: u32) -> bool {
     (d & 0x5f200c00) == 0x1e200c00
 }
-pub fn is_floatdp3(d: u32) -> bool {
+pub const fn is_floatdp3(d: u32) -> bool {
     (d & 0x5f000000) == 0x1f000000
 }
-pub fn is_CBZ_32_compbranch(d: u32) -> bool {
+pub const fn is_CBZ_32_compbranch(d: u32) -> bool {
     (d & 0xff000000) == 0x34000000
 }
-pub fn is_CBNZ_32_compbranch(d: u32) -> bool {
+pub const fn is_CBNZ_32_compbranch(d: u32) -> bool {
     (d & 0xff000000) == 0x35000000
 }
-pub fn is_CBZ_64_compbranch(d: u32) -> bool {
+pub const fn is_CBZ_64_compbranch(d: u32) -> bool {
     (d & 0xff000000) == 0xb4000000
 }
-pub fn is_CBNZ_64_compbranch(d: u32) -> bool {
+pub const fn is_CBNZ_64_compbranch(d: u32) -> bool {
     (d & 0xff000000) == 0xb5000000
 }
-pub fn is_B_only_condbranch(d: u32) -> bool {
+pub const fn is_B_only_condbranch(d: u32) -> bool {
     (d & 0xff000010) == 0x54000000
 }
-pub fn is_SVC_EX_exception(d: u32) -> bool {
+pub const fn is_SVC_EX_exception(d: u32) -> bool {
     (d & 0xffe0001f) == 0xd4000001
 }
-pub fn is_HVC_EX_exception(d: u32) -> bool {
+pub const fn is_HVC_EX_exception(d: u32) -> bool {
     (d & 0xffe0001f) == 0xd4000002
 }
-pub fn is_SMC_EX_exception(d: u32) -> bool {
+pub const fn is_SMC_EX_exception(d: u32) -> bool {
     (d & 0xffe0001f) == 0xd4000003
 }
-pub fn is_BRK_EX_exception(d: u32) -> bool {
+pub const fn is_BRK_EX_exception(d: u32) -> bool {
     (d & 0xffe0001f) == 0xd4200000
 }
-pub fn is_HLT_EX_exception(d: u32) -> bool {
+pub const fn is_HLT_EX_exception(d: u32) -> bool {
     (d & 0xffe0001f) == 0xd4400000
 }
-pub fn is_DCPS1_DC_exception(d: u32) -> bool {
+pub const fn is_DCPS1_DC_exception(d: u32) -> bool {
     (d & 0xffe0001f) == 0xd4a00001
 }
-pub fn is_DCPS2_DC_exception(d: u32) -> bool {
+pub const fn is_DCPS2_DC_exception(d: u32) -> bool {
     (d & 0xffe0001f) == 0xd4a00002
 }
-pub fn is_DCPS3_DC_exception(d: u32) -> bool {
+pub const fn is_DCPS3_DC_exception(d: u32) -> bool {
     (d & 0xffe0001f) == 0xd4a00003
 }
-pub fn is_MSR_SI_system(d: u32) -> bool {
+pub const fn is_MSR_SI_system(d: u32) -> bool {
     (d & 0xfff8f01f) == 0xd500401f
 }
-pub fn is_HINT_2(d: u32) -> bool {
+pub const fn is_HINT_2(d: u32) -> bool {
     (d & 0xfffff01f) == 0xd503201f && (d & 0x000d00) != 0x000000
 }
-pub fn is_NOP_HI_system(d: u32) -> bool {
+pub const fn is_NOP_HI_system(d: u32) -> bool {
     d == 0xd503201f
 }
-pub fn is_YIELD_HI_system(d: u32) -> bool {
+pub const fn is_YIELD_HI_system(d: u32) -> bool {
     d == 0xd503203f
 }
-pub fn is_WFE_HI_system(d: u32) -> bool {
+pub const fn is_WFE_HI_system(d: u32) -> bool {
     d == 0xd503205f
 }
-pub fn is_WFI_HI_system(d: u32) -> bool {
+pub const fn is_WFI_HI_system(d: u32) -> bool {
     d == 0xd503207f
 }
-pub fn is_SEV_HI_system(d: u32) -> bool {
+pub const fn is_SEV_HI_system(d: u32) -> bool {
     d == 0xd503209f
 }
-pub fn is_SEVL_HI_system(d: u32) -> bool {
+pub const fn is_SEVL_HI_system(d: u32) -> bool {
     d == 0xd50320bf
 }
-pub fn is_HINT_1(d: u32) -> bool {
+pub const fn is_HINT_1(d: u32) -> bool {
     (d & 0xffffffdf) == 0xd50320df
 }
-pub fn is_XPACLRI_HI_system(d: u32) -> bool {
+pub const fn is_XPACLRI_HI_system(d: u32) -> bool {
     d == 0xd50320ff
 }
-pub fn is_PACIA1716_HI_system(d: u32) -> bool {
+pub const fn is_PACIA1716_HI_system(d: u32) -> bool {
     d == 0xd503211f
 }
-pub fn is_PACIB1716_HI_system(d: u32) -> bool {
+pub const fn is_PACIB1716_HI_system(d: u32) -> bool {
     d == 0xd503215f
 }
-pub fn is_AUTIA1716_HI_system(d: u32) -> bool {
+pub const fn is_AUTIA1716_HI_system(d: u32) -> bool {
     d == 0xd503219f
 }
-pub fn is_AUTIB1716_HI_system(d: u32) -> bool {
+pub const fn is_AUTIB1716_HI_system(d: u32) -> bool {
     d == 0xd50321df
 }
-pub fn is_HINT_3(d: u32) -> bool {
+pub const fn is_HINT_3(d: u32) -> bool {
     (d & 0xffffff1f) == 0xd503221f && (d & 0x0000c0) != 0x000000
 }
-pub fn is_ESB_HI_system(d: u32) -> bool {
+pub const fn is_ESB_HI_system(d: u32) -> bool {
     d == 0xd503221f
 }
-pub fn is_PSB_HC_system(d: u32) -> bool {
+pub const fn is_PSB_HC_system(d: u32) -> bool {
     d == 0xd503223f
 }
-pub fn is_PACIAZ_HI_system(d: u32) -> bool {
+pub const fn is_PACIAZ_HI_system(d: u32) -> bool {
     d == 0xd503231f
 }
-pub fn is_PACIASP_HI_system(d: u32) -> bool {
+pub const fn is_PACIASP_HI_system(d: u32) -> bool {
     d == 0xd503233f
 }
-pub fn is_PACIBZ_HI_system(d: u32) -> bool {
+pub const fn is_PACIBZ_HI_system(d: u32) -> bool {
     d == 0xd503235f
 }
-pub fn is_PACIBSP_HI_system(d: u32) -> bool {
+pub const fn is_PACIBSP_HI_system(d: u32) -> bool {
     d == 0xd503237f
 }
-pub fn is_AUTIAZ_HI_system(d: u32) -> bool {
+pub const fn is_AUTIAZ_HI_system(d: u32) -> bool {
     d == 0xd503239f
 }
-pub fn is_AUTIASP_HI_system(d: u32) -> bool {
+pub const fn is_AUTIASP_HI_system(d: u32) -> bool {
     d == 0xd50323bf
 }
-pub fn is_AUTIBZ_HI_system(d: u32) -> bool {
+pub const fn is_AUTIBZ_HI_system(d: u32) -> bool {
     d == 0xd50323df
 }
-pub fn is_AUTIBSP_HI_system(d: u32) -> bool {
+pub const fn is_AUTIBSP_HI_system(d: u32) -> bool {
     d == 0xd50323ff
 }
-pub fn is_CLREX_BN_system(d: u32) -> bool {
+pub const fn is_CLREX_BN_system(d: u32) -> bool {
     (d & 0xfffff0ff) == 0xd503305f
 }
-pub fn is_DSB_BO_system(d: u32) -> bool {
+pub const fn is_DSB_BO_system(d: u32) -> bool {
     (d & 0xfffff0ff) == 0xd503309f
 }
-pub fn is_DMB_BO_system(d: u32) -> bool {
+pub const fn is_DMB_BO_system(d: u32) -> bool {
     (d & 0xfffff0ff) == 0xd50330bf
 }
-pub fn is_ISB_BI_system(d: u32) -> bool {
+pub const fn is_ISB_BI_system(d: u32) -> bool {
     (d & 0xfffff0ff) == 0xd50330df
 }
-pub fn is_SYS_CR_system(d: u32) -> bool {
+pub const fn is_SYS_CR_system(d: u32) -> bool {
     (d & 0xfff80000) == 0xd5080000
 }
-pub fn is_MSR_SR_system(d: u32) -> bool {
+pub const fn is_MSR_SR_system(d: u32) -> bool {
     (d & 0xfff00000) == 0xd5100000
 }
-pub fn is_SYSL_RC_system(d: u32) -> bool {
+pub const fn is_SYSL_RC_system(d: u32) -> bool {
     (d & 0xfff80000) == 0xd5280000
 }
-pub fn is_MRS_RS_system(d: u32) -> bool {
+pub const fn is_MRS_RS_system(d: u32) -> bool {
     (d & 0xfff00000) == 0xd5300000
 }
-pub fn is_TBZ_only_testbranch(d: u32) -> bool {
+pub const fn is_TBZ_only_testbranch(d: u32) -> bool {
     (d & 0x7f000000) == 0x36000000
 }
-pub fn is_TBNZ_only_testbranch(d: u32) -> bool {
+pub const fn is_TBNZ_only_testbranch(d: u32) -> bool {
     (d & 0x7f000000) == 0x37000000
 }
-pub fn is_B_only_branch_imm(d: u32) -> bool {
+pub const fn is_B_only_branch_imm(d: u32) -> bool {
     (d & 0xfc000000) == 0x14000000
 }
-pub fn is_BL_only_branch_imm(d: u32) -> bool {
+pub const fn is_BL_only_branch_imm(d: u32) -> bool {
     (d & 0xfc000000) == 0x94000000
 }
-pub fn is_BR_64_branch_reg(d: u32) -> bool {
+pub const fn is_BR_64_branch_reg(d: u32) -> bool {
     (d & 0xfffffc1f) == 0xd61f0000
 }
-pub fn is_BRAAZ_64_branch_reg(d: u32) -> bool {
+pub const fn is_BRAAZ_64_branch_reg(d: u32) -> bool {
     (d & 0xfffffc1f) == 0xd61f081f
 }
-pub fn is_BRABZ_64_branch_reg(d: u32) -> bool {
+pub const fn is_BRABZ_64_branch_reg(d: u32) -> bool {
     (d & 0xfffffc1f) == 0xd61f0c1f
 }
-pub fn is_BLR_64_branch_reg(d: u32) -> bool {
+pub const fn is_BLR_64_branch_reg(d: u32) -> bool {
     (d & 0xfffffc1f) == 0xd63f0000
 }
-pub fn is_BLRAAZ_64_branch_reg(d: u32) -> bool {
+pub const fn is_BLRAAZ_64_branch_reg(d: u32) -> bool {
     (d & 0xfffffc1f) == 0xd63f081f
 }
-pub fn is_BLRABZ_64_branch_reg(d: u32) -> bool {
+pub const fn is_BLRABZ_64_branch_reg(d: u32) -> bool {
     (d & 0xfffffc1f) == 0xd63f0c1f
 }
-pub fn is_RET_64R_branch_reg(d: u32) -> bool {
+pub const fn is_RET_64R_branch_reg(d: u32) -> bool {
     (d & 0xfffffc1f) == 0xd65f0000
 }
-pub fn is_RETAA_64E_branch_reg(d: u32) -> bool {
+pub const fn is_RETAA_64E_branch_reg(d: u32) -> bool {
     d == 0xd65f0bff
 }
-pub fn is_RETAB_64E_branch_reg(d: u32) -> bool {
+pub const fn is_RETAB_64E_branch_reg(d: u32) -> bool {
     d == 0xd65f0fff
 }
-pub fn is_ERET_64E_branch_reg(d: u32) -> bool {
+pub const fn is_ERET_64E_branch_reg(d: u32) -> bool {
     d == 0xd69f03e0
 }
-pub fn is_ERETAA_64E_branch_reg(d: u32) -> bool {
+pub const fn is_ERETAA_64E_branch_reg(d: u32) -> bool {
     d == 0xd69f0bff
 }
-pub fn is_ERETAB_64E_branch_reg(d: u32) -> bool {
+pub const fn is_ERETAB_64E_branch_reg(d: u32) -> bool {
     d == 0xd69f0fff
 }
-pub fn is_DRPS_64E_branch_reg(d: u32) -> bool {
+pub const fn is_DRPS_64E_branch_reg(d: u32) -> bool {
     d == 0xd6bf03e0
 }
-pub fn is_BRAA_64P_branch_reg(d: u32) -> bool {
+pub const fn is_BRAA_64P_branch_reg(d: u32) -> bool {
     (d & 0xfffffc00) == 0xd71f0800
 }
-pub fn is_BRAB_64P_branch_reg(d: u32) -> bool {
+pub const fn is_BRAB_64P_branch_reg(d: u32) -> bool {
     (d & 0xfffffc00) == 0xd71f0c00
 }
-pub fn is_BLRAA_64P_branch_reg(d: u32) -> bool {
+pub const fn is_BLRAA_64P_branch_reg(d: u32) -> bool {
     (d & 0xfffffc00) == 0xd73f0800
 }
-pub fn is_BLRAB_64P_branch_reg(d: u32) -> bool {
+pub const fn is_BLRAB_64P_branch_reg(d: u32) -> bool {
     (d & 0xfffffc00) == 0xd73f0c00
 }
-pub fn is_ST4_asisdlse_R4(d: u32) -> bool {
+pub const fn is_ST4_asisdlse_R4(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c000000
 }
-pub fn is_ST1_asisdlse_R4_4v(d: u32) -> bool {
+pub const fn is_ST1_asisdlse_R4_4v(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c002000
 }
-pub fn is_ST3_asisdlse_R3(d: u32) -> bool {
+pub const fn is_ST3_asisdlse_R3(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c004000
 }
-pub fn is_ST1_asisdlse_R3_3v(d: u32) -> bool {
+pub const fn is_ST1_asisdlse_R3_3v(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c006000
 }
-pub fn is_ST1_asisdlse_R1_1v(d: u32) -> bool {
+pub const fn is_ST1_asisdlse_R1_1v(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c007000
 }
-pub fn is_ST2_asisdlse_R2(d: u32) -> bool {
+pub const fn is_ST2_asisdlse_R2(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c008000
 }
-pub fn is_ST1_asisdlse_R2_2v(d: u32) -> bool {
+pub const fn is_ST1_asisdlse_R2_2v(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c00a000
 }
-pub fn is_LD4_asisdlse_R4(d: u32) -> bool {
+pub const fn is_LD4_asisdlse_R4(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c400000
 }
-pub fn is_LD1_asisdlse_R4_4v(d: u32) -> bool {
+pub const fn is_LD1_asisdlse_R4_4v(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c402000
 }
-pub fn is_LD3_asisdlse_R3(d: u32) -> bool {
+pub const fn is_LD3_asisdlse_R3(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c404000
 }
-pub fn is_LD1_asisdlse_R3_3v(d: u32) -> bool {
+pub const fn is_LD1_asisdlse_R3_3v(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c406000
 }
-pub fn is_LD1_asisdlse_R1_1v(d: u32) -> bool {
+pub const fn is_LD1_asisdlse_R1_1v(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c407000
 }
-pub fn is_LD2_asisdlse_R2(d: u32) -> bool {
+pub const fn is_LD2_asisdlse_R2(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c408000
 }
-pub fn is_LD1_asisdlse_R2_2v(d: u32) -> bool {
+pub const fn is_LD1_asisdlse_R2_2v(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c40a000
 }
-pub fn is_ST4_asisdlsep_R4_r(d: u32) -> bool {
+pub const fn is_ST4_asisdlsep_R4_r(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0c800000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST1_asisdlsep_R4_r4(d: u32) -> bool {
+pub const fn is_ST1_asisdlsep_R4_r4(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0c802000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST3_asisdlsep_R3_r(d: u32) -> bool {
+pub const fn is_ST3_asisdlsep_R3_r(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0c804000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST1_asisdlsep_R3_r3(d: u32) -> bool {
+pub const fn is_ST1_asisdlsep_R3_r3(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0c806000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST1_asisdlsep_R1_r1(d: u32) -> bool {
+pub const fn is_ST1_asisdlsep_R1_r1(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0c807000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST2_asisdlsep_R2_r(d: u32) -> bool {
+pub const fn is_ST2_asisdlsep_R2_r(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0c808000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST1_asisdlsep_R2_r2(d: u32) -> bool {
+pub const fn is_ST1_asisdlsep_R2_r2(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0c80a000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST4_asisdlsep_I4_i(d: u32) -> bool {
+pub const fn is_ST4_asisdlsep_I4_i(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c9f0000
 }
-pub fn is_ST1_asisdlsep_I4_i4(d: u32) -> bool {
+pub const fn is_ST1_asisdlsep_I4_i4(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c9f2000
 }
-pub fn is_ST3_asisdlsep_I3_i(d: u32) -> bool {
+pub const fn is_ST3_asisdlsep_I3_i(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c9f4000
 }
-pub fn is_ST1_asisdlsep_I3_i3(d: u32) -> bool {
+pub const fn is_ST1_asisdlsep_I3_i3(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c9f6000
 }
-pub fn is_ST1_asisdlsep_I1_i1(d: u32) -> bool {
+pub const fn is_ST1_asisdlsep_I1_i1(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c9f7000
 }
-pub fn is_ST2_asisdlsep_I2_i(d: u32) -> bool {
+pub const fn is_ST2_asisdlsep_I2_i(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c9f8000
 }
-pub fn is_ST1_asisdlsep_I2_i2(d: u32) -> bool {
+pub const fn is_ST1_asisdlsep_I2_i2(d: u32) -> bool {
     (d & 0xbffff000) == 0x0c9fa000
 }
-pub fn is_LD4_asisdlsep_R4_r(d: u32) -> bool {
+pub const fn is_LD4_asisdlsep_R4_r(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0cc00000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD1_asisdlsep_R4_r4(d: u32) -> bool {
+pub const fn is_LD1_asisdlsep_R4_r4(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0cc02000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD3_asisdlsep_R3_r(d: u32) -> bool {
+pub const fn is_LD3_asisdlsep_R3_r(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0cc04000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD1_asisdlsep_R3_r3(d: u32) -> bool {
+pub const fn is_LD1_asisdlsep_R3_r3(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0cc06000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD1_asisdlsep_R1_r1(d: u32) -> bool {
+pub const fn is_LD1_asisdlsep_R1_r1(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0cc07000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD2_asisdlsep_R2_r(d: u32) -> bool {
+pub const fn is_LD2_asisdlsep_R2_r(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0cc08000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD1_asisdlsep_R2_r2(d: u32) -> bool {
+pub const fn is_LD1_asisdlsep_R2_r2(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0cc0a000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD4_asisdlsep_I4_i(d: u32) -> bool {
+pub const fn is_LD4_asisdlsep_I4_i(d: u32) -> bool {
     (d & 0xbffff000) == 0x0cdf0000
 }
-pub fn is_LD1_asisdlsep_I4_i4(d: u32) -> bool {
+pub const fn is_LD1_asisdlsep_I4_i4(d: u32) -> bool {
     (d & 0xbffff000) == 0x0cdf2000
 }
-pub fn is_LD3_asisdlsep_I3_i(d: u32) -> bool {
+pub const fn is_LD3_asisdlsep_I3_i(d: u32) -> bool {
     (d & 0xbffff000) == 0x0cdf4000
 }
-pub fn is_LD1_asisdlsep_I3_i3(d: u32) -> bool {
+pub const fn is_LD1_asisdlsep_I3_i3(d: u32) -> bool {
     (d & 0xbffff000) == 0x0cdf6000
 }
-pub fn is_LD1_asisdlsep_I1_i1(d: u32) -> bool {
+pub const fn is_LD1_asisdlsep_I1_i1(d: u32) -> bool {
     (d & 0xbffff000) == 0x0cdf7000
 }
-pub fn is_LD2_asisdlsep_I2_i(d: u32) -> bool {
+pub const fn is_LD2_asisdlsep_I2_i(d: u32) -> bool {
     (d & 0xbffff000) == 0x0cdf8000
 }
-pub fn is_LD1_asisdlsep_I2_i2(d: u32) -> bool {
+pub const fn is_LD1_asisdlsep_I2_i2(d: u32) -> bool {
     (d & 0xbffff000) == 0x0cdfa000
 }
-pub fn is_ST1_asisdlso_B1_1b(d: u32) -> bool {
+pub const fn is_ST1_asisdlso_B1_1b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0d000000
 }
-pub fn is_ST3_asisdlso_B3_3b(d: u32) -> bool {
+pub const fn is_ST3_asisdlso_B3_3b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0d002000
 }
-pub fn is_ST1_asisdlso_H1_1h(d: u32) -> bool {
+pub const fn is_ST1_asisdlso_H1_1h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0d004000
 }
-pub fn is_ST3_asisdlso_H3_3h(d: u32) -> bool {
+pub const fn is_ST3_asisdlso_H3_3h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0d006000
 }
-pub fn is_ST1_asisdlso_S1_1s(d: u32) -> bool {
+pub const fn is_ST1_asisdlso_S1_1s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0d008000
 }
-pub fn is_ST1_asisdlso_D1_1d(d: u32) -> bool {
+pub const fn is_ST1_asisdlso_D1_1d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0d008400
 }
-pub fn is_ST3_asisdlso_S3_3s(d: u32) -> bool {
+pub const fn is_ST3_asisdlso_S3_3s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0d00a000
 }
-pub fn is_ST3_asisdlso_D3_3d(d: u32) -> bool {
+pub const fn is_ST3_asisdlso_D3_3d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0d00a400
 }
-pub fn is_ST2_asisdlso_B2_2b(d: u32) -> bool {
+pub const fn is_ST2_asisdlso_B2_2b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0d200000
 }
-pub fn is_ST4_asisdlso_B4_4b(d: u32) -> bool {
+pub const fn is_ST4_asisdlso_B4_4b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0d202000
 }
-pub fn is_ST2_asisdlso_H2_2h(d: u32) -> bool {
+pub const fn is_ST2_asisdlso_H2_2h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0d204000
 }
-pub fn is_ST4_asisdlso_H4_4h(d: u32) -> bool {
+pub const fn is_ST4_asisdlso_H4_4h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0d206000
 }
-pub fn is_ST2_asisdlso_S2_2s(d: u32) -> bool {
+pub const fn is_ST2_asisdlso_S2_2s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0d208000
 }
-pub fn is_ST2_asisdlso_D2_2d(d: u32) -> bool {
+pub const fn is_ST2_asisdlso_D2_2d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0d208400
 }
-pub fn is_ST4_asisdlso_S4_4s(d: u32) -> bool {
+pub const fn is_ST4_asisdlso_S4_4s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0d20a000
 }
-pub fn is_ST4_asisdlso_D4_4d(d: u32) -> bool {
+pub const fn is_ST4_asisdlso_D4_4d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0d20a400
 }
-pub fn is_LD1_asisdlso_B1_1b(d: u32) -> bool {
+pub const fn is_LD1_asisdlso_B1_1b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0d400000
 }
-pub fn is_LD3_asisdlso_B3_3b(d: u32) -> bool {
+pub const fn is_LD3_asisdlso_B3_3b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0d402000
 }
-pub fn is_LD1_asisdlso_H1_1h(d: u32) -> bool {
+pub const fn is_LD1_asisdlso_H1_1h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0d404000
 }
-pub fn is_LD3_asisdlso_H3_3h(d: u32) -> bool {
+pub const fn is_LD3_asisdlso_H3_3h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0d406000
 }
-pub fn is_LD1_asisdlso_S1_1s(d: u32) -> bool {
+pub const fn is_LD1_asisdlso_S1_1s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0d408000
 }
-pub fn is_LD1_asisdlso_D1_1d(d: u32) -> bool {
+pub const fn is_LD1_asisdlso_D1_1d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0d408400
 }
-pub fn is_LD3_asisdlso_S3_3s(d: u32) -> bool {
+pub const fn is_LD3_asisdlso_S3_3s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0d40a000
 }
-pub fn is_LD3_asisdlso_D3_3d(d: u32) -> bool {
+pub const fn is_LD3_asisdlso_D3_3d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0d40a400
 }
-pub fn is_LD1R_asisdlso_R1(d: u32) -> bool {
+pub const fn is_LD1R_asisdlso_R1(d: u32) -> bool {
     (d & 0xbffff000) == 0x0d40c000
 }
-pub fn is_LD3R_asisdlso_R3(d: u32) -> bool {
+pub const fn is_LD3R_asisdlso_R3(d: u32) -> bool {
     (d & 0xbffff000) == 0x0d40e000
 }
-pub fn is_LD2_asisdlso_B2_2b(d: u32) -> bool {
+pub const fn is_LD2_asisdlso_B2_2b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0d600000
 }
-pub fn is_LD4_asisdlso_B4_4b(d: u32) -> bool {
+pub const fn is_LD4_asisdlso_B4_4b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0d602000
 }
-pub fn is_LD2_asisdlso_H2_2h(d: u32) -> bool {
+pub const fn is_LD2_asisdlso_H2_2h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0d604000
 }
-pub fn is_LD4_asisdlso_H4_4h(d: u32) -> bool {
+pub const fn is_LD4_asisdlso_H4_4h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0d606000
 }
-pub fn is_LD2_asisdlso_S2_2s(d: u32) -> bool {
+pub const fn is_LD2_asisdlso_S2_2s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0d608000
 }
-pub fn is_LD2_asisdlso_D2_2d(d: u32) -> bool {
+pub const fn is_LD2_asisdlso_D2_2d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0d608400
 }
-pub fn is_LD4_asisdlso_S4_4s(d: u32) -> bool {
+pub const fn is_LD4_asisdlso_S4_4s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0d60a000
 }
-pub fn is_LD4_asisdlso_D4_4d(d: u32) -> bool {
+pub const fn is_LD4_asisdlso_D4_4d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0d60a400
 }
-pub fn is_LD2R_asisdlso_R2(d: u32) -> bool {
+pub const fn is_LD2R_asisdlso_R2(d: u32) -> bool {
     (d & 0xbffff000) == 0x0d60c000
 }
-pub fn is_LD4R_asisdlso_R4(d: u32) -> bool {
+pub const fn is_LD4R_asisdlso_R4(d: u32) -> bool {
     (d & 0xbffff000) == 0x0d60e000
 }
-pub fn is_ST1_asisdlsop_BX1_r1b(d: u32) -> bool {
+pub const fn is_ST1_asisdlsop_BX1_r1b(d: u32) -> bool {
     (d & 0xbfe0e000) == 0x0d800000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST3_asisdlsop_BX3_r3b(d: u32) -> bool {
+pub const fn is_ST3_asisdlsop_BX3_r3b(d: u32) -> bool {
     (d & 0xbfe0e000) == 0x0d802000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST1_asisdlsop_HX1_r1h(d: u32) -> bool {
+pub const fn is_ST1_asisdlsop_HX1_r1h(d: u32) -> bool {
     (d & 0xbfe0e400) == 0x0d804000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST3_asisdlsop_HX3_r3h(d: u32) -> bool {
+pub const fn is_ST3_asisdlsop_HX3_r3h(d: u32) -> bool {
     (d & 0xbfe0e400) == 0x0d806000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST1_asisdlsop_SX1_r1s(d: u32) -> bool {
+pub const fn is_ST1_asisdlsop_SX1_r1s(d: u32) -> bool {
     (d & 0xbfe0ec00) == 0x0d808000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST1_asisdlsop_DX1_r1d(d: u32) -> bool {
+pub const fn is_ST1_asisdlsop_DX1_r1d(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0d808400 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST3_asisdlsop_SX3_r3s(d: u32) -> bool {
+pub const fn is_ST3_asisdlsop_SX3_r3s(d: u32) -> bool {
     (d & 0xbfe0ec00) == 0x0d80a000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST3_asisdlsop_DX3_r3d(d: u32) -> bool {
+pub const fn is_ST3_asisdlsop_DX3_r3d(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0d80a400 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST1_asisdlsop_B1_i1b(d: u32) -> bool {
+pub const fn is_ST1_asisdlsop_B1_i1b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0d9f0000
 }
-pub fn is_ST3_asisdlsop_B3_i3b(d: u32) -> bool {
+pub const fn is_ST3_asisdlsop_B3_i3b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0d9f2000
 }
-pub fn is_ST1_asisdlsop_H1_i1h(d: u32) -> bool {
+pub const fn is_ST1_asisdlsop_H1_i1h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0d9f4000
 }
-pub fn is_ST3_asisdlsop_H3_i3h(d: u32) -> bool {
+pub const fn is_ST3_asisdlsop_H3_i3h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0d9f6000
 }
-pub fn is_ST1_asisdlsop_S1_i1s(d: u32) -> bool {
+pub const fn is_ST1_asisdlsop_S1_i1s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0d9f8000
 }
-pub fn is_ST1_asisdlsop_D1_i1d(d: u32) -> bool {
+pub const fn is_ST1_asisdlsop_D1_i1d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0d9f8400
 }
-pub fn is_ST3_asisdlsop_S3_i3s(d: u32) -> bool {
+pub const fn is_ST3_asisdlsop_S3_i3s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0d9fa000
 }
-pub fn is_ST3_asisdlsop_D3_i3d(d: u32) -> bool {
+pub const fn is_ST3_asisdlsop_D3_i3d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0d9fa400
 }
-pub fn is_ST2_asisdlsop_BX2_r2b(d: u32) -> bool {
+pub const fn is_ST2_asisdlsop_BX2_r2b(d: u32) -> bool {
     (d & 0xbfe0e000) == 0x0da00000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST4_asisdlsop_BX4_r4b(d: u32) -> bool {
+pub const fn is_ST4_asisdlsop_BX4_r4b(d: u32) -> bool {
     (d & 0xbfe0e000) == 0x0da02000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST2_asisdlsop_HX2_r2h(d: u32) -> bool {
+pub const fn is_ST2_asisdlsop_HX2_r2h(d: u32) -> bool {
     (d & 0xbfe0e400) == 0x0da04000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST4_asisdlsop_HX4_r4h(d: u32) -> bool {
+pub const fn is_ST4_asisdlsop_HX4_r4h(d: u32) -> bool {
     (d & 0xbfe0e400) == 0x0da06000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST2_asisdlsop_SX2_r2s(d: u32) -> bool {
+pub const fn is_ST2_asisdlsop_SX2_r2s(d: u32) -> bool {
     (d & 0xbfe0ec00) == 0x0da08000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST2_asisdlsop_DX2_r2d(d: u32) -> bool {
+pub const fn is_ST2_asisdlsop_DX2_r2d(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0da08400 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST4_asisdlsop_SX4_r4s(d: u32) -> bool {
+pub const fn is_ST4_asisdlsop_SX4_r4s(d: u32) -> bool {
     (d & 0xbfe0ec00) == 0x0da0a000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST4_asisdlsop_DX4_r4d(d: u32) -> bool {
+pub const fn is_ST4_asisdlsop_DX4_r4d(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0da0a400 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_ST2_asisdlsop_B2_i2b(d: u32) -> bool {
+pub const fn is_ST2_asisdlsop_B2_i2b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0dbf0000
 }
-pub fn is_ST4_asisdlsop_B4_i4b(d: u32) -> bool {
+pub const fn is_ST4_asisdlsop_B4_i4b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0dbf2000
 }
-pub fn is_ST2_asisdlsop_H2_i2h(d: u32) -> bool {
+pub const fn is_ST2_asisdlsop_H2_i2h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0dbf4000
 }
-pub fn is_ST4_asisdlsop_H4_i4h(d: u32) -> bool {
+pub const fn is_ST4_asisdlsop_H4_i4h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0dbf6000
 }
-pub fn is_ST2_asisdlsop_S2_i2s(d: u32) -> bool {
+pub const fn is_ST2_asisdlsop_S2_i2s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0dbf8000
 }
-pub fn is_ST2_asisdlsop_D2_i2d(d: u32) -> bool {
+pub const fn is_ST2_asisdlsop_D2_i2d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0dbf8400
 }
-pub fn is_ST4_asisdlsop_S4_i4s(d: u32) -> bool {
+pub const fn is_ST4_asisdlsop_S4_i4s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0dbfa000
 }
-pub fn is_ST4_asisdlsop_D4_i4d(d: u32) -> bool {
+pub const fn is_ST4_asisdlsop_D4_i4d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0dbfa400
 }
-pub fn is_LD1_asisdlsop_BX1_r1b(d: u32) -> bool {
+pub const fn is_LD1_asisdlsop_BX1_r1b(d: u32) -> bool {
     (d & 0xbfe0e000) == 0x0dc00000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD3_asisdlsop_BX3_r3b(d: u32) -> bool {
+pub const fn is_LD3_asisdlsop_BX3_r3b(d: u32) -> bool {
     (d & 0xbfe0e000) == 0x0dc02000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD1_asisdlsop_HX1_r1h(d: u32) -> bool {
+pub const fn is_LD1_asisdlsop_HX1_r1h(d: u32) -> bool {
     (d & 0xbfe0e400) == 0x0dc04000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD3_asisdlsop_HX3_r3h(d: u32) -> bool {
+pub const fn is_LD3_asisdlsop_HX3_r3h(d: u32) -> bool {
     (d & 0xbfe0e400) == 0x0dc06000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD1_asisdlsop_SX1_r1s(d: u32) -> bool {
+pub const fn is_LD1_asisdlsop_SX1_r1s(d: u32) -> bool {
     (d & 0xbfe0ec00) == 0x0dc08000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD1_asisdlsop_DX1_r1d(d: u32) -> bool {
+pub const fn is_LD1_asisdlsop_DX1_r1d(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0dc08400 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD3_asisdlsop_SX3_r3s(d: u32) -> bool {
+pub const fn is_LD3_asisdlsop_SX3_r3s(d: u32) -> bool {
     (d & 0xbfe0ec00) == 0x0dc0a000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD3_asisdlsop_DX3_r3d(d: u32) -> bool {
+pub const fn is_LD3_asisdlsop_DX3_r3d(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0dc0a400 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD1R_asisdlsop_RX1_r(d: u32) -> bool {
+pub const fn is_LD1R_asisdlsop_RX1_r(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0dc0c000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD3R_asisdlsop_RX3_r(d: u32) -> bool {
+pub const fn is_LD3R_asisdlsop_RX3_r(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0dc0e000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD1_asisdlsop_B1_i1b(d: u32) -> bool {
+pub const fn is_LD1_asisdlsop_B1_i1b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0ddf0000
 }
-pub fn is_LD3_asisdlsop_B3_i3b(d: u32) -> bool {
+pub const fn is_LD3_asisdlsop_B3_i3b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0ddf2000
 }
-pub fn is_LD1_asisdlsop_H1_i1h(d: u32) -> bool {
+pub const fn is_LD1_asisdlsop_H1_i1h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0ddf4000
 }
-pub fn is_LD3_asisdlsop_H3_i3h(d: u32) -> bool {
+pub const fn is_LD3_asisdlsop_H3_i3h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0ddf6000
 }
-pub fn is_LD1_asisdlsop_S1_i1s(d: u32) -> bool {
+pub const fn is_LD1_asisdlsop_S1_i1s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0ddf8000
 }
-pub fn is_LD1_asisdlsop_D1_i1d(d: u32) -> bool {
+pub const fn is_LD1_asisdlsop_D1_i1d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0ddf8400
 }
-pub fn is_LD3_asisdlsop_S3_i3s(d: u32) -> bool {
+pub const fn is_LD3_asisdlsop_S3_i3s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0ddfa000
 }
-pub fn is_LD3_asisdlsop_D3_i3d(d: u32) -> bool {
+pub const fn is_LD3_asisdlsop_D3_i3d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0ddfa400
 }
-pub fn is_LD1R_asisdlsop_R1_i(d: u32) -> bool {
+pub const fn is_LD1R_asisdlsop_R1_i(d: u32) -> bool {
     (d & 0xbffff000) == 0x0ddfc000
 }
-pub fn is_LD3R_asisdlsop_R3_i(d: u32) -> bool {
+pub const fn is_LD3R_asisdlsop_R3_i(d: u32) -> bool {
     (d & 0xbffff000) == 0x0ddfe000
 }
-pub fn is_LD2_asisdlsop_BX2_r2b(d: u32) -> bool {
+pub const fn is_LD2_asisdlsop_BX2_r2b(d: u32) -> bool {
     (d & 0xbfe0e000) == 0x0de00000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD4_asisdlsop_BX4_r4b(d: u32) -> bool {
+pub const fn is_LD4_asisdlsop_BX4_r4b(d: u32) -> bool {
     (d & 0xbfe0e000) == 0x0de02000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD2_asisdlsop_HX2_r2h(d: u32) -> bool {
+pub const fn is_LD2_asisdlsop_HX2_r2h(d: u32) -> bool {
     (d & 0xbfe0e400) == 0x0de04000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD4_asisdlsop_HX4_r4h(d: u32) -> bool {
+pub const fn is_LD4_asisdlsop_HX4_r4h(d: u32) -> bool {
     (d & 0xbfe0e400) == 0x0de06000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD2_asisdlsop_SX2_r2s(d: u32) -> bool {
+pub const fn is_LD2_asisdlsop_SX2_r2s(d: u32) -> bool {
     (d & 0xbfe0ec00) == 0x0de08000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD2_asisdlsop_DX2_r2d(d: u32) -> bool {
+pub const fn is_LD2_asisdlsop_DX2_r2d(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0de08400 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD4_asisdlsop_SX4_r4s(d: u32) -> bool {
+pub const fn is_LD4_asisdlsop_SX4_r4s(d: u32) -> bool {
     (d & 0xbfe0ec00) == 0x0de0a000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD4_asisdlsop_DX4_r4d(d: u32) -> bool {
+pub const fn is_LD4_asisdlsop_DX4_r4d(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0de0a400 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD2R_asisdlsop_RX2_r(d: u32) -> bool {
+pub const fn is_LD2R_asisdlsop_RX2_r(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0de0c000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD4R_asisdlsop_RX4_r(d: u32) -> bool {
+pub const fn is_LD4R_asisdlsop_RX4_r(d: u32) -> bool {
     (d & 0xbfe0f000) == 0x0de0e000 && (d & 0x1f0000) != 0x1f0000
 }
-pub fn is_LD2_asisdlsop_B2_i2b(d: u32) -> bool {
+pub const fn is_LD2_asisdlsop_B2_i2b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0dff0000
 }
-pub fn is_LD4_asisdlsop_B4_i4b(d: u32) -> bool {
+pub const fn is_LD4_asisdlsop_B4_i4b(d: u32) -> bool {
     (d & 0xbfffe000) == 0x0dff2000
 }
-pub fn is_LD2_asisdlsop_H2_i2h(d: u32) -> bool {
+pub const fn is_LD2_asisdlsop_H2_i2h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0dff4000
 }
-pub fn is_LD4_asisdlsop_H4_i4h(d: u32) -> bool {
+pub const fn is_LD4_asisdlsop_H4_i4h(d: u32) -> bool {
     (d & 0xbfffe400) == 0x0dff6000
 }
-pub fn is_LD2_asisdlsop_S2_i2s(d: u32) -> bool {
+pub const fn is_LD2_asisdlsop_S2_i2s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0dff8000
 }
-pub fn is_LD2_asisdlsop_D2_i2d(d: u32) -> bool {
+pub const fn is_LD2_asisdlsop_D2_i2d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0dff8400
 }
-pub fn is_LD4_asisdlsop_S4_i4s(d: u32) -> bool {
+pub const fn is_LD4_asisdlsop_S4_i4s(d: u32) -> bool {
     (d & 0xbfffec00) == 0x0dffa000
 }
-pub fn is_LD4_asisdlsop_D4_i4d(d: u32) -> bool {
+pub const fn is_LD4_asisdlsop_D4_i4d(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0dffa400
 }
-pub fn is_LD2R_asisdlsop_R2_i(d: u32) -> bool {
+pub const fn is_LD2R_asisdlsop_R2_i(d: u32) -> bool {
     (d & 0xbffff000) == 0x0dffc000
 }
-pub fn is_LD4R_asisdlsop_R4_i(d: u32) -> bool {
+pub const fn is_LD4R_asisdlsop_R4_i(d: u32) -> bool {
     (d & 0xbffff000) == 0x0dffe000
 }
-pub fn is_LDADDB_32_memop(d: u32) -> bool {
+pub const fn is_LDADDB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38200000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STADDB_32S_memop(d: u32) -> bool {
+pub const fn is_STADDB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3820001f
 }
-pub fn is_LDCLRB_32_memop(d: u32) -> bool {
+pub const fn is_LDCLRB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38201000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STCLRB_32S_memop(d: u32) -> bool {
+pub const fn is_STCLRB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3820101f
 }
-pub fn is_LDEORB_32_memop(d: u32) -> bool {
+pub const fn is_LDEORB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38202000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STEORB_32S_memop(d: u32) -> bool {
+pub const fn is_STEORB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3820201f
 }
-pub fn is_LDSETB_32_memop(d: u32) -> bool {
+pub const fn is_LDSETB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38203000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSETB_32S_memop(d: u32) -> bool {
+pub const fn is_STSETB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3820301f
 }
-pub fn is_LDSMAXB_32_memop(d: u32) -> bool {
+pub const fn is_LDSMAXB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38204000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMAXB_32S_memop(d: u32) -> bool {
+pub const fn is_STSMAXB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3820401f
 }
-pub fn is_LDSMINB_32_memop(d: u32) -> bool {
+pub const fn is_LDSMINB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38205000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMINB_32S_memop(d: u32) -> bool {
+pub const fn is_STSMINB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3820501f
 }
-pub fn is_LDUMAXB_32_memop(d: u32) -> bool {
+pub const fn is_LDUMAXB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38206000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMAXB_32S_memop(d: u32) -> bool {
+pub const fn is_STUMAXB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3820601f
 }
-pub fn is_LDUMINB_32_memop(d: u32) -> bool {
+pub const fn is_LDUMINB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38207000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMINB_32S_memop(d: u32) -> bool {
+pub const fn is_STUMINB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3820701f
 }
-pub fn is_SWPB_32_memop(d: u32) -> bool {
+pub const fn is_SWPB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38208000
 }
-pub fn is_LDADDLB_32_memop(d: u32) -> bool {
+pub const fn is_LDADDLB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38600000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STADDLB_32S_memop(d: u32) -> bool {
+pub const fn is_STADDLB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3860001f
 }
-pub fn is_LDCLRLB_32_memop(d: u32) -> bool {
+pub const fn is_LDCLRLB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38601000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STCLRLB_32S_memop(d: u32) -> bool {
+pub const fn is_STCLRLB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3860101f
 }
-pub fn is_LDEORLB_32_memop(d: u32) -> bool {
+pub const fn is_LDEORLB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38602000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STEORLB_32S_memop(d: u32) -> bool {
+pub const fn is_STEORLB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3860201f
 }
-pub fn is_LDSETLB_32_memop(d: u32) -> bool {
+pub const fn is_LDSETLB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38603000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSETLB_32S_memop(d: u32) -> bool {
+pub const fn is_STSETLB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3860301f
 }
-pub fn is_LDSMAXLB_32_memop(d: u32) -> bool {
+pub const fn is_LDSMAXLB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38604000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMAXLB_32S_memop(d: u32) -> bool {
+pub const fn is_STSMAXLB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3860401f
 }
-pub fn is_LDSMINLB_32_memop(d: u32) -> bool {
+pub const fn is_LDSMINLB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38605000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMINLB_32S_memop(d: u32) -> bool {
+pub const fn is_STSMINLB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3860501f
 }
-pub fn is_LDUMAXLB_32_memop(d: u32) -> bool {
+pub const fn is_LDUMAXLB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38606000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMAXLB_32S_memop(d: u32) -> bool {
+pub const fn is_STUMAXLB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3860601f
 }
-pub fn is_LDUMINLB_32_memop(d: u32) -> bool {
+pub const fn is_LDUMINLB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38607000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMINLB_32S_memop(d: u32) -> bool {
+pub const fn is_STUMINLB_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x3860701f
 }
-pub fn is_SWPLB_32_memop(d: u32) -> bool {
+pub const fn is_SWPLB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38608000
 }
-pub fn is_LDADDAB_32_memop(d: u32) -> bool {
+pub const fn is_LDADDAB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38a00000
 }
-pub fn is_LDCLRAB_32_memop(d: u32) -> bool {
+pub const fn is_LDCLRAB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38a01000
 }
-pub fn is_LDEORAB_32_memop(d: u32) -> bool {
+pub const fn is_LDEORAB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38a02000
 }
-pub fn is_LDSETAB_32_memop(d: u32) -> bool {
+pub const fn is_LDSETAB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38a03000
 }
-pub fn is_LDSMAXAB_32_memop(d: u32) -> bool {
+pub const fn is_LDSMAXAB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38a04000
 }
-pub fn is_LDSMINAB_32_memop(d: u32) -> bool {
+pub const fn is_LDSMINAB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38a05000
 }
-pub fn is_LDUMAXAB_32_memop(d: u32) -> bool {
+pub const fn is_LDUMAXAB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38a06000
 }
-pub fn is_LDUMINAB_32_memop(d: u32) -> bool {
+pub const fn is_LDUMINAB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38a07000
 }
-pub fn is_SWPAB_32_memop(d: u32) -> bool {
+pub const fn is_SWPAB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38a08000
 }
-pub fn is_LDAPRB_32L_memop(d: u32) -> bool {
+pub const fn is_LDAPRB_32L_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38a0c000
 }
-pub fn is_LDADDALB_32_memop(d: u32) -> bool {
+pub const fn is_LDADDALB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38e00000
 }
-pub fn is_LDCLRALB_32_memop(d: u32) -> bool {
+pub const fn is_LDCLRALB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38e01000
 }
-pub fn is_LDEORALB_32_memop(d: u32) -> bool {
+pub const fn is_LDEORALB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38e02000
 }
-pub fn is_LDSETALB_32_memop(d: u32) -> bool {
+pub const fn is_LDSETALB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38e03000
 }
-pub fn is_LDSMAXALB_32_memop(d: u32) -> bool {
+pub const fn is_LDSMAXALB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38e04000
 }
-pub fn is_LDSMINALB_32_memop(d: u32) -> bool {
+pub const fn is_LDSMINALB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38e05000
 }
-pub fn is_LDUMAXALB_32_memop(d: u32) -> bool {
+pub const fn is_LDUMAXALB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38e06000
 }
-pub fn is_LDUMINALB_32_memop(d: u32) -> bool {
+pub const fn is_LDUMINALB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38e07000
 }
-pub fn is_SWPALB_32_memop(d: u32) -> bool {
+pub const fn is_SWPALB_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x38e08000
 }
-pub fn is_LDADDH_32_memop(d: u32) -> bool {
+pub const fn is_LDADDH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78200000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STADDH_32S_memop(d: u32) -> bool {
+pub const fn is_STADDH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7820001f
 }
-pub fn is_LDCLRH_32_memop(d: u32) -> bool {
+pub const fn is_LDCLRH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78201000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STCLRH_32S_memop(d: u32) -> bool {
+pub const fn is_STCLRH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7820101f
 }
-pub fn is_LDEORH_32_memop(d: u32) -> bool {
+pub const fn is_LDEORH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78202000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STEORH_32S_memop(d: u32) -> bool {
+pub const fn is_STEORH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7820201f
 }
-pub fn is_LDSETH_32_memop(d: u32) -> bool {
+pub const fn is_LDSETH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78203000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSETH_32S_memop(d: u32) -> bool {
+pub const fn is_STSETH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7820301f
 }
-pub fn is_LDSMAXH_32_memop(d: u32) -> bool {
+pub const fn is_LDSMAXH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78204000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMAXH_32S_memop(d: u32) -> bool {
+pub const fn is_STSMAXH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7820401f
 }
-pub fn is_LDSMINH_32_memop(d: u32) -> bool {
+pub const fn is_LDSMINH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78205000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMINH_32S_memop(d: u32) -> bool {
+pub const fn is_STSMINH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7820501f
 }
-pub fn is_LDUMAXH_32_memop(d: u32) -> bool {
+pub const fn is_LDUMAXH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78206000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMAXH_32S_memop(d: u32) -> bool {
+pub const fn is_STUMAXH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7820601f
 }
-pub fn is_LDUMINH_32_memop(d: u32) -> bool {
+pub const fn is_LDUMINH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78207000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMINH_32S_memop(d: u32) -> bool {
+pub const fn is_STUMINH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7820701f
 }
-pub fn is_SWPH_32_memop(d: u32) -> bool {
+pub const fn is_SWPH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78208000
 }
-pub fn is_LDADDLH_32_memop(d: u32) -> bool {
+pub const fn is_LDADDLH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78600000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STADDLH_32S_memop(d: u32) -> bool {
+pub const fn is_STADDLH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7860001f
 }
-pub fn is_LDCLRLH_32_memop(d: u32) -> bool {
+pub const fn is_LDCLRLH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78601000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STCLRLH_32S_memop(d: u32) -> bool {
+pub const fn is_STCLRLH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7860101f
 }
-pub fn is_LDEORLH_32_memop(d: u32) -> bool {
+pub const fn is_LDEORLH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78602000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STEORLH_32S_memop(d: u32) -> bool {
+pub const fn is_STEORLH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7860201f
 }
-pub fn is_LDSETLH_32_memop(d: u32) -> bool {
+pub const fn is_LDSETLH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78603000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSETLH_32S_memop(d: u32) -> bool {
+pub const fn is_STSETLH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7860301f
 }
-pub fn is_LDSMAXLH_32_memop(d: u32) -> bool {
+pub const fn is_LDSMAXLH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78604000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMAXLH_32S_memop(d: u32) -> bool {
+pub const fn is_STSMAXLH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7860401f
 }
-pub fn is_LDSMINLH_32_memop(d: u32) -> bool {
+pub const fn is_LDSMINLH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78605000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMINLH_32S_memop(d: u32) -> bool {
+pub const fn is_STSMINLH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7860501f
 }
-pub fn is_LDUMAXLH_32_memop(d: u32) -> bool {
+pub const fn is_LDUMAXLH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78606000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMAXLH_32S_memop(d: u32) -> bool {
+pub const fn is_STUMAXLH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7860601f
 }
-pub fn is_LDUMINLH_32_memop(d: u32) -> bool {
+pub const fn is_LDUMINLH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78607000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMINLH_32S_memop(d: u32) -> bool {
+pub const fn is_STUMINLH_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x7860701f
 }
-pub fn is_SWPLH_32_memop(d: u32) -> bool {
+pub const fn is_SWPLH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78608000
 }
-pub fn is_LDADDAH_32_memop(d: u32) -> bool {
+pub const fn is_LDADDAH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78a00000
 }
-pub fn is_LDCLRAH_32_memop(d: u32) -> bool {
+pub const fn is_LDCLRAH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78a01000
 }
-pub fn is_LDEORAH_32_memop(d: u32) -> bool {
+pub const fn is_LDEORAH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78a02000
 }
-pub fn is_LDSETAH_32_memop(d: u32) -> bool {
+pub const fn is_LDSETAH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78a03000
 }
-pub fn is_LDSMAXAH_32_memop(d: u32) -> bool {
+pub const fn is_LDSMAXAH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78a04000
 }
-pub fn is_LDSMINAH_32_memop(d: u32) -> bool {
+pub const fn is_LDSMINAH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78a05000
 }
-pub fn is_LDUMAXAH_32_memop(d: u32) -> bool {
+pub const fn is_LDUMAXAH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78a06000
 }
-pub fn is_LDUMINAH_32_memop(d: u32) -> bool {
+pub const fn is_LDUMINAH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78a07000
 }
-pub fn is_SWPAH_32_memop(d: u32) -> bool {
+pub const fn is_SWPAH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78a08000
 }
-pub fn is_LDAPRH_32L_memop(d: u32) -> bool {
+pub const fn is_LDAPRH_32L_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78a0c000
 }
-pub fn is_LDADDALH_32_memop(d: u32) -> bool {
+pub const fn is_LDADDALH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78e00000
 }
-pub fn is_LDCLRALH_32_memop(d: u32) -> bool {
+pub const fn is_LDCLRALH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78e01000
 }
-pub fn is_LDEORALH_32_memop(d: u32) -> bool {
+pub const fn is_LDEORALH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78e02000
 }
-pub fn is_LDSETALH_32_memop(d: u32) -> bool {
+pub const fn is_LDSETALH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78e03000
 }
-pub fn is_LDSMAXALH_32_memop(d: u32) -> bool {
+pub const fn is_LDSMAXALH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78e04000
 }
-pub fn is_LDSMINALH_32_memop(d: u32) -> bool {
+pub const fn is_LDSMINALH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78e05000
 }
-pub fn is_LDUMAXALH_32_memop(d: u32) -> bool {
+pub const fn is_LDUMAXALH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78e06000
 }
-pub fn is_LDUMINALH_32_memop(d: u32) -> bool {
+pub const fn is_LDUMINALH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78e07000
 }
-pub fn is_SWPALH_32_memop(d: u32) -> bool {
+pub const fn is_SWPALH_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x78e08000
 }
-pub fn is_LDADD_32_memop(d: u32) -> bool {
+pub const fn is_LDADD_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8200000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STADD_32S_memop(d: u32) -> bool {
+pub const fn is_STADD_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb820001f
 }
-pub fn is_LDCLR_32_memop(d: u32) -> bool {
+pub const fn is_LDCLR_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8201000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STCLR_32S_memop(d: u32) -> bool {
+pub const fn is_STCLR_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb820101f
 }
-pub fn is_LDEOR_32_memop(d: u32) -> bool {
+pub const fn is_LDEOR_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8202000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STEOR_32S_memop(d: u32) -> bool {
+pub const fn is_STEOR_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb820201f
 }
-pub fn is_LDSET_32_memop(d: u32) -> bool {
+pub const fn is_LDSET_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8203000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSET_32S_memop(d: u32) -> bool {
+pub const fn is_STSET_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb820301f
 }
-pub fn is_LDSMAX_32_memop(d: u32) -> bool {
+pub const fn is_LDSMAX_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8204000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMAX_32S_memop(d: u32) -> bool {
+pub const fn is_STSMAX_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb820401f
 }
-pub fn is_LDSMIN_32_memop(d: u32) -> bool {
+pub const fn is_LDSMIN_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8205000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMIN_32S_memop(d: u32) -> bool {
+pub const fn is_STSMIN_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb820501f
 }
-pub fn is_LDUMAX_32_memop(d: u32) -> bool {
+pub const fn is_LDUMAX_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8206000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMAX_32S_memop(d: u32) -> bool {
+pub const fn is_STUMAX_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb820601f
 }
-pub fn is_LDUMIN_32_memop(d: u32) -> bool {
+pub const fn is_LDUMIN_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8207000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMIN_32S_memop(d: u32) -> bool {
+pub const fn is_STUMIN_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb820701f
 }
-pub fn is_SWP_32_memop(d: u32) -> bool {
+pub const fn is_SWP_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8208000
 }
-pub fn is_LDADDL_32_memop(d: u32) -> bool {
+pub const fn is_LDADDL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8600000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STADDL_32S_memop(d: u32) -> bool {
+pub const fn is_STADDL_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb860001f
 }
-pub fn is_LDCLRL_32_memop(d: u32) -> bool {
+pub const fn is_LDCLRL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8601000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STCLRL_32S_memop(d: u32) -> bool {
+pub const fn is_STCLRL_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb860101f
 }
-pub fn is_LDEORL_32_memop(d: u32) -> bool {
+pub const fn is_LDEORL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8602000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STEORL_32S_memop(d: u32) -> bool {
+pub const fn is_STEORL_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb860201f
 }
-pub fn is_LDSETL_32_memop(d: u32) -> bool {
+pub const fn is_LDSETL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8603000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSETL_32S_memop(d: u32) -> bool {
+pub const fn is_STSETL_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb860301f
 }
-pub fn is_LDSMAXL_32_memop(d: u32) -> bool {
+pub const fn is_LDSMAXL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8604000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMAXL_32S_memop(d: u32) -> bool {
+pub const fn is_STSMAXL_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb860401f
 }
-pub fn is_LDSMINL_32_memop(d: u32) -> bool {
+pub const fn is_LDSMINL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8605000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMINL_32S_memop(d: u32) -> bool {
+pub const fn is_STSMINL_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb860501f
 }
-pub fn is_LDUMAXL_32_memop(d: u32) -> bool {
+pub const fn is_LDUMAXL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8606000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMAXL_32S_memop(d: u32) -> bool {
+pub const fn is_STUMAXL_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb860601f
 }
-pub fn is_LDUMINL_32_memop(d: u32) -> bool {
+pub const fn is_LDUMINL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8607000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMINL_32S_memop(d: u32) -> bool {
+pub const fn is_STUMINL_32S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xb860701f
 }
-pub fn is_SWPL_32_memop(d: u32) -> bool {
+pub const fn is_SWPL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8608000
 }
-pub fn is_LDADDA_32_memop(d: u32) -> bool {
+pub const fn is_LDADDA_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8a00000
 }
-pub fn is_LDCLRA_32_memop(d: u32) -> bool {
+pub const fn is_LDCLRA_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8a01000
 }
-pub fn is_LDEORA_32_memop(d: u32) -> bool {
+pub const fn is_LDEORA_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8a02000
 }
-pub fn is_LDSETA_32_memop(d: u32) -> bool {
+pub const fn is_LDSETA_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8a03000
 }
-pub fn is_LDSMAXA_32_memop(d: u32) -> bool {
+pub const fn is_LDSMAXA_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8a04000
 }
-pub fn is_LDSMINA_32_memop(d: u32) -> bool {
+pub const fn is_LDSMINA_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8a05000
 }
-pub fn is_LDUMAXA_32_memop(d: u32) -> bool {
+pub const fn is_LDUMAXA_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8a06000
 }
-pub fn is_LDUMINA_32_memop(d: u32) -> bool {
+pub const fn is_LDUMINA_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8a07000
 }
-pub fn is_SWPA_32_memop(d: u32) -> bool {
+pub const fn is_SWPA_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8a08000
 }
-pub fn is_LDAPR_32L_memop(d: u32) -> bool {
+pub const fn is_LDAPR_32L_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8a0c000
 }
-pub fn is_LDADDAL_32_memop(d: u32) -> bool {
+pub const fn is_LDADDAL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8e00000
 }
-pub fn is_LDCLRAL_32_memop(d: u32) -> bool {
+pub const fn is_LDCLRAL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8e01000
 }
-pub fn is_LDEORAL_32_memop(d: u32) -> bool {
+pub const fn is_LDEORAL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8e02000
 }
-pub fn is_LDSETAL_32_memop(d: u32) -> bool {
+pub const fn is_LDSETAL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8e03000
 }
-pub fn is_LDSMAXAL_32_memop(d: u32) -> bool {
+pub const fn is_LDSMAXAL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8e04000
 }
-pub fn is_LDSMINAL_32_memop(d: u32) -> bool {
+pub const fn is_LDSMINAL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8e05000
 }
-pub fn is_LDUMAXAL_32_memop(d: u32) -> bool {
+pub const fn is_LDUMAXAL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8e06000
 }
-pub fn is_LDUMINAL_32_memop(d: u32) -> bool {
+pub const fn is_LDUMINAL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8e07000
 }
-pub fn is_SWPAL_32_memop(d: u32) -> bool {
+pub const fn is_SWPAL_32_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xb8e08000
 }
-pub fn is_LDADD_64_memop(d: u32) -> bool {
+pub const fn is_LDADD_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8200000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STADD_64S_memop(d: u32) -> bool {
+pub const fn is_STADD_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf820001f
 }
-pub fn is_LDCLR_64_memop(d: u32) -> bool {
+pub const fn is_LDCLR_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8201000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STCLR_64S_memop(d: u32) -> bool {
+pub const fn is_STCLR_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf820101f
 }
-pub fn is_LDEOR_64_memop(d: u32) -> bool {
+pub const fn is_LDEOR_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8202000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STEOR_64S_memop(d: u32) -> bool {
+pub const fn is_STEOR_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf820201f
 }
-pub fn is_LDSET_64_memop(d: u32) -> bool {
+pub const fn is_LDSET_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8203000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSET_64S_memop(d: u32) -> bool {
+pub const fn is_STSET_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf820301f
 }
-pub fn is_LDSMAX_64_memop(d: u32) -> bool {
+pub const fn is_LDSMAX_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8204000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMAX_64S_memop(d: u32) -> bool {
+pub const fn is_STSMAX_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf820401f
 }
-pub fn is_LDSMIN_64_memop(d: u32) -> bool {
+pub const fn is_LDSMIN_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8205000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMIN_64S_memop(d: u32) -> bool {
+pub const fn is_STSMIN_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf820501f
 }
-pub fn is_LDUMAX_64_memop(d: u32) -> bool {
+pub const fn is_LDUMAX_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8206000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMAX_64S_memop(d: u32) -> bool {
+pub const fn is_STUMAX_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf820601f
 }
-pub fn is_LDUMIN_64_memop(d: u32) -> bool {
+pub const fn is_LDUMIN_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8207000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMIN_64S_memop(d: u32) -> bool {
+pub const fn is_STUMIN_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf820701f
 }
-pub fn is_SWP_64_memop(d: u32) -> bool {
+pub const fn is_SWP_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8208000
 }
-pub fn is_LDADDL_64_memop(d: u32) -> bool {
+pub const fn is_LDADDL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8600000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STADDL_64S_memop(d: u32) -> bool {
+pub const fn is_STADDL_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf860001f
 }
-pub fn is_LDCLRL_64_memop(d: u32) -> bool {
+pub const fn is_LDCLRL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8601000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STCLRL_64S_memop(d: u32) -> bool {
+pub const fn is_STCLRL_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf860101f
 }
-pub fn is_LDEORL_64_memop(d: u32) -> bool {
+pub const fn is_LDEORL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8602000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STEORL_64S_memop(d: u32) -> bool {
+pub const fn is_STEORL_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf860201f
 }
-pub fn is_LDSETL_64_memop(d: u32) -> bool {
+pub const fn is_LDSETL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8603000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSETL_64S_memop(d: u32) -> bool {
+pub const fn is_STSETL_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf860301f
 }
-pub fn is_LDSMAXL_64_memop(d: u32) -> bool {
+pub const fn is_LDSMAXL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8604000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMAXL_64S_memop(d: u32) -> bool {
+pub const fn is_STSMAXL_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf860401f
 }
-pub fn is_LDSMINL_64_memop(d: u32) -> bool {
+pub const fn is_LDSMINL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8605000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STSMINL_64S_memop(d: u32) -> bool {
+pub const fn is_STSMINL_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf860501f
 }
-pub fn is_LDUMAXL_64_memop(d: u32) -> bool {
+pub const fn is_LDUMAXL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8606000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMAXL_64S_memop(d: u32) -> bool {
+pub const fn is_STUMAXL_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf860601f
 }
-pub fn is_LDUMINL_64_memop(d: u32) -> bool {
+pub const fn is_LDUMINL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8607000 && (d & 0x00001f) != 0x00001f
 }
-pub fn is_STUMINL_64S_memop(d: u32) -> bool {
+pub const fn is_STUMINL_64S_memop(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0xf860701f
 }
-pub fn is_SWPL_64_memop(d: u32) -> bool {
+pub const fn is_SWPL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8608000
 }
-pub fn is_LDADDA_64_memop(d: u32) -> bool {
+pub const fn is_LDADDA_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8a00000
 }
-pub fn is_LDCLRA_64_memop(d: u32) -> bool {
+pub const fn is_LDCLRA_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8a01000
 }
-pub fn is_LDEORA_64_memop(d: u32) -> bool {
+pub const fn is_LDEORA_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8a02000
 }
-pub fn is_LDSETA_64_memop(d: u32) -> bool {
+pub const fn is_LDSETA_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8a03000
 }
-pub fn is_LDSMAXA_64_memop(d: u32) -> bool {
+pub const fn is_LDSMAXA_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8a04000
 }
-pub fn is_LDSMINA_64_memop(d: u32) -> bool {
+pub const fn is_LDSMINA_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8a05000
 }
-pub fn is_LDUMAXA_64_memop(d: u32) -> bool {
+pub const fn is_LDUMAXA_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8a06000
 }
-pub fn is_LDUMINA_64_memop(d: u32) -> bool {
+pub const fn is_LDUMINA_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8a07000
 }
-pub fn is_SWPA_64_memop(d: u32) -> bool {
+pub const fn is_SWPA_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8a08000
 }
-pub fn is_LDAPR_64L_memop(d: u32) -> bool {
+pub const fn is_LDAPR_64L_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8a0c000
 }
-pub fn is_LDADDAL_64_memop(d: u32) -> bool {
+pub const fn is_LDADDAL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8e00000
 }
-pub fn is_LDCLRAL_64_memop(d: u32) -> bool {
+pub const fn is_LDCLRAL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8e01000
 }
-pub fn is_LDEORAL_64_memop(d: u32) -> bool {
+pub const fn is_LDEORAL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8e02000
 }
-pub fn is_LDSETAL_64_memop(d: u32) -> bool {
+pub const fn is_LDSETAL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8e03000
 }
-pub fn is_LDSMAXAL_64_memop(d: u32) -> bool {
+pub const fn is_LDSMAXAL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8e04000
 }
-pub fn is_LDSMINAL_64_memop(d: u32) -> bool {
+pub const fn is_LDSMINAL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8e05000
 }
-pub fn is_LDUMAXAL_64_memop(d: u32) -> bool {
+pub const fn is_LDUMAXAL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8e06000
 }
-pub fn is_LDUMINAL_64_memop(d: u32) -> bool {
+pub const fn is_LDUMINAL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8e07000
 }
-pub fn is_SWPAL_64_memop(d: u32) -> bool {
+pub const fn is_SWPAL_64_memop(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xf8e08000
 }
-pub fn is_LDR_32_loadlit(d: u32) -> bool {
+pub const fn is_LDR_32_loadlit(d: u32) -> bool {
     (d & 0xff000000) == 0x18000000
 }
-pub fn is_LDR_S_loadlit(d: u32) -> bool {
+pub const fn is_LDR_S_loadlit(d: u32) -> bool {
     (d & 0xff000000) == 0x1c000000
 }
-pub fn is_LDR_64_loadlit(d: u32) -> bool {
+pub const fn is_LDR_64_loadlit(d: u32) -> bool {
     (d & 0xff000000) == 0x58000000
 }
-pub fn is_LDR_D_loadlit(d: u32) -> bool {
+pub const fn is_LDR_D_loadlit(d: u32) -> bool {
     (d & 0xff000000) == 0x5c000000
 }
-pub fn is_LDRSW_64_loadlit(d: u32) -> bool {
+pub const fn is_LDRSW_64_loadlit(d: u32) -> bool {
     (d & 0xff000000) == 0x98000000
 }
-pub fn is_LDR_Q_loadlit(d: u32) -> bool {
+pub const fn is_LDR_Q_loadlit(d: u32) -> bool {
     (d & 0xff000000) == 0x9c000000
 }
-pub fn is_PRFM_P_loadlit(d: u32) -> bool {
+pub const fn is_PRFM_P_loadlit(d: u32) -> bool {
     (d & 0xff000000) == 0xd8000000
 }
-pub fn is_STXRB_SR32_ldstexcl(d: u32) -> bool {
+pub const fn is_STXRB_SR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x08000000
 }
-pub fn is_STLXRB_SR32_ldstexcl(d: u32) -> bool {
+pub const fn is_STLXRB_SR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x08008000
 }
-pub fn is_CASP_CP32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASP_CP32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x08207c00
 }
-pub fn is_CASPL_CP32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASPL_CP32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x0820fc00
 }
-pub fn is_LDXRB_LR32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDXRB_LR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x08400000
 }
-pub fn is_LDAXRB_LR32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDAXRB_LR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x08408000
 }
-pub fn is_CASPA_CP32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASPA_CP32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x08607c00
 }
-pub fn is_CASPAL_CP32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASPAL_CP32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x0860fc00
 }
-pub fn is_STLLRB_SL32_ldstexcl(d: u32) -> bool {
+pub const fn is_STLLRB_SL32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x08800000
 }
-pub fn is_STLRB_SL32_ldstexcl(d: u32) -> bool {
+pub const fn is_STLRB_SL32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x08808000
 }
-pub fn is_CASB_C32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASB_C32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x08a07c00
 }
-pub fn is_CASLB_C32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASLB_C32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x08a0fc00
 }
-pub fn is_LDLARB_LR32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDLARB_LR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x08c00000
 }
-pub fn is_LDARB_LR32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDARB_LR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x08c08000
 }
-pub fn is_CASAB_C32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASAB_C32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x08e07c00
 }
-pub fn is_CASALB_C32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASALB_C32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x08e0fc00
 }
-pub fn is_STXRH_SR32_ldstexcl(d: u32) -> bool {
+pub const fn is_STXRH_SR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x48000000
 }
-pub fn is_STLXRH_SR32_ldstexcl(d: u32) -> bool {
+pub const fn is_STLXRH_SR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x48008000
 }
-pub fn is_CASP_CP64_ldstexcl(d: u32) -> bool {
+pub const fn is_CASP_CP64_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x48207c00
 }
-pub fn is_CASPL_CP64_ldstexcl(d: u32) -> bool {
+pub const fn is_CASPL_CP64_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x4820fc00
 }
-pub fn is_LDXRH_LR32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDXRH_LR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x48400000
 }
-pub fn is_LDAXRH_LR32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDAXRH_LR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x48408000
 }
-pub fn is_CASPA_CP64_ldstexcl(d: u32) -> bool {
+pub const fn is_CASPA_CP64_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x48607c00
 }
-pub fn is_CASPAL_CP64_ldstexcl(d: u32) -> bool {
+pub const fn is_CASPAL_CP64_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x4860fc00
 }
-pub fn is_STLLRH_SL32_ldstexcl(d: u32) -> bool {
+pub const fn is_STLLRH_SL32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x48800000
 }
-pub fn is_STLRH_SL32_ldstexcl(d: u32) -> bool {
+pub const fn is_STLRH_SL32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x48808000
 }
-pub fn is_CASH_C32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASH_C32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x48a07c00
 }
-pub fn is_CASLH_C32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASLH_C32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x48a0fc00
 }
-pub fn is_LDLARH_LR32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDLARH_LR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x48c00000
 }
-pub fn is_LDARH_LR32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDARH_LR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x48c08000
 }
-pub fn is_CASAH_C32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASAH_C32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x48e07c00
 }
-pub fn is_CASALH_C32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASALH_C32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x48e0fc00
 }
-pub fn is_STXR_SR32_ldstexcl(d: u32) -> bool {
+pub const fn is_STXR_SR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x88000000
 }
-pub fn is_STLXR_SR32_ldstexcl(d: u32) -> bool {
+pub const fn is_STLXR_SR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x88008000
 }
-pub fn is_STXP_SP32_ldstexcl(d: u32) -> bool {
+pub const fn is_STXP_SP32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x88200000
 }
-pub fn is_STLXP_SP32_ldstexcl(d: u32) -> bool {
+pub const fn is_STLXP_SP32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x88208000
 }
-pub fn is_LDXR_LR32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDXR_LR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x88400000
 }
-pub fn is_LDAXR_LR32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDAXR_LR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x88408000
 }
-pub fn is_LDXP_LP32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDXP_LP32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x88600000
 }
-pub fn is_LDAXP_LP32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDAXP_LP32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x88608000
 }
-pub fn is_STLLR_SL32_ldstexcl(d: u32) -> bool {
+pub const fn is_STLLR_SL32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x88800000
 }
-pub fn is_STLR_SL32_ldstexcl(d: u32) -> bool {
+pub const fn is_STLR_SL32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x88808000
 }
-pub fn is_CAS_C32_ldstexcl(d: u32) -> bool {
+pub const fn is_CAS_C32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x88a07c00
 }
-pub fn is_CASL_C32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASL_C32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x88a0fc00
 }
-pub fn is_LDLAR_LR32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDLAR_LR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x88c00000
 }
-pub fn is_LDAR_LR32_ldstexcl(d: u32) -> bool {
+pub const fn is_LDAR_LR32_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0x88c08000
 }
-pub fn is_CASA_C32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASA_C32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x88e07c00
 }
-pub fn is_CASAL_C32_ldstexcl(d: u32) -> bool {
+pub const fn is_CASAL_C32_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x88e0fc00
 }
-pub fn is_STXR_SR64_ldstexcl(d: u32) -> bool {
+pub const fn is_STXR_SR64_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0xc8000000
 }
-pub fn is_STLXR_SR64_ldstexcl(d: u32) -> bool {
+pub const fn is_STLXR_SR64_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0xc8008000
 }
-pub fn is_STXP_SP64_ldstexcl(d: u32) -> bool {
+pub const fn is_STXP_SP64_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0xc8200000
 }
-pub fn is_STLXP_SP64_ldstexcl(d: u32) -> bool {
+pub const fn is_STLXP_SP64_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0xc8208000
 }
-pub fn is_LDXR_LR64_ldstexcl(d: u32) -> bool {
+pub const fn is_LDXR_LR64_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0xc8400000
 }
-pub fn is_LDAXR_LR64_ldstexcl(d: u32) -> bool {
+pub const fn is_LDAXR_LR64_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0xc8408000
 }
-pub fn is_LDXP_LP64_ldstexcl(d: u32) -> bool {
+pub const fn is_LDXP_LP64_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0xc8600000
 }
-pub fn is_LDAXP_LP64_ldstexcl(d: u32) -> bool {
+pub const fn is_LDAXP_LP64_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0xc8608000
 }
-pub fn is_STLLR_SL64_ldstexcl(d: u32) -> bool {
+pub const fn is_STLLR_SL64_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0xc8800000
 }
-pub fn is_STLR_SL64_ldstexcl(d: u32) -> bool {
+pub const fn is_STLR_SL64_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0xc8808000
 }
-pub fn is_CAS_C64_ldstexcl(d: u32) -> bool {
+pub const fn is_CAS_C64_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xc8a07c00
 }
-pub fn is_CASL_C64_ldstexcl(d: u32) -> bool {
+pub const fn is_CASL_C64_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xc8a0fc00
 }
-pub fn is_LDLAR_LR64_ldstexcl(d: u32) -> bool {
+pub const fn is_LDLAR_LR64_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0xc8c00000
 }
-pub fn is_LDAR_LR64_ldstexcl(d: u32) -> bool {
+pub const fn is_LDAR_LR64_ldstexcl(d: u32) -> bool {
     (d & 0xffe08000) == 0xc8c08000
 }
-pub fn is_CASA_C64_ldstexcl(d: u32) -> bool {
+pub const fn is_CASA_C64_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xc8e07c00
 }
-pub fn is_CASAL_C64_ldstexcl(d: u32) -> bool {
+pub const fn is_CASAL_C64_ldstexcl(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xc8e0fc00
 }
-pub fn is_STNP_32_ldstnapair_offs(d: u32) -> bool {
+pub const fn is_STNP_32_ldstnapair_offs(d: u32) -> bool {
     (d & 0xffc00000) == 0x28000000
 }
-pub fn is_LDNP_32_ldstnapair_offs(d: u32) -> bool {
+pub const fn is_LDNP_32_ldstnapair_offs(d: u32) -> bool {
     (d & 0xffc00000) == 0x28400000
 }
-pub fn is_STNP_S_ldstnapair_offs(d: u32) -> bool {
+pub const fn is_STNP_S_ldstnapair_offs(d: u32) -> bool {
     (d & 0xffc00000) == 0x2c000000
 }
-pub fn is_LDNP_S_ldstnapair_offs(d: u32) -> bool {
+pub const fn is_LDNP_S_ldstnapair_offs(d: u32) -> bool {
     (d & 0xffc00000) == 0x2c400000
 }
-pub fn is_STNP_D_ldstnapair_offs(d: u32) -> bool {
+pub const fn is_STNP_D_ldstnapair_offs(d: u32) -> bool {
     (d & 0xffc00000) == 0x6c000000
 }
-pub fn is_LDNP_D_ldstnapair_offs(d: u32) -> bool {
+pub const fn is_LDNP_D_ldstnapair_offs(d: u32) -> bool {
     (d & 0xffc00000) == 0x6c400000
 }
-pub fn is_STNP_64_ldstnapair_offs(d: u32) -> bool {
+pub const fn is_STNP_64_ldstnapair_offs(d: u32) -> bool {
     (d & 0xffc00000) == 0xa8000000
 }
-pub fn is_LDNP_64_ldstnapair_offs(d: u32) -> bool {
+pub const fn is_LDNP_64_ldstnapair_offs(d: u32) -> bool {
     (d & 0xffc00000) == 0xa8400000
 }
-pub fn is_STNP_Q_ldstnapair_offs(d: u32) -> bool {
+pub const fn is_STNP_Q_ldstnapair_offs(d: u32) -> bool {
     (d & 0xffc00000) == 0xac000000
 }
-pub fn is_LDNP_Q_ldstnapair_offs(d: u32) -> bool {
+pub const fn is_LDNP_Q_ldstnapair_offs(d: u32) -> bool {
     (d & 0xffc00000) == 0xac400000
 }
-pub fn is_STRB_32_ldst_immpost(d: u32) -> bool {
+pub const fn is_STRB_32_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38000400
 }
-pub fn is_LDRB_32_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDRB_32_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38400400
 }
-pub fn is_LDRSB_64_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDRSB_64_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38800400
 }
-pub fn is_LDRSB_32_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDRSB_32_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38c00400
 }
-pub fn is_STR_B_ldst_immpost(d: u32) -> bool {
+pub const fn is_STR_B_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3c000400
 }
-pub fn is_LDR_B_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDR_B_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3c400400
 }
-pub fn is_STR_Q_ldst_immpost(d: u32) -> bool {
+pub const fn is_STR_Q_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3c800400
 }
-pub fn is_LDR_Q_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDR_Q_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3cc00400
 }
-pub fn is_STRH_32_ldst_immpost(d: u32) -> bool {
+pub const fn is_STRH_32_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78000400
 }
-pub fn is_LDRH_32_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDRH_32_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78400400
 }
-pub fn is_LDRSH_64_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDRSH_64_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78800400
 }
-pub fn is_LDRSH_32_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDRSH_32_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78c00400
 }
-pub fn is_STR_H_ldst_immpost(d: u32) -> bool {
+pub const fn is_STR_H_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x7c000400
 }
-pub fn is_LDR_H_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDR_H_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0x7c400400
 }
-pub fn is_STR_32_ldst_immpost(d: u32) -> bool {
+pub const fn is_STR_32_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8000400
 }
-pub fn is_LDR_32_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDR_32_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8400400
 }
-pub fn is_LDRSW_64_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDRSW_64_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8800400
 }
-pub fn is_STR_S_ldst_immpost(d: u32) -> bool {
+pub const fn is_STR_S_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0xbc000400
 }
-pub fn is_LDR_S_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDR_S_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0xbc400400
 }
-pub fn is_STR_64_ldst_immpost(d: u32) -> bool {
+pub const fn is_STR_64_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0xf8000400
 }
-pub fn is_LDR_64_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDR_64_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0xf8400400
 }
-pub fn is_STR_D_ldst_immpost(d: u32) -> bool {
+pub const fn is_STR_D_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0xfc000400
 }
-pub fn is_LDR_D_ldst_immpost(d: u32) -> bool {
+pub const fn is_LDR_D_ldst_immpost(d: u32) -> bool {
     (d & 0xffe00c00) == 0xfc400400
 }
-pub fn is_STRB_32_ldst_immpre(d: u32) -> bool {
+pub const fn is_STRB_32_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38000c00
 }
-pub fn is_LDRB_32_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDRB_32_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38400c00
 }
-pub fn is_LDRSB_64_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDRSB_64_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38800c00
 }
-pub fn is_LDRSB_32_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDRSB_32_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38c00c00
 }
-pub fn is_STR_B_ldst_immpre(d: u32) -> bool {
+pub const fn is_STR_B_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3c000c00
 }
-pub fn is_LDR_B_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDR_B_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3c400c00
 }
-pub fn is_STR_Q_ldst_immpre(d: u32) -> bool {
+pub const fn is_STR_Q_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3c800c00
 }
-pub fn is_LDR_Q_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDR_Q_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3cc00c00
 }
-pub fn is_STRH_32_ldst_immpre(d: u32) -> bool {
+pub const fn is_STRH_32_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78000c00
 }
-pub fn is_LDRH_32_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDRH_32_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78400c00
 }
-pub fn is_LDRSH_64_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDRSH_64_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78800c00
 }
-pub fn is_LDRSH_32_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDRSH_32_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78c00c00
 }
-pub fn is_STR_H_ldst_immpre(d: u32) -> bool {
+pub const fn is_STR_H_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x7c000c00
 }
-pub fn is_LDR_H_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDR_H_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0x7c400c00
 }
-pub fn is_STR_32_ldst_immpre(d: u32) -> bool {
+pub const fn is_STR_32_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8000c00
 }
-pub fn is_LDR_32_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDR_32_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8400c00
 }
-pub fn is_LDRSW_64_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDRSW_64_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8800c00
 }
-pub fn is_STR_S_ldst_immpre(d: u32) -> bool {
+pub const fn is_STR_S_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0xbc000c00
 }
-pub fn is_LDR_S_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDR_S_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0xbc400c00
 }
-pub fn is_STR_64_ldst_immpre(d: u32) -> bool {
+pub const fn is_STR_64_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0xf8000c00
 }
-pub fn is_LDR_64_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDR_64_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0xf8400c00
 }
-pub fn is_STR_D_ldst_immpre(d: u32) -> bool {
+pub const fn is_STR_D_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0xfc000c00
 }
-pub fn is_LDR_D_ldst_immpre(d: u32) -> bool {
+pub const fn is_LDR_D_ldst_immpre(d: u32) -> bool {
     (d & 0xffe00c00) == 0xfc400c00
 }
-pub fn is_LDRAA_64_ldst_pac(d: u32) -> bool {
+pub const fn is_LDRAA_64_ldst_pac(d: u32) -> bool {
     (d & 0xfba00c00) == 0xf8200400
 }
-pub fn is_LDRAA_64W_ldst_pac(d: u32) -> bool {
+pub const fn is_LDRAA_64W_ldst_pac(d: u32) -> bool {
     (d & 0xfba00c00) == 0xf8200c00
 }
-pub fn is_LDRAB_64_ldst_pac(d: u32) -> bool {
+pub const fn is_LDRAB_64_ldst_pac(d: u32) -> bool {
     (d & 0xfba00c00) == 0xf8a00400
 }
-pub fn is_LDRAB_64W_ldst_pac(d: u32) -> bool {
+pub const fn is_LDRAB_64W_ldst_pac(d: u32) -> bool {
     (d & 0xfba00c00) == 0xf8a00c00
 }
-pub fn is_STRB_32B_ldst_regoff(d: u32) -> bool {
+pub const fn is_STRB_32B_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38200800 && (d & 0x00e000) != 0x006000
 }
-pub fn is_STRB_32BL_ldst_regoff(d: u32) -> bool {
+pub const fn is_STRB_32BL_ldst_regoff(d: u32) -> bool {
     (d & 0xffe0ec00) == 0x38206800
 }
-pub fn is_LDRB_32B_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDRB_32B_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38600800 && (d & 0x00e000) != 0x006000
 }
-pub fn is_LDRB_32BL_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDRB_32BL_ldst_regoff(d: u32) -> bool {
     (d & 0xffe0ec00) == 0x38606800
 }
-pub fn is_LDRSB_64B_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDRSB_64B_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38a00800 && (d & 0x00e000) != 0x006000
 }
-pub fn is_LDRSB_64BL_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDRSB_64BL_ldst_regoff(d: u32) -> bool {
     (d & 0xffe0ec00) == 0x38a06800
 }
-pub fn is_LDRSB_32B_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDRSB_32B_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38e00800 && (d & 0x00e000) != 0x006000
 }
-pub fn is_LDRSB_32BL_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDRSB_32BL_ldst_regoff(d: u32) -> bool {
     (d & 0xffe0ec00) == 0x38e06800
 }
-pub fn is_STR_B_ldst_regoff(d: u32) -> bool {
+pub const fn is_STR_B_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3c200800 && (d & 0x00e000) != 0x006000
 }
-pub fn is_STR_BL_ldst_regoff(d: u32) -> bool {
+pub const fn is_STR_BL_ldst_regoff(d: u32) -> bool {
     (d & 0xffe0ec00) == 0x3c206800
 }
-pub fn is_LDR_B_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDR_B_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3c600800 && (d & 0x00e000) != 0x006000
 }
-pub fn is_LDR_BL_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDR_BL_ldst_regoff(d: u32) -> bool {
     (d & 0xffe0ec00) == 0x3c606800
 }
-pub fn is_STR_Q_ldst_regoff(d: u32) -> bool {
+pub const fn is_STR_Q_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3ca00800
 }
-pub fn is_LDR_Q_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDR_Q_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3ce00800
 }
-pub fn is_STRH_32_ldst_regoff(d: u32) -> bool {
+pub const fn is_STRH_32_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78200800
 }
-pub fn is_LDRH_32_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDRH_32_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78600800
 }
-pub fn is_LDRSH_64_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDRSH_64_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78a00800
 }
-pub fn is_LDRSH_32_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDRSH_32_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78e00800
 }
-pub fn is_STR_H_ldst_regoff(d: u32) -> bool {
+pub const fn is_STR_H_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x7c200800
 }
-pub fn is_LDR_H_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDR_H_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0x7c600800
 }
-pub fn is_STR_32_ldst_regoff(d: u32) -> bool {
+pub const fn is_STR_32_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8200800
 }
-pub fn is_LDR_32_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDR_32_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8600800
 }
-pub fn is_LDRSW_64_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDRSW_64_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8a00800
 }
-pub fn is_STR_S_ldst_regoff(d: u32) -> bool {
+pub const fn is_STR_S_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0xbc200800
 }
-pub fn is_LDR_S_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDR_S_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0xbc600800
 }
-pub fn is_STR_64_ldst_regoff(d: u32) -> bool {
+pub const fn is_STR_64_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0xf8200800
 }
-pub fn is_LDR_64_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDR_64_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0xf8600800
 }
-pub fn is_PRFM_P_ldst_regoff(d: u32) -> bool {
+pub const fn is_PRFM_P_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0xf8a00800
 }
-pub fn is_STR_D_ldst_regoff(d: u32) -> bool {
+pub const fn is_STR_D_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0xfc200800
 }
-pub fn is_LDR_D_ldst_regoff(d: u32) -> bool {
+pub const fn is_LDR_D_ldst_regoff(d: u32) -> bool {
     (d & 0xffe00c00) == 0xfc600800
 }
-pub fn is_STTRB_32_ldst_unpriv(d: u32) -> bool {
+pub const fn is_STTRB_32_ldst_unpriv(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38000800
 }
-pub fn is_LDTRB_32_ldst_unpriv(d: u32) -> bool {
+pub const fn is_LDTRB_32_ldst_unpriv(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38400800
 }
-pub fn is_LDTRSB_64_ldst_unpriv(d: u32) -> bool {
+pub const fn is_LDTRSB_64_ldst_unpriv(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38800800
 }
-pub fn is_LDTRSB_32_ldst_unpriv(d: u32) -> bool {
+pub const fn is_LDTRSB_32_ldst_unpriv(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38c00800
 }
-pub fn is_STTRH_32_ldst_unpriv(d: u32) -> bool {
+pub const fn is_STTRH_32_ldst_unpriv(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78000800
 }
-pub fn is_LDTRH_32_ldst_unpriv(d: u32) -> bool {
+pub const fn is_LDTRH_32_ldst_unpriv(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78400800
 }
-pub fn is_LDTRSH_64_ldst_unpriv(d: u32) -> bool {
+pub const fn is_LDTRSH_64_ldst_unpriv(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78800800
 }
-pub fn is_LDTRSH_32_ldst_unpriv(d: u32) -> bool {
+pub const fn is_LDTRSH_32_ldst_unpriv(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78c00800
 }
-pub fn is_STTR_32_ldst_unpriv(d: u32) -> bool {
+pub const fn is_STTR_32_ldst_unpriv(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8000800
 }
-pub fn is_LDTR_32_ldst_unpriv(d: u32) -> bool {
+pub const fn is_LDTR_32_ldst_unpriv(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8400800
 }
-pub fn is_LDTRSW_64_ldst_unpriv(d: u32) -> bool {
+pub const fn is_LDTRSW_64_ldst_unpriv(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8800800
 }
-pub fn is_STTR_64_ldst_unpriv(d: u32) -> bool {
+pub const fn is_STTR_64_ldst_unpriv(d: u32) -> bool {
     (d & 0xffe00c00) == 0xf8000800
 }
-pub fn is_LDTR_64_ldst_unpriv(d: u32) -> bool {
+pub const fn is_LDTR_64_ldst_unpriv(d: u32) -> bool {
     (d & 0xffe00c00) == 0xf8400800
 }
-pub fn is_STURB_32_ldst_unscaled(d: u32) -> bool {
+pub const fn is_STURB_32_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38000000
 }
-pub fn is_LDURB_32_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDURB_32_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38400000
 }
-pub fn is_LDURSB_64_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDURSB_64_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38800000
 }
-pub fn is_LDURSB_32_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDURSB_32_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x38c00000
 }
-pub fn is_STUR_B_ldst_unscaled(d: u32) -> bool {
+pub const fn is_STUR_B_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3c000000
 }
-pub fn is_LDUR_B_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDUR_B_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3c400000
 }
-pub fn is_STUR_Q_ldst_unscaled(d: u32) -> bool {
+pub const fn is_STUR_Q_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3c800000
 }
-pub fn is_LDUR_Q_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDUR_Q_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x3cc00000
 }
-pub fn is_STURH_32_ldst_unscaled(d: u32) -> bool {
+pub const fn is_STURH_32_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78000000
 }
-pub fn is_LDURH_32_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDURH_32_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78400000
 }
-pub fn is_LDURSH_64_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDURSH_64_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78800000
 }
-pub fn is_LDURSH_32_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDURSH_32_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x78c00000
 }
-pub fn is_STUR_H_ldst_unscaled(d: u32) -> bool {
+pub const fn is_STUR_H_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x7c000000
 }
-pub fn is_LDUR_H_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDUR_H_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0x7c400000
 }
-pub fn is_STUR_32_ldst_unscaled(d: u32) -> bool {
+pub const fn is_STUR_32_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8000000
 }
-pub fn is_LDUR_32_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDUR_32_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8400000
 }
-pub fn is_LDURSW_64_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDURSW_64_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0xb8800000
 }
-pub fn is_STUR_S_ldst_unscaled(d: u32) -> bool {
+pub const fn is_STUR_S_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0xbc000000
 }
-pub fn is_LDUR_S_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDUR_S_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0xbc400000
 }
-pub fn is_STUR_64_ldst_unscaled(d: u32) -> bool {
+pub const fn is_STUR_64_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0xf8000000
 }
-pub fn is_LDUR_64_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDUR_64_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0xf8400000
 }
-pub fn is_PRFUM_P_ldst_unscaled(d: u32) -> bool {
+pub const fn is_PRFUM_P_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0xf8800000
 }
-pub fn is_STUR_D_ldst_unscaled(d: u32) -> bool {
+pub const fn is_STUR_D_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0xfc000000
 }
-pub fn is_LDUR_D_ldst_unscaled(d: u32) -> bool {
+pub const fn is_LDUR_D_ldst_unscaled(d: u32) -> bool {
     (d & 0xffe00c00) == 0xfc400000
 }
-pub fn is_STRB_32_ldst_pos(d: u32) -> bool {
+pub const fn is_STRB_32_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x39000000
 }
-pub fn is_LDRB_32_ldst_pos(d: u32) -> bool {
+pub const fn is_LDRB_32_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x39400000
 }
-pub fn is_LDRSB_64_ldst_pos(d: u32) -> bool {
+pub const fn is_LDRSB_64_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x39800000
 }
-pub fn is_LDRSB_32_ldst_pos(d: u32) -> bool {
+pub const fn is_LDRSB_32_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x39c00000
 }
-pub fn is_STR_B_ldst_pos(d: u32) -> bool {
+pub const fn is_STR_B_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x3d000000
 }
-pub fn is_LDR_B_ldst_pos(d: u32) -> bool {
+pub const fn is_LDR_B_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x3d400000
 }
-pub fn is_STR_Q_ldst_pos(d: u32) -> bool {
+pub const fn is_STR_Q_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x3d800000
 }
-pub fn is_LDR_Q_ldst_pos(d: u32) -> bool {
+pub const fn is_LDR_Q_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x3dc00000
 }
-pub fn is_STRH_32_ldst_pos(d: u32) -> bool {
+pub const fn is_STRH_32_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x79000000
 }
-pub fn is_LDRH_32_ldst_pos(d: u32) -> bool {
+pub const fn is_LDRH_32_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x79400000
 }
-pub fn is_LDRSH_64_ldst_pos(d: u32) -> bool {
+pub const fn is_LDRSH_64_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x79800000
 }
-pub fn is_LDRSH_32_ldst_pos(d: u32) -> bool {
+pub const fn is_LDRSH_32_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x79c00000
 }
-pub fn is_STR_H_ldst_pos(d: u32) -> bool {
+pub const fn is_STR_H_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x7d000000
 }
-pub fn is_LDR_H_ldst_pos(d: u32) -> bool {
+pub const fn is_LDR_H_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0x7d400000
 }
-pub fn is_STR_32_ldst_pos(d: u32) -> bool {
+pub const fn is_STR_32_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0xb9000000
 }
-pub fn is_LDR_32_ldst_pos(d: u32) -> bool {
+pub const fn is_LDR_32_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0xb9400000
 }
-pub fn is_LDRSW_64_ldst_pos(d: u32) -> bool {
+pub const fn is_LDRSW_64_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0xb9800000
 }
-pub fn is_STR_S_ldst_pos(d: u32) -> bool {
+pub const fn is_STR_S_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0xbd000000
 }
-pub fn is_LDR_S_ldst_pos(d: u32) -> bool {
+pub const fn is_LDR_S_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0xbd400000
 }
-pub fn is_STR_64_ldst_pos(d: u32) -> bool {
+pub const fn is_STR_64_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0xf9000000
 }
-pub fn is_LDR_64_ldst_pos(d: u32) -> bool {
+pub const fn is_LDR_64_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0xf9400000
 }
-pub fn is_PRFM_P_ldst_pos(d: u32) -> bool {
+pub const fn is_PRFM_P_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0xf9800000
 }
-pub fn is_STR_D_ldst_pos(d: u32) -> bool {
+pub const fn is_STR_D_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0xfd000000
 }
-pub fn is_LDR_D_ldst_pos(d: u32) -> bool {
+pub const fn is_LDR_D_ldst_pos(d: u32) -> bool {
     (d & 0xffc00000) == 0xfd400000
 }
-pub fn is_STP_32_ldstpair_off(d: u32) -> bool {
+pub const fn is_STP_32_ldstpair_off(d: u32) -> bool {
     (d & 0xffc00000) == 0x29000000
 }
-pub fn is_LDP_32_ldstpair_off(d: u32) -> bool {
+pub const fn is_LDP_32_ldstpair_off(d: u32) -> bool {
     (d & 0xffc00000) == 0x29400000
 }
-pub fn is_STP_S_ldstpair_off(d: u32) -> bool {
+pub const fn is_STP_S_ldstpair_off(d: u32) -> bool {
     (d & 0xffc00000) == 0x2d000000
 }
-pub fn is_LDP_S_ldstpair_off(d: u32) -> bool {
+pub const fn is_LDP_S_ldstpair_off(d: u32) -> bool {
     (d & 0xffc00000) == 0x2d400000
 }
-pub fn is_LDPSW_64_ldstpair_off(d: u32) -> bool {
+pub const fn is_LDPSW_64_ldstpair_off(d: u32) -> bool {
     (d & 0xffc00000) == 0x69400000
 }
-pub fn is_STP_D_ldstpair_off(d: u32) -> bool {
+pub const fn is_STP_D_ldstpair_off(d: u32) -> bool {
     (d & 0xffc00000) == 0x6d000000
 }
-pub fn is_LDP_D_ldstpair_off(d: u32) -> bool {
+pub const fn is_LDP_D_ldstpair_off(d: u32) -> bool {
     (d & 0xffc00000) == 0x6d400000
 }
-pub fn is_STP_64_ldstpair_off(d: u32) -> bool {
+pub const fn is_STP_64_ldstpair_off(d: u32) -> bool {
     (d & 0xffc00000) == 0xa9000000
 }
-pub fn is_LDP_64_ldstpair_off(d: u32) -> bool {
+pub const fn is_LDP_64_ldstpair_off(d: u32) -> bool {
     (d & 0xffc00000) == 0xa9400000
 }
-pub fn is_STP_Q_ldstpair_off(d: u32) -> bool {
+pub const fn is_STP_Q_ldstpair_off(d: u32) -> bool {
     (d & 0xffc00000) == 0xad000000
 }
-pub fn is_LDP_Q_ldstpair_off(d: u32) -> bool {
+pub const fn is_LDP_Q_ldstpair_off(d: u32) -> bool {
     (d & 0xffc00000) == 0xad400000
 }
-pub fn is_STP_32_ldstpair_post(d: u32) -> bool {
+pub const fn is_STP_32_ldstpair_post(d: u32) -> bool {
     (d & 0xffc00000) == 0x28800000
 }
-pub fn is_LDP_32_ldstpair_post(d: u32) -> bool {
+pub const fn is_LDP_32_ldstpair_post(d: u32) -> bool {
     (d & 0xffc00000) == 0x28c00000
 }
-pub fn is_STP_S_ldstpair_post(d: u32) -> bool {
+pub const fn is_STP_S_ldstpair_post(d: u32) -> bool {
     (d & 0xffc00000) == 0x2c800000
 }
-pub fn is_LDP_S_ldstpair_post(d: u32) -> bool {
+pub const fn is_LDP_S_ldstpair_post(d: u32) -> bool {
     (d & 0xffc00000) == 0x2cc00000
 }
-pub fn is_LDPSW_64_ldstpair_post(d: u32) -> bool {
+pub const fn is_LDPSW_64_ldstpair_post(d: u32) -> bool {
     (d & 0xffc00000) == 0x68c00000
 }
-pub fn is_STP_D_ldstpair_post(d: u32) -> bool {
+pub const fn is_STP_D_ldstpair_post(d: u32) -> bool {
     (d & 0xffc00000) == 0x6c800000
 }
-pub fn is_LDP_D_ldstpair_post(d: u32) -> bool {
+pub const fn is_LDP_D_ldstpair_post(d: u32) -> bool {
     (d & 0xffc00000) == 0x6cc00000
 }
-pub fn is_STP_64_ldstpair_post(d: u32) -> bool {
+pub const fn is_STP_64_ldstpair_post(d: u32) -> bool {
     (d & 0xffc00000) == 0xa8800000
 }
-pub fn is_LDP_64_ldstpair_post(d: u32) -> bool {
+pub const fn is_LDP_64_ldstpair_post(d: u32) -> bool {
     (d & 0xffc00000) == 0xa8c00000
 }
-pub fn is_STP_Q_ldstpair_post(d: u32) -> bool {
+pub const fn is_STP_Q_ldstpair_post(d: u32) -> bool {
     (d & 0xffc00000) == 0xac800000
 }
-pub fn is_LDP_Q_ldstpair_post(d: u32) -> bool {
+pub const fn is_LDP_Q_ldstpair_post(d: u32) -> bool {
     (d & 0xffc00000) == 0xacc00000
 }
-pub fn is_STP_32_ldstpair_pre(d: u32) -> bool {
+pub const fn is_STP_32_ldstpair_pre(d: u32) -> bool {
     (d & 0xffc00000) == 0x29800000
 }
-pub fn is_LDP_32_ldstpair_pre(d: u32) -> bool {
+pub const fn is_LDP_32_ldstpair_pre(d: u32) -> bool {
     (d & 0xffc00000) == 0x29c00000
 }
-pub fn is_STP_S_ldstpair_pre(d: u32) -> bool {
+pub const fn is_STP_S_ldstpair_pre(d: u32) -> bool {
     (d & 0xffc00000) == 0x2d800000
 }
-pub fn is_LDP_S_ldstpair_pre(d: u32) -> bool {
+pub const fn is_LDP_S_ldstpair_pre(d: u32) -> bool {
     (d & 0xffc00000) == 0x2dc00000
 }
-pub fn is_LDPSW_64_ldstpair_pre(d: u32) -> bool {
+pub const fn is_LDPSW_64_ldstpair_pre(d: u32) -> bool {
     (d & 0xffc00000) == 0x69c00000
 }
-pub fn is_STP_D_ldstpair_pre(d: u32) -> bool {
+pub const fn is_STP_D_ldstpair_pre(d: u32) -> bool {
     (d & 0xffc00000) == 0x6d800000
 }
-pub fn is_LDP_D_ldstpair_pre(d: u32) -> bool {
+pub const fn is_LDP_D_ldstpair_pre(d: u32) -> bool {
     (d & 0xffc00000) == 0x6dc00000
 }
-pub fn is_STP_64_ldstpair_pre(d: u32) -> bool {
+pub const fn is_STP_64_ldstpair_pre(d: u32) -> bool {
     (d & 0xffc00000) == 0xa9800000
 }
-pub fn is_LDP_64_ldstpair_pre(d: u32) -> bool {
+pub const fn is_LDP_64_ldstpair_pre(d: u32) -> bool {
     (d & 0xffc00000) == 0xa9c00000
 }
-pub fn is_STP_Q_ldstpair_pre(d: u32) -> bool {
+pub const fn is_STP_Q_ldstpair_pre(d: u32) -> bool {
     (d & 0xffc00000) == 0xad800000
 }
-pub fn is_LDP_Q_ldstpair_pre(d: u32) -> bool {
+pub const fn is_LDP_Q_ldstpair_pre(d: u32) -> bool {
     (d & 0xffc00000) == 0xadc00000
 }
-pub fn is_ADD_32_addsub_imm(d: u32) -> bool {
+pub const fn is_ADD_32_addsub_imm(d: u32) -> bool {
     (d & 0xff000000) == 0x11000000
 }
-pub fn is_ADDS_32S_addsub_imm(d: u32) -> bool {
+pub const fn is_ADDS_32S_addsub_imm(d: u32) -> bool {
     (d & 0xff000000) == 0x31000000
 }
-pub fn is_SUB_32_addsub_imm(d: u32) -> bool {
+pub const fn is_SUB_32_addsub_imm(d: u32) -> bool {
     (d & 0xff000000) == 0x51000000
 }
-pub fn is_SUBS_32S_addsub_imm(d: u32) -> bool {
+pub const fn is_SUBS_32S_addsub_imm(d: u32) -> bool {
     (d & 0xff000000) == 0x71000000
 }
-pub fn is_ADD_64_addsub_imm(d: u32) -> bool {
+pub const fn is_ADD_64_addsub_imm(d: u32) -> bool {
     (d & 0xff000000) == 0x91000000
 }
-pub fn is_ADDS_64S_addsub_imm(d: u32) -> bool {
+pub const fn is_ADDS_64S_addsub_imm(d: u32) -> bool {
     (d & 0xff000000) == 0xb1000000
 }
-pub fn is_SUB_64_addsub_imm(d: u32) -> bool {
+pub const fn is_SUB_64_addsub_imm(d: u32) -> bool {
     (d & 0xff000000) == 0xd1000000
 }
-pub fn is_SUBS_64S_addsub_imm(d: u32) -> bool {
+pub const fn is_SUBS_64S_addsub_imm(d: u32) -> bool {
     (d & 0xff000000) == 0xf1000000
 }
-pub fn is_SBFM_32M_bitfield(d: u32) -> bool {
+pub const fn is_SBFM_32M_bitfield(d: u32) -> bool {
     (d & 0xffc00000) == 0x13000000
 }
-pub fn is_BFM_32M_bitfield(d: u32) -> bool {
+pub const fn is_BFM_32M_bitfield(d: u32) -> bool {
     (d & 0xffc00000) == 0x33000000
 }
-pub fn is_UBFM_32M_bitfield(d: u32) -> bool {
+pub const fn is_UBFM_32M_bitfield(d: u32) -> bool {
     (d & 0xffc00000) == 0x53000000
 }
-pub fn is_SBFM_64M_bitfield(d: u32) -> bool {
+pub const fn is_SBFM_64M_bitfield(d: u32) -> bool {
     (d & 0xffc00000) == 0x93400000
 }
-pub fn is_BFM_64M_bitfield(d: u32) -> bool {
+pub const fn is_BFM_64M_bitfield(d: u32) -> bool {
     (d & 0xffc00000) == 0xb3400000
 }
-pub fn is_UBFM_64M_bitfield(d: u32) -> bool {
+pub const fn is_UBFM_64M_bitfield(d: u32) -> bool {
     (d & 0xffc00000) == 0xd3400000
 }
-pub fn is_EXTR_32_extract(d: u32) -> bool {
+pub const fn is_EXTR_32_extract(d: u32) -> bool {
     (d & 0xffe08000) == 0x13800000
 }
-pub fn is_EXTR_64_extract(d: u32) -> bool {
+pub const fn is_EXTR_64_extract(d: u32) -> bool {
     (d & 0xffe00000) == 0x93c00000
 }
-pub fn is_AND_32_log_imm(d: u32) -> bool {
+pub const fn is_AND_32_log_imm(d: u32) -> bool {
     (d & 0xffc00000) == 0x12000000
 }
-pub fn is_ORR_32_log_imm(d: u32) -> bool {
+pub const fn is_ORR_32_log_imm(d: u32) -> bool {
     (d & 0xffc00000) == 0x32000000
 }
-pub fn is_EOR_32_log_imm(d: u32) -> bool {
+pub const fn is_EOR_32_log_imm(d: u32) -> bool {
     (d & 0xffc00000) == 0x52000000
 }
-pub fn is_ANDS_32S_log_imm(d: u32) -> bool {
+pub const fn is_ANDS_32S_log_imm(d: u32) -> bool {
     (d & 0xffc00000) == 0x72000000
 }
-pub fn is_AND_64_log_imm(d: u32) -> bool {
+pub const fn is_AND_64_log_imm(d: u32) -> bool {
     (d & 0xff800000) == 0x92000000
 }
-pub fn is_ORR_64_log_imm(d: u32) -> bool {
+pub const fn is_ORR_64_log_imm(d: u32) -> bool {
     (d & 0xff800000) == 0xb2000000
 }
-pub fn is_EOR_64_log_imm(d: u32) -> bool {
+pub const fn is_EOR_64_log_imm(d: u32) -> bool {
     (d & 0xff800000) == 0xd2000000
 }
-pub fn is_ANDS_64S_log_imm(d: u32) -> bool {
+pub const fn is_ANDS_64S_log_imm(d: u32) -> bool {
     (d & 0xff800000) == 0xf2000000
 }
-pub fn is_MOVN_32_movewide(d: u32) -> bool {
+pub const fn is_MOVN_32_movewide(d: u32) -> bool {
     (d & 0xff800000) == 0x12800000
 }
-pub fn is_MOVZ_32_movewide(d: u32) -> bool {
+pub const fn is_MOVZ_32_movewide(d: u32) -> bool {
     (d & 0xff800000) == 0x52800000
 }
-pub fn is_MOVK_32_movewide(d: u32) -> bool {
+pub const fn is_MOVK_32_movewide(d: u32) -> bool {
     (d & 0xff800000) == 0x72800000
 }
-pub fn is_MOVN_64_movewide(d: u32) -> bool {
+pub const fn is_MOVN_64_movewide(d: u32) -> bool {
     (d & 0xff800000) == 0x92800000
 }
-pub fn is_MOVZ_64_movewide(d: u32) -> bool {
+pub const fn is_MOVZ_64_movewide(d: u32) -> bool {
     (d & 0xff800000) == 0xd2800000
 }
-pub fn is_MOVK_64_movewide(d: u32) -> bool {
+pub const fn is_MOVK_64_movewide(d: u32) -> bool {
     (d & 0xff800000) == 0xf2800000
 }
-pub fn is_ADR_only_pcreladdr(d: u32) -> bool {
+pub const fn is_ADR_only_pcreladdr(d: u32) -> bool {
     (d & 0x9f000000) == 0x10000000
 }
-pub fn is_ADRP_only_pcreladdr(d: u32) -> bool {
+pub const fn is_ADRP_only_pcreladdr(d: u32) -> bool {
     (d & 0x9f000000) == 0x90000000
 }
-pub fn is_ADD_32_addsub_ext(d: u32) -> bool {
+pub const fn is_ADD_32_addsub_ext(d: u32) -> bool {
     (d & 0xffe00000) == 0x0b200000
 }
-pub fn is_ADDS_32S_addsub_ext(d: u32) -> bool {
+pub const fn is_ADDS_32S_addsub_ext(d: u32) -> bool {
     (d & 0xffe00000) == 0x2b200000
 }
-pub fn is_SUB_32_addsub_ext(d: u32) -> bool {
+pub const fn is_SUB_32_addsub_ext(d: u32) -> bool {
     (d & 0xffe00000) == 0x4b200000
 }
-pub fn is_SUBS_32S_addsub_ext(d: u32) -> bool {
+pub const fn is_SUBS_32S_addsub_ext(d: u32) -> bool {
     (d & 0xffe00000) == 0x6b200000
 }
-pub fn is_ADD_64_addsub_ext(d: u32) -> bool {
+pub const fn is_ADD_64_addsub_ext(d: u32) -> bool {
     (d & 0xffe00000) == 0x8b200000
 }
-pub fn is_ADDS_64S_addsub_ext(d: u32) -> bool {
+pub const fn is_ADDS_64S_addsub_ext(d: u32) -> bool {
     (d & 0xffe00000) == 0xab200000
 }
-pub fn is_SUB_64_addsub_ext(d: u32) -> bool {
+pub const fn is_SUB_64_addsub_ext(d: u32) -> bool {
     (d & 0xffe00000) == 0xcb200000
 }
-pub fn is_SUBS_64S_addsub_ext(d: u32) -> bool {
+pub const fn is_SUBS_64S_addsub_ext(d: u32) -> bool {
     (d & 0xffe00000) == 0xeb200000
 }
-pub fn is_ADD_32_addsub_shift(d: u32) -> bool {
+pub const fn is_ADD_32_addsub_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x0b000000
 }
-pub fn is_ADDS_32_addsub_shift(d: u32) -> bool {
+pub const fn is_ADDS_32_addsub_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x2b000000
 }
-pub fn is_SUB_32_addsub_shift(d: u32) -> bool {
+pub const fn is_SUB_32_addsub_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x4b000000
 }
-pub fn is_SUBS_32_addsub_shift(d: u32) -> bool {
+pub const fn is_SUBS_32_addsub_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x6b000000
 }
-pub fn is_ADD_64_addsub_shift(d: u32) -> bool {
+pub const fn is_ADD_64_addsub_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x8b000000
 }
-pub fn is_ADDS_64_addsub_shift(d: u32) -> bool {
+pub const fn is_ADDS_64_addsub_shift(d: u32) -> bool {
     (d & 0xff200000) == 0xab000000
 }
-pub fn is_SUB_64_addsub_shift(d: u32) -> bool {
+pub const fn is_SUB_64_addsub_shift(d: u32) -> bool {
     (d & 0xff200000) == 0xcb000000
 }
-pub fn is_SUBS_64_addsub_shift(d: u32) -> bool {
+pub const fn is_SUBS_64_addsub_shift(d: u32) -> bool {
     (d & 0xff200000) == 0xeb000000
 }
-pub fn is_ADC_32_addsub_carry(d: u32) -> bool {
+pub const fn is_ADC_32_addsub_carry(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1a000000
 }
-pub fn is_ADCS_32_addsub_carry(d: u32) -> bool {
+pub const fn is_ADCS_32_addsub_carry(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x3a000000
 }
-pub fn is_SBC_32_addsub_carry(d: u32) -> bool {
+pub const fn is_SBC_32_addsub_carry(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x5a000000
 }
-pub fn is_SBCS_32_addsub_carry(d: u32) -> bool {
+pub const fn is_SBCS_32_addsub_carry(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x7a000000
 }
-pub fn is_ADC_64_addsub_carry(d: u32) -> bool {
+pub const fn is_ADC_64_addsub_carry(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x9a000000
 }
-pub fn is_ADCS_64_addsub_carry(d: u32) -> bool {
+pub const fn is_ADCS_64_addsub_carry(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xba000000
 }
-pub fn is_SBC_64_addsub_carry(d: u32) -> bool {
+pub const fn is_SBC_64_addsub_carry(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xda000000
 }
-pub fn is_SBCS_64_addsub_carry(d: u32) -> bool {
+pub const fn is_SBCS_64_addsub_carry(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xfa000000
 }
-pub fn is_CCMN_32_condcmp_imm(d: u32) -> bool {
+pub const fn is_CCMN_32_condcmp_imm(d: u32) -> bool {
     (d & 0xffe00c10) == 0x3a400800
 }
-pub fn is_CCMP_32_condcmp_imm(d: u32) -> bool {
+pub const fn is_CCMP_32_condcmp_imm(d: u32) -> bool {
     (d & 0xffe00c10) == 0x7a400800
 }
-pub fn is_CCMN_64_condcmp_imm(d: u32) -> bool {
+pub const fn is_CCMN_64_condcmp_imm(d: u32) -> bool {
     (d & 0xffe00c10) == 0xba400800
 }
-pub fn is_CCMP_64_condcmp_imm(d: u32) -> bool {
+pub const fn is_CCMP_64_condcmp_imm(d: u32) -> bool {
     (d & 0xffe00c10) == 0xfa400800
 }
-pub fn is_CCMN_32_condcmp_reg(d: u32) -> bool {
+pub const fn is_CCMN_32_condcmp_reg(d: u32) -> bool {
     (d & 0xffe00c10) == 0x3a400000
 }
-pub fn is_CCMP_32_condcmp_reg(d: u32) -> bool {
+pub const fn is_CCMP_32_condcmp_reg(d: u32) -> bool {
     (d & 0xffe00c10) == 0x7a400000
 }
-pub fn is_CCMN_64_condcmp_reg(d: u32) -> bool {
+pub const fn is_CCMN_64_condcmp_reg(d: u32) -> bool {
     (d & 0xffe00c10) == 0xba400000
 }
-pub fn is_CCMP_64_condcmp_reg(d: u32) -> bool {
+pub const fn is_CCMP_64_condcmp_reg(d: u32) -> bool {
     (d & 0xffe00c10) == 0xfa400000
 }
-pub fn is_CSEL_32_condsel(d: u32) -> bool {
+pub const fn is_CSEL_32_condsel(d: u32) -> bool {
     (d & 0xffe00c00) == 0x1a800000
 }
-pub fn is_CSINC_32_condsel(d: u32) -> bool {
+pub const fn is_CSINC_32_condsel(d: u32) -> bool {
     (d & 0xffe00c00) == 0x1a800400
 }
-pub fn is_CSINV_32_condsel(d: u32) -> bool {
+pub const fn is_CSINV_32_condsel(d: u32) -> bool {
     (d & 0xffe00c00) == 0x5a800000
 }
-pub fn is_CSNEG_32_condsel(d: u32) -> bool {
+pub const fn is_CSNEG_32_condsel(d: u32) -> bool {
     (d & 0xffe00c00) == 0x5a800400
 }
-pub fn is_CSEL_64_condsel(d: u32) -> bool {
+pub const fn is_CSEL_64_condsel(d: u32) -> bool {
     (d & 0xffe00c00) == 0x9a800000
 }
-pub fn is_CSINC_64_condsel(d: u32) -> bool {
+pub const fn is_CSINC_64_condsel(d: u32) -> bool {
     (d & 0xffe00c00) == 0x9a800400
 }
-pub fn is_CSINV_64_condsel(d: u32) -> bool {
+pub const fn is_CSINV_64_condsel(d: u32) -> bool {
     (d & 0xffe00c00) == 0xda800000
 }
-pub fn is_CSNEG_64_condsel(d: u32) -> bool {
+pub const fn is_CSNEG_64_condsel(d: u32) -> bool {
     (d & 0xffe00c00) == 0xda800400
 }
-pub fn is_RBIT_32_dp_1src(d: u32) -> bool {
+pub const fn is_RBIT_32_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5ac00000
 }
-pub fn is_REV16_32_dp_1src(d: u32) -> bool {
+pub const fn is_REV16_32_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5ac00400
 }
-pub fn is_REV_32_dp_1src(d: u32) -> bool {
+pub const fn is_REV_32_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5ac00800
 }
-pub fn is_CLZ_32_dp_1src(d: u32) -> bool {
+pub const fn is_CLZ_32_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5ac01000
 }
-pub fn is_CLS_32_dp_1src(d: u32) -> bool {
+pub const fn is_CLS_32_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5ac01400
 }
-pub fn is_RBIT_64_dp_1src(d: u32) -> bool {
+pub const fn is_RBIT_64_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac00000
 }
-pub fn is_REV16_64_dp_1src(d: u32) -> bool {
+pub const fn is_REV16_64_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac00400
 }
-pub fn is_REV32_64_dp_1src(d: u32) -> bool {
+pub const fn is_REV32_64_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac00800
 }
-pub fn is_REV_64_dp_1src(d: u32) -> bool {
+pub const fn is_REV_64_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac00c00
 }
-pub fn is_CLZ_64_dp_1src(d: u32) -> bool {
+pub const fn is_CLZ_64_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac01000
 }
-pub fn is_CLS_64_dp_1src(d: u32) -> bool {
+pub const fn is_CLS_64_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac01400
 }
-pub fn is_PACIA_64P_dp_1src(d: u32) -> bool {
+pub const fn is_PACIA_64P_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac10000
 }
-pub fn is_PACIB_64P_dp_1src(d: u32) -> bool {
+pub const fn is_PACIB_64P_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac10400
 }
-pub fn is_PACDA_64P_dp_1src(d: u32) -> bool {
+pub const fn is_PACDA_64P_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac10800
 }
-pub fn is_PACDB_64P_dp_1src(d: u32) -> bool {
+pub const fn is_PACDB_64P_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac10c00
 }
-pub fn is_AUTIA_64P_dp_1src(d: u32) -> bool {
+pub const fn is_AUTIA_64P_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac11000
 }
-pub fn is_AUTIB_64P_dp_1src(d: u32) -> bool {
+pub const fn is_AUTIB_64P_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac11400
 }
-pub fn is_AUTDA_64P_dp_1src(d: u32) -> bool {
+pub const fn is_AUTDA_64P_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac11800
 }
-pub fn is_AUTDB_64P_dp_1src(d: u32) -> bool {
+pub const fn is_AUTDB_64P_dp_1src(d: u32) -> bool {
     (d & 0xfffffc00) == 0xdac11c00
 }
-pub fn is_PACIZA_64Z_dp_1src(d: u32) -> bool {
+pub const fn is_PACIZA_64Z_dp_1src(d: u32) -> bool {
     (d & 0xffffffe0) == 0xdac123e0
 }
-pub fn is_PACIZB_64Z_dp_1src(d: u32) -> bool {
+pub const fn is_PACIZB_64Z_dp_1src(d: u32) -> bool {
     (d & 0xffffffe0) == 0xdac127e0
 }
-pub fn is_PACDZA_64Z_dp_1src(d: u32) -> bool {
+pub const fn is_PACDZA_64Z_dp_1src(d: u32) -> bool {
     (d & 0xffffffe0) == 0xdac12be0
 }
-pub fn is_PACDZB_64Z_dp_1src(d: u32) -> bool {
+pub const fn is_PACDZB_64Z_dp_1src(d: u32) -> bool {
     (d & 0xffffffe0) == 0xdac12fe0
 }
-pub fn is_AUTIZA_64Z_dp_1src(d: u32) -> bool {
+pub const fn is_AUTIZA_64Z_dp_1src(d: u32) -> bool {
     (d & 0xffffffe0) == 0xdac133e0
 }
-pub fn is_AUTIZB_64Z_dp_1src(d: u32) -> bool {
+pub const fn is_AUTIZB_64Z_dp_1src(d: u32) -> bool {
     (d & 0xffffffe0) == 0xdac137e0
 }
-pub fn is_AUTDZA_64Z_dp_1src(d: u32) -> bool {
+pub const fn is_AUTDZA_64Z_dp_1src(d: u32) -> bool {
     (d & 0xffffffe0) == 0xdac13be0
 }
-pub fn is_AUTDZB_64Z_dp_1src(d: u32) -> bool {
+pub const fn is_AUTDZB_64Z_dp_1src(d: u32) -> bool {
     (d & 0xffffffe0) == 0xdac13fe0
 }
-pub fn is_XPACI_64Z_dp_1src(d: u32) -> bool {
+pub const fn is_XPACI_64Z_dp_1src(d: u32) -> bool {
     (d & 0xffffffe0) == 0xdac143e0
 }
-pub fn is_XPACD_64Z_dp_1src(d: u32) -> bool {
+pub const fn is_XPACD_64Z_dp_1src(d: u32) -> bool {
     (d & 0xffffffe0) == 0xdac147e0
 }
-pub fn is_UDIV_32_dp_2src(d: u32) -> bool {
+pub const fn is_UDIV_32_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ac00800
 }
-pub fn is_SDIV_32_dp_2src(d: u32) -> bool {
+pub const fn is_SDIV_32_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ac00c00
 }
-pub fn is_LSLV_32_dp_2src(d: u32) -> bool {
+pub const fn is_LSLV_32_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ac02000
 }
-pub fn is_LSRV_32_dp_2src(d: u32) -> bool {
+pub const fn is_LSRV_32_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ac02400
 }
-pub fn is_ASRV_32_dp_2src(d: u32) -> bool {
+pub const fn is_ASRV_32_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ac02800
 }
-pub fn is_RORV_32_dp_2src(d: u32) -> bool {
+pub const fn is_RORV_32_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ac02c00
 }
-pub fn is_CRC32B_32C_dp_2src(d: u32) -> bool {
+pub const fn is_CRC32B_32C_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ac04000
 }
-pub fn is_CRC32H_32C_dp_2src(d: u32) -> bool {
+pub const fn is_CRC32H_32C_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ac04400
 }
-pub fn is_CRC32W_32C_dp_2src(d: u32) -> bool {
+pub const fn is_CRC32W_32C_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ac04800
 }
-pub fn is_CRC32CB_32C_dp_2src(d: u32) -> bool {
+pub const fn is_CRC32CB_32C_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ac05000
 }
-pub fn is_CRC32CH_32C_dp_2src(d: u32) -> bool {
+pub const fn is_CRC32CH_32C_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ac05400
 }
-pub fn is_CRC32CW_32C_dp_2src(d: u32) -> bool {
+pub const fn is_CRC32CW_32C_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ac05800
 }
-pub fn is_UDIV_64_dp_2src(d: u32) -> bool {
+pub const fn is_UDIV_64_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x9ac00800
 }
-pub fn is_SDIV_64_dp_2src(d: u32) -> bool {
+pub const fn is_SDIV_64_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x9ac00c00
 }
-pub fn is_LSLV_64_dp_2src(d: u32) -> bool {
+pub const fn is_LSLV_64_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x9ac02000
 }
-pub fn is_LSRV_64_dp_2src(d: u32) -> bool {
+pub const fn is_LSRV_64_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x9ac02400
 }
-pub fn is_ASRV_64_dp_2src(d: u32) -> bool {
+pub const fn is_ASRV_64_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x9ac02800
 }
-pub fn is_RORV_64_dp_2src(d: u32) -> bool {
+pub const fn is_RORV_64_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x9ac02c00
 }
-pub fn is_PACGA_64P_dp_2src(d: u32) -> bool {
+pub const fn is_PACGA_64P_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x9ac03000
 }
-pub fn is_CRC32X_64C_dp_2src(d: u32) -> bool {
+pub const fn is_CRC32X_64C_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x9ac04c00
 }
-pub fn is_CRC32CX_64C_dp_2src(d: u32) -> bool {
+pub const fn is_CRC32CX_64C_dp_2src(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x9ac05c00
 }
-pub fn is_MADD_32A_dp_3src(d: u32) -> bool {
+pub const fn is_MADD_32A_dp_3src(d: u32) -> bool {
     (d & 0xffe08000) == 0x1b000000
 }
-pub fn is_MSUB_32A_dp_3src(d: u32) -> bool {
+pub const fn is_MSUB_32A_dp_3src(d: u32) -> bool {
     (d & 0xffe08000) == 0x1b008000
 }
-pub fn is_MADD_64A_dp_3src(d: u32) -> bool {
+pub const fn is_MADD_64A_dp_3src(d: u32) -> bool {
     (d & 0xffe08000) == 0x9b000000
 }
-pub fn is_MSUB_64A_dp_3src(d: u32) -> bool {
+pub const fn is_MSUB_64A_dp_3src(d: u32) -> bool {
     (d & 0xffe08000) == 0x9b008000
 }
-pub fn is_SMADDL_64WA_dp_3src(d: u32) -> bool {
+pub const fn is_SMADDL_64WA_dp_3src(d: u32) -> bool {
     (d & 0xffe08000) == 0x9b200000
 }
-pub fn is_SMSUBL_64WA_dp_3src(d: u32) -> bool {
+pub const fn is_SMSUBL_64WA_dp_3src(d: u32) -> bool {
     (d & 0xffe08000) == 0x9b208000
 }
-pub fn is_SMULH_64_dp_3src(d: u32) -> bool {
+pub const fn is_SMULH_64_dp_3src(d: u32) -> bool {
     (d & 0xffe08000) == 0x9b400000
 }
-pub fn is_UMADDL_64WA_dp_3src(d: u32) -> bool {
+pub const fn is_UMADDL_64WA_dp_3src(d: u32) -> bool {
     (d & 0xffe08000) == 0x9ba00000
 }
-pub fn is_UMSUBL_64WA_dp_3src(d: u32) -> bool {
+pub const fn is_UMSUBL_64WA_dp_3src(d: u32) -> bool {
     (d & 0xffe08000) == 0x9ba08000
 }
-pub fn is_UMULH_64_dp_3src(d: u32) -> bool {
+pub const fn is_UMULH_64_dp_3src(d: u32) -> bool {
     (d & 0xffe08000) == 0x9bc00000
 }
-pub fn is_AND_32_log_shift(d: u32) -> bool {
+pub const fn is_AND_32_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x0a000000
 }
-pub fn is_BIC_32_log_shift(d: u32) -> bool {
+pub const fn is_BIC_32_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x0a200000
 }
-pub fn is_ORR_32_log_shift(d: u32) -> bool {
+pub const fn is_ORR_32_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x2a000000
 }
-pub fn is_ORN_32_log_shift(d: u32) -> bool {
+pub const fn is_ORN_32_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x2a200000
 }
-pub fn is_EOR_32_log_shift(d: u32) -> bool {
+pub const fn is_EOR_32_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x4a000000
 }
-pub fn is_EON_32_log_shift(d: u32) -> bool {
+pub const fn is_EON_32_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x4a200000
 }
-pub fn is_ANDS_32_log_shift(d: u32) -> bool {
+pub const fn is_ANDS_32_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x6a000000
 }
-pub fn is_BICS_32_log_shift(d: u32) -> bool {
+pub const fn is_BICS_32_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x6a200000
 }
-pub fn is_AND_64_log_shift(d: u32) -> bool {
+pub const fn is_AND_64_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x8a000000
 }
-pub fn is_BIC_64_log_shift(d: u32) -> bool {
+pub const fn is_BIC_64_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0x8a200000
 }
-pub fn is_ORR_64_log_shift(d: u32) -> bool {
+pub const fn is_ORR_64_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0xaa000000
 }
-pub fn is_ORN_64_log_shift(d: u32) -> bool {
+pub const fn is_ORN_64_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0xaa200000
 }
-pub fn is_EOR_64_log_shift(d: u32) -> bool {
+pub const fn is_EOR_64_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0xca000000
 }
-pub fn is_EON_64_log_shift(d: u32) -> bool {
+pub const fn is_EON_64_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0xca200000
 }
-pub fn is_ANDS_64_log_shift(d: u32) -> bool {
+pub const fn is_ANDS_64_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0xea000000
 }
-pub fn is_BICS_64_log_shift(d: u32) -> bool {
+pub const fn is_BICS_64_log_shift(d: u32) -> bool {
     (d & 0xff200000) == 0xea200000
 }
-pub fn is_SADDLV_asimdall_only(d: u32) -> bool {
+pub const fn is_SADDLV_asimdall_only(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e303800
 }
-pub fn is_SMAXV_asimdall_only(d: u32) -> bool {
+pub const fn is_SMAXV_asimdall_only(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e30a800
 }
-pub fn is_SMINV_asimdall_only(d: u32) -> bool {
+pub const fn is_SMINV_asimdall_only(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e31a800
 }
-pub fn is_ADDV_asimdall_only(d: u32) -> bool {
+pub const fn is_ADDV_asimdall_only(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e31b800
 }
-pub fn is_FMAXNMV_asimdall_only_H(d: u32) -> bool {
+pub const fn is_FMAXNMV_asimdall_only_H(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0e30c800
 }
-pub fn is_FMAXV_asimdall_only_H(d: u32) -> bool {
+pub const fn is_FMAXV_asimdall_only_H(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0e30f800
 }
-pub fn is_FMINNMV_asimdall_only_H(d: u32) -> bool {
+pub const fn is_FMINNMV_asimdall_only_H(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0eb0c800
 }
-pub fn is_FMINV_asimdall_only_H(d: u32) -> bool {
+pub const fn is_FMINV_asimdall_only_H(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0eb0f800
 }
-pub fn is_UADDLV_asimdall_only(d: u32) -> bool {
+pub const fn is_UADDLV_asimdall_only(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e303800
 }
-pub fn is_UMAXV_asimdall_only(d: u32) -> bool {
+pub const fn is_UMAXV_asimdall_only(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e30a800
 }
-pub fn is_UMINV_asimdall_only(d: u32) -> bool {
+pub const fn is_UMINV_asimdall_only(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e31a800
 }
-pub fn is_FMAXNMV_asimdall_only_SD(d: u32) -> bool {
+pub const fn is_FMAXNMV_asimdall_only_SD(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2e30c800
 }
-pub fn is_FMAXV_asimdall_only_SD(d: u32) -> bool {
+pub const fn is_FMAXV_asimdall_only_SD(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2e30f800
 }
-pub fn is_FMINNMV_asimdall_only_SD(d: u32) -> bool {
+pub const fn is_FMINNMV_asimdall_only_SD(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2eb0c800
 }
-pub fn is_FMINV_asimdall_only_SD(d: u32) -> bool {
+pub const fn is_FMINV_asimdall_only_SD(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2eb0f800
 }
-pub fn is_DUP_asimdins_DV_v(d: u32) -> bool {
+pub const fn is_DUP_asimdins_DV_v(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e000400
 }
-pub fn is_DUP_asimdins_DR_r(d: u32) -> bool {
+pub const fn is_DUP_asimdins_DR_r(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e000c00
 }
-pub fn is_SMOV_asimdins_W_w(d: u32) -> bool {
+pub const fn is_SMOV_asimdins_W_w(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x0e002c00
 }
-pub fn is_UMOV_asimdins_W_w(d: u32) -> bool {
+pub const fn is_UMOV_asimdins_W_w(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x0e003c00
 }
-pub fn is_INS_asimdins_IR_r(d: u32) -> bool {
+pub const fn is_INS_asimdins_IR_r(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x4e001c00
 }
-pub fn is_SMOV_asimdins_X_x(d: u32) -> bool {
+pub const fn is_SMOV_asimdins_X_x(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x4e002c00
 }
-pub fn is_UMOV_asimdins_X_x(d: u32) -> bool {
+pub const fn is_UMOV_asimdins_X_x(d: u32) -> bool {
     (d & 0xffeffc00) == 0x4e083c00
 }
-pub fn is_INS_asimdins_IV_v(d: u32) -> bool {
+pub const fn is_INS_asimdins_IV_v(d: u32) -> bool {
     (d & 0xffe08400) == 0x6e000400
 }
-pub fn is_EXT_asimdext_only(d: u32) -> bool {
+pub const fn is_EXT_asimdext_only(d: u32) -> bool {
     (d & 0xbfe08400) == 0x2e000000
 }
-pub fn is_MOVI_asimdimm_L_sl(d: u32) -> bool {
+pub const fn is_MOVI_asimdimm_L_sl(d: u32) -> bool {
     (d & 0xbff89c00) == 0x0f000400
 }
-pub fn is_ORR_asimdimm_L_sl(d: u32) -> bool {
+pub const fn is_ORR_asimdimm_L_sl(d: u32) -> bool {
     (d & 0xbff89c00) == 0x0f001400
 }
-pub fn is_MOVI_asimdimm_L_hl(d: u32) -> bool {
+pub const fn is_MOVI_asimdimm_L_hl(d: u32) -> bool {
     (d & 0xbff8dc00) == 0x0f008400
 }
-pub fn is_ORR_asimdimm_L_hl(d: u32) -> bool {
+pub const fn is_ORR_asimdimm_L_hl(d: u32) -> bool {
     (d & 0xbff8dc00) == 0x0f009400
 }
-pub fn is_MOVI_asimdimm_M_sm(d: u32) -> bool {
+pub const fn is_MOVI_asimdimm_M_sm(d: u32) -> bool {
     (d & 0xbff8ec00) == 0x0f00c400
 }
-pub fn is_MOVI_asimdimm_N_b(d: u32) -> bool {
+pub const fn is_MOVI_asimdimm_N_b(d: u32) -> bool {
     (d & 0xbff8fc00) == 0x0f00e400
 }
-pub fn is_FMOV_asimdimm_S_s(d: u32) -> bool {
+pub const fn is_FMOV_asimdimm_S_s(d: u32) -> bool {
     (d & 0xbff8fc00) == 0x0f00f400
 }
-pub fn is_FMOV_asimdimm_H_h(d: u32) -> bool {
+pub const fn is_FMOV_asimdimm_H_h(d: u32) -> bool {
     (d & 0xbff8fc00) == 0x0f00fc00
 }
-pub fn is_MVNI_asimdimm_L_sl(d: u32) -> bool {
+pub const fn is_MVNI_asimdimm_L_sl(d: u32) -> bool {
     (d & 0xbff89c00) == 0x2f000400
 }
-pub fn is_BIC_asimdimm_L_sl(d: u32) -> bool {
+pub const fn is_BIC_asimdimm_L_sl(d: u32) -> bool {
     (d & 0xbff89c00) == 0x2f001400
 }
-pub fn is_MVNI_asimdimm_L_hl(d: u32) -> bool {
+pub const fn is_MVNI_asimdimm_L_hl(d: u32) -> bool {
     (d & 0xbff8dc00) == 0x2f008400
 }
-pub fn is_BIC_asimdimm_L_hl(d: u32) -> bool {
+pub const fn is_BIC_asimdimm_L_hl(d: u32) -> bool {
     (d & 0xbff8dc00) == 0x2f009400
 }
-pub fn is_MVNI_asimdimm_M_sm(d: u32) -> bool {
+pub const fn is_MVNI_asimdimm_M_sm(d: u32) -> bool {
     (d & 0xbff8ec00) == 0x2f00c400
 }
-pub fn is_MOVI_asimdimm_D_ds(d: u32) -> bool {
+pub const fn is_MOVI_asimdimm_D_ds(d: u32) -> bool {
     (d & 0xfff8fc00) == 0x2f00e400
 }
-pub fn is_MOVI_asimdimm_D2_d(d: u32) -> bool {
+pub const fn is_MOVI_asimdimm_D2_d(d: u32) -> bool {
     (d & 0xfff8fc00) == 0x6f00e400
 }
-pub fn is_FMOV_asimdimm_D2_d(d: u32) -> bool {
+pub const fn is_FMOV_asimdimm_D2_d(d: u32) -> bool {
     (d & 0xfff8fc00) == 0x6f00f400
 }
-pub fn is_UZP1_asimdperm_only(d: u32) -> bool {
+pub const fn is_UZP1_asimdperm_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e001800
 }
-pub fn is_TRN1_asimdperm_only(d: u32) -> bool {
+pub const fn is_TRN1_asimdperm_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e002800
 }
-pub fn is_ZIP1_asimdperm_only(d: u32) -> bool {
+pub const fn is_ZIP1_asimdperm_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e003800
 }
-pub fn is_UZP2_asimdperm_only(d: u32) -> bool {
+pub const fn is_UZP2_asimdperm_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e005800
 }
-pub fn is_TRN2_asimdperm_only(d: u32) -> bool {
+pub const fn is_TRN2_asimdperm_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e006800
 }
-pub fn is_ZIP2_asimdperm_only(d: u32) -> bool {
+pub const fn is_ZIP2_asimdperm_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e007800
 }
-pub fn is_DUP_asisdone_only(d: u32) -> bool {
+pub const fn is_DUP_asisdone_only(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x5e000400
 }
-pub fn is_ADDP_asisdpair_only(d: u32) -> bool {
+pub const fn is_ADDP_asisdpair_only(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x5e31b800
 }
-pub fn is_FMAXNMP_asisdpair_only_H(d: u32) -> bool {
+pub const fn is_FMAXNMP_asisdpair_only_H(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5e30c800
 }
-pub fn is_FADDP_asisdpair_only_H(d: u32) -> bool {
+pub const fn is_FADDP_asisdpair_only_H(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5e30d800
 }
-pub fn is_FMAXP_asisdpair_only_H(d: u32) -> bool {
+pub const fn is_FMAXP_asisdpair_only_H(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5e30f800
 }
-pub fn is_FMINNMP_asisdpair_only_H(d: u32) -> bool {
+pub const fn is_FMINNMP_asisdpair_only_H(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5eb0c800
 }
-pub fn is_FMINP_asisdpair_only_H(d: u32) -> bool {
+pub const fn is_FMINP_asisdpair_only_H(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5eb0f800
 }
-pub fn is_FMAXNMP_asisdpair_only_SD(d: u32) -> bool {
+pub const fn is_FMAXNMP_asisdpair_only_SD(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7e30c800
 }
-pub fn is_FADDP_asisdpair_only_SD(d: u32) -> bool {
+pub const fn is_FADDP_asisdpair_only_SD(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7e30d800
 }
-pub fn is_FMAXP_asisdpair_only_SD(d: u32) -> bool {
+pub const fn is_FMAXP_asisdpair_only_SD(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7e30f800
 }
-pub fn is_FMINNMP_asisdpair_only_SD(d: u32) -> bool {
+pub const fn is_FMINNMP_asisdpair_only_SD(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7eb0c800
 }
-pub fn is_FMINP_asisdpair_only_SD(d: u32) -> bool {
+pub const fn is_FMINP_asisdpair_only_SD(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7eb0f800
 }
-pub fn is_SSHR_asisdshf_R(d: u32) -> bool {
+pub const fn is_SSHR_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x5f000400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SSRA_asisdshf_R(d: u32) -> bool {
+pub const fn is_SSRA_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x5f001400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SRSHR_asisdshf_R(d: u32) -> bool {
+pub const fn is_SRSHR_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x5f002400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SRSRA_asisdshf_R(d: u32) -> bool {
+pub const fn is_SRSRA_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x5f003400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SHL_asisdshf_R(d: u32) -> bool {
+pub const fn is_SHL_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x5f005400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SQSHL_asisdshf_R(d: u32) -> bool {
+pub const fn is_SQSHL_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x5f007400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SQSHRN_asisdshf_N(d: u32) -> bool {
+pub const fn is_SQSHRN_asisdshf_N(d: u32) -> bool {
     (d & 0xff80fc00) == 0x5f009400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SQRSHRN_asisdshf_N(d: u32) -> bool {
+pub const fn is_SQRSHRN_asisdshf_N(d: u32) -> bool {
     (d & 0xff80fc00) == 0x5f009c00 && (d & 0x780000) != 0x000000
 }
-pub fn is_SCVTF_asisdshf_C(d: u32) -> bool {
+pub const fn is_SCVTF_asisdshf_C(d: u32) -> bool {
     (d & 0xff80fc00) == 0x5f00e400 && (d & 0x780000) != 0x000000
 }
-pub fn is_FCVTZS_asisdshf_C(d: u32) -> bool {
+pub const fn is_FCVTZS_asisdshf_C(d: u32) -> bool {
     (d & 0xff80fc00) == 0x5f00fc00 && (d & 0x780000) != 0x000000
 }
-pub fn is_USHR_asisdshf_R(d: u32) -> bool {
+pub const fn is_USHR_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f000400 && (d & 0x780000) != 0x000000
 }
-pub fn is_USRA_asisdshf_R(d: u32) -> bool {
+pub const fn is_USRA_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f001400 && (d & 0x780000) != 0x000000
 }
-pub fn is_URSHR_asisdshf_R(d: u32) -> bool {
+pub const fn is_URSHR_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f002400 && (d & 0x780000) != 0x000000
 }
-pub fn is_URSRA_asisdshf_R(d: u32) -> bool {
+pub const fn is_URSRA_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f003400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SRI_asisdshf_R(d: u32) -> bool {
+pub const fn is_SRI_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f004400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SLI_asisdshf_R(d: u32) -> bool {
+pub const fn is_SLI_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f005400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SQSHLU_asisdshf_R(d: u32) -> bool {
+pub const fn is_SQSHLU_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f006400 && (d & 0x780000) != 0x000000
 }
-pub fn is_UQSHL_asisdshf_R(d: u32) -> bool {
+pub const fn is_UQSHL_asisdshf_R(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f007400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SQSHRUN_asisdshf_N(d: u32) -> bool {
+pub const fn is_SQSHRUN_asisdshf_N(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f008400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SQRSHRUN_asisdshf_N(d: u32) -> bool {
+pub const fn is_SQRSHRUN_asisdshf_N(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f008c00 && (d & 0x780000) != 0x000000
 }
-pub fn is_UQSHRN_asisdshf_N(d: u32) -> bool {
+pub const fn is_UQSHRN_asisdshf_N(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f009400 && (d & 0x780000) != 0x000000
 }
-pub fn is_UQRSHRN_asisdshf_N(d: u32) -> bool {
+pub const fn is_UQRSHRN_asisdshf_N(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f009c00 && (d & 0x780000) != 0x000000
 }
-pub fn is_UCVTF_asisdshf_C(d: u32) -> bool {
+pub const fn is_UCVTF_asisdshf_C(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f00e400 && (d & 0x780000) != 0x000000
 }
-pub fn is_FCVTZU_asisdshf_C(d: u32) -> bool {
+pub const fn is_FCVTZU_asisdshf_C(d: u32) -> bool {
     (d & 0xff80fc00) == 0x7f00fc00 && (d & 0x780000) != 0x000000
 }
-pub fn is_SQDMLAL_asisddiff_only(d: u32) -> bool {
+pub const fn is_SQDMLAL_asisddiff_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e209000
 }
-pub fn is_SQDMLSL_asisddiff_only(d: u32) -> bool {
+pub const fn is_SQDMLSL_asisddiff_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e20b000
 }
-pub fn is_SQDMULL_asisddiff_only(d: u32) -> bool {
+pub const fn is_SQDMULL_asisddiff_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e20d000
 }
-pub fn is_SQADD_asisdsame_only(d: u32) -> bool {
+pub const fn is_SQADD_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e200c00
 }
-pub fn is_SQSUB_asisdsame_only(d: u32) -> bool {
+pub const fn is_SQSUB_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e202c00
 }
-pub fn is_CMGT_asisdsame_only(d: u32) -> bool {
+pub const fn is_CMGT_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e203400
 }
-pub fn is_CMGE_asisdsame_only(d: u32) -> bool {
+pub const fn is_CMGE_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e203c00
 }
-pub fn is_SSHL_asisdsame_only(d: u32) -> bool {
+pub const fn is_SSHL_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e204400
 }
-pub fn is_SQSHL_asisdsame_only(d: u32) -> bool {
+pub const fn is_SQSHL_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e204c00
 }
-pub fn is_SRSHL_asisdsame_only(d: u32) -> bool {
+pub const fn is_SRSHL_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e205400
 }
-pub fn is_SQRSHL_asisdsame_only(d: u32) -> bool {
+pub const fn is_SQRSHL_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e205c00
 }
-pub fn is_ADD_asisdsame_only(d: u32) -> bool {
+pub const fn is_ADD_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e208400
 }
-pub fn is_CMTST_asisdsame_only(d: u32) -> bool {
+pub const fn is_CMTST_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e208c00
 }
-pub fn is_SQDMULH_asisdsame_only(d: u32) -> bool {
+pub const fn is_SQDMULH_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x5e20b400
 }
-pub fn is_FMULX_asisdsame_only(d: u32) -> bool {
+pub const fn is_FMULX_asisdsame_only(d: u32) -> bool {
     (d & 0xffa0fc00) == 0x5e20dc00
 }
-pub fn is_FCMEQ_asisdsame_only(d: u32) -> bool {
+pub const fn is_FCMEQ_asisdsame_only(d: u32) -> bool {
     (d & 0xffa0fc00) == 0x5e20e400
 }
-pub fn is_FRECPS_asisdsame_only(d: u32) -> bool {
+pub const fn is_FRECPS_asisdsame_only(d: u32) -> bool {
     (d & 0xffa0fc00) == 0x5e20fc00
 }
-pub fn is_FRSQRTS_asisdsame_only(d: u32) -> bool {
+pub const fn is_FRSQRTS_asisdsame_only(d: u32) -> bool {
     (d & 0xffa0fc00) == 0x5ea0fc00
 }
-pub fn is_UQADD_asisdsame_only(d: u32) -> bool {
+pub const fn is_UQADD_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x7e200c00
 }
-pub fn is_UQSUB_asisdsame_only(d: u32) -> bool {
+pub const fn is_UQSUB_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x7e202c00
 }
-pub fn is_CMHI_asisdsame_only(d: u32) -> bool {
+pub const fn is_CMHI_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x7e203400
 }
-pub fn is_CMHS_asisdsame_only(d: u32) -> bool {
+pub const fn is_CMHS_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x7e203c00
 }
-pub fn is_USHL_asisdsame_only(d: u32) -> bool {
+pub const fn is_USHL_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x7e204400
 }
-pub fn is_UQSHL_asisdsame_only(d: u32) -> bool {
+pub const fn is_UQSHL_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x7e204c00
 }
-pub fn is_URSHL_asisdsame_only(d: u32) -> bool {
+pub const fn is_URSHL_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x7e205400
 }
-pub fn is_UQRSHL_asisdsame_only(d: u32) -> bool {
+pub const fn is_UQRSHL_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x7e205c00
 }
-pub fn is_SUB_asisdsame_only(d: u32) -> bool {
+pub const fn is_SUB_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x7e208400
 }
-pub fn is_CMEQ_asisdsame_only(d: u32) -> bool {
+pub const fn is_CMEQ_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x7e208c00
 }
-pub fn is_SQRDMULH_asisdsame_only(d: u32) -> bool {
+pub const fn is_SQRDMULH_asisdsame_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x7e20b400
 }
-pub fn is_FCMGE_asisdsame_only(d: u32) -> bool {
+pub const fn is_FCMGE_asisdsame_only(d: u32) -> bool {
     (d & 0xffa0fc00) == 0x7e20e400
 }
-pub fn is_FACGE_asisdsame_only(d: u32) -> bool {
+pub const fn is_FACGE_asisdsame_only(d: u32) -> bool {
     (d & 0xffa0fc00) == 0x7e20ec00
 }
-pub fn is_FABD_asisdsame_only(d: u32) -> bool {
+pub const fn is_FABD_asisdsame_only(d: u32) -> bool {
     (d & 0xffa0fc00) == 0x7ea0d400
 }
-pub fn is_FCMGT_asisdsame_only(d: u32) -> bool {
+pub const fn is_FCMGT_asisdsame_only(d: u32) -> bool {
     (d & 0xffa0fc00) == 0x7ea0e400
 }
-pub fn is_FACGT_asisdsame_only(d: u32) -> bool {
+pub const fn is_FACGT_asisdsame_only(d: u32) -> bool {
     (d & 0xffa0fc00) == 0x7ea0ec00
 }
-pub fn is_FMULX_asisdsamefp16_only(d: u32) -> bool {
+pub const fn is_FMULX_asisdsamefp16_only(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x5e401c00
 }
-pub fn is_FCMEQ_asisdsamefp16_only(d: u32) -> bool {
+pub const fn is_FCMEQ_asisdsamefp16_only(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x5e402400
 }
-pub fn is_FRECPS_asisdsamefp16_only(d: u32) -> bool {
+pub const fn is_FRECPS_asisdsamefp16_only(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x5e403c00
 }
-pub fn is_FRSQRTS_asisdsamefp16_only(d: u32) -> bool {
+pub const fn is_FRSQRTS_asisdsamefp16_only(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x5ec03c00
 }
-pub fn is_FCMGE_asisdsamefp16_only(d: u32) -> bool {
+pub const fn is_FCMGE_asisdsamefp16_only(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x7e402400
 }
-pub fn is_FACGE_asisdsamefp16_only(d: u32) -> bool {
+pub const fn is_FACGE_asisdsamefp16_only(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x7e402c00
 }
-pub fn is_FABD_asisdsamefp16_only(d: u32) -> bool {
+pub const fn is_FABD_asisdsamefp16_only(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x7ec01400
 }
-pub fn is_FCMGT_asisdsamefp16_only(d: u32) -> bool {
+pub const fn is_FCMGT_asisdsamefp16_only(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x7ec02400
 }
-pub fn is_FACGT_asisdsamefp16_only(d: u32) -> bool {
+pub const fn is_FACGT_asisdsamefp16_only(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x7ec02c00
 }
-pub fn is_SQRDMLAH_asisdsame2_only(d: u32) -> bool {
+pub const fn is_SQRDMLAH_asisdsame2_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x7e008400
 }
-pub fn is_SQRDMLSH_asisdsame2_only(d: u32) -> bool {
+pub const fn is_SQRDMLSH_asisdsame2_only(d: u32) -> bool {
     (d & 0xff20fc00) == 0x7e008c00
 }
-pub fn is_SUQADD_asisdmisc_R(d: u32) -> bool {
+pub const fn is_SUQADD_asisdmisc_R(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x5e203800
 }
-pub fn is_SQABS_asisdmisc_R(d: u32) -> bool {
+pub const fn is_SQABS_asisdmisc_R(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x5e207800
 }
-pub fn is_CMGT_asisdmisc_Z(d: u32) -> bool {
+pub const fn is_CMGT_asisdmisc_Z(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x5e208800
 }
-pub fn is_CMEQ_asisdmisc_Z(d: u32) -> bool {
+pub const fn is_CMEQ_asisdmisc_Z(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x5e209800
 }
-pub fn is_CMLT_asisdmisc_Z(d: u32) -> bool {
+pub const fn is_CMLT_asisdmisc_Z(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x5e20a800
 }
-pub fn is_ABS_asisdmisc_R(d: u32) -> bool {
+pub const fn is_ABS_asisdmisc_R(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x5e20b800
 }
-pub fn is_SQXTN_asisdmisc_N(d: u32) -> bool {
+pub const fn is_SQXTN_asisdmisc_N(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x5e214800
 }
-pub fn is_FCVTNS_asisdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTNS_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x5e21a800
 }
-pub fn is_FCVTMS_asisdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTMS_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x5e21b800
 }
-pub fn is_FCVTAS_asisdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTAS_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x5e21c800
 }
-pub fn is_SCVTF_asisdmisc_R(d: u32) -> bool {
+pub const fn is_SCVTF_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x5e21d800
 }
-pub fn is_FCMGT_asisdmisc_FZ(d: u32) -> bool {
+pub const fn is_FCMGT_asisdmisc_FZ(d: u32) -> bool {
     (d & 0xffbffc00) == 0x5ea0c800
 }
-pub fn is_FCMEQ_asisdmisc_FZ(d: u32) -> bool {
+pub const fn is_FCMEQ_asisdmisc_FZ(d: u32) -> bool {
     (d & 0xffbffc00) == 0x5ea0d800
 }
-pub fn is_FCMLT_asisdmisc_FZ(d: u32) -> bool {
+pub const fn is_FCMLT_asisdmisc_FZ(d: u32) -> bool {
     (d & 0xffbffc00) == 0x5ea0e800
 }
-pub fn is_FCVTPS_asisdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTPS_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x5ea1a800
 }
-pub fn is_FCVTZS_asisdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTZS_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x5ea1b800
 }
-pub fn is_FRECPE_asisdmisc_R(d: u32) -> bool {
+pub const fn is_FRECPE_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x5ea1d800
 }
-pub fn is_FRECPX_asisdmisc_R(d: u32) -> bool {
+pub const fn is_FRECPX_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x5ea1f800
 }
-pub fn is_USQADD_asisdmisc_R(d: u32) -> bool {
+pub const fn is_USQADD_asisdmisc_R(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x7e203800
 }
-pub fn is_SQNEG_asisdmisc_R(d: u32) -> bool {
+pub const fn is_SQNEG_asisdmisc_R(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x7e207800
 }
-pub fn is_CMGE_asisdmisc_Z(d: u32) -> bool {
+pub const fn is_CMGE_asisdmisc_Z(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x7e208800
 }
-pub fn is_CMLE_asisdmisc_Z(d: u32) -> bool {
+pub const fn is_CMLE_asisdmisc_Z(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x7e209800
 }
-pub fn is_NEG_asisdmisc_R(d: u32) -> bool {
+pub const fn is_NEG_asisdmisc_R(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x7e20b800
 }
-pub fn is_SQXTUN_asisdmisc_N(d: u32) -> bool {
+pub const fn is_SQXTUN_asisdmisc_N(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x7e212800
 }
-pub fn is_UQXTN_asisdmisc_N(d: u32) -> bool {
+pub const fn is_UQXTN_asisdmisc_N(d: u32) -> bool {
     (d & 0xff3ffc00) == 0x7e214800
 }
-pub fn is_FCVTXN_asisdmisc_N(d: u32) -> bool {
+pub const fn is_FCVTXN_asisdmisc_N(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7e216800
 }
-pub fn is_FCVTNU_asisdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTNU_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7e21a800
 }
-pub fn is_FCVTMU_asisdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTMU_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7e21b800
 }
-pub fn is_FCVTAU_asisdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTAU_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7e21c800
 }
-pub fn is_UCVTF_asisdmisc_R(d: u32) -> bool {
+pub const fn is_UCVTF_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7e21d800
 }
-pub fn is_FCMGE_asisdmisc_FZ(d: u32) -> bool {
+pub const fn is_FCMGE_asisdmisc_FZ(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7ea0c800
 }
-pub fn is_FCMLE_asisdmisc_FZ(d: u32) -> bool {
+pub const fn is_FCMLE_asisdmisc_FZ(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7ea0d800
 }
-pub fn is_FCVTPU_asisdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTPU_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7ea1a800
 }
-pub fn is_FCVTZU_asisdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTZU_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7ea1b800
 }
-pub fn is_FRSQRTE_asisdmisc_R(d: u32) -> bool {
+pub const fn is_FRSQRTE_asisdmisc_R(d: u32) -> bool {
     (d & 0xffbffc00) == 0x7ea1d800
 }
-pub fn is_FCVTNS_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTNS_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5e79a800
 }
-pub fn is_FCVTMS_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTMS_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5e79b800
 }
-pub fn is_FCVTAS_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTAS_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5e79c800
 }
-pub fn is_SCVTF_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_SCVTF_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5e79d800
 }
-pub fn is_FCMGT_asisdmiscfp16_FZ(d: u32) -> bool {
+pub const fn is_FCMGT_asisdmiscfp16_FZ(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5ef8c800
 }
-pub fn is_FCMEQ_asisdmiscfp16_FZ(d: u32) -> bool {
+pub const fn is_FCMEQ_asisdmiscfp16_FZ(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5ef8d800
 }
-pub fn is_FCMLT_asisdmiscfp16_FZ(d: u32) -> bool {
+pub const fn is_FCMLT_asisdmiscfp16_FZ(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5ef8e800
 }
-pub fn is_FCVTPS_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTPS_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5ef9a800
 }
-pub fn is_FCVTZS_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTZS_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5ef9b800
 }
-pub fn is_FRECPE_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FRECPE_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5ef9d800
 }
-pub fn is_FRECPX_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FRECPX_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5ef9f800
 }
-pub fn is_FCVTNU_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTNU_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x7e79a800
 }
-pub fn is_FCVTMU_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTMU_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x7e79b800
 }
-pub fn is_FCVTAU_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTAU_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x7e79c800
 }
-pub fn is_UCVTF_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_UCVTF_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x7e79d800
 }
-pub fn is_FCMGE_asisdmiscfp16_FZ(d: u32) -> bool {
+pub const fn is_FCMGE_asisdmiscfp16_FZ(d: u32) -> bool {
     (d & 0xfffffc00) == 0x7ef8c800
 }
-pub fn is_FCMLE_asisdmiscfp16_FZ(d: u32) -> bool {
+pub const fn is_FCMLE_asisdmiscfp16_FZ(d: u32) -> bool {
     (d & 0xfffffc00) == 0x7ef8d800
 }
-pub fn is_FCVTPU_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTPU_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x7ef9a800
 }
-pub fn is_FCVTZU_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTZU_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x7ef9b800
 }
-pub fn is_FRSQRTE_asisdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FRSQRTE_asisdmiscfp16_R(d: u32) -> bool {
     (d & 0xfffffc00) == 0x7ef9d800
 }
-pub fn is_SQDMLAL_asisdelem_L(d: u32) -> bool {
+pub const fn is_SQDMLAL_asisdelem_L(d: u32) -> bool {
     (d & 0xff00f400) == 0x5f003000
 }
-pub fn is_SQDMLSL_asisdelem_L(d: u32) -> bool {
+pub const fn is_SQDMLSL_asisdelem_L(d: u32) -> bool {
     (d & 0xff00f400) == 0x5f007000
 }
-pub fn is_SQDMULL_asisdelem_L(d: u32) -> bool {
+pub const fn is_SQDMULL_asisdelem_L(d: u32) -> bool {
     (d & 0xff00f400) == 0x5f00b000
 }
-pub fn is_SQDMULH_asisdelem_R(d: u32) -> bool {
+pub const fn is_SQDMULH_asisdelem_R(d: u32) -> bool {
     (d & 0xff00f400) == 0x5f00c000
 }
-pub fn is_SQRDMULH_asisdelem_R(d: u32) -> bool {
+pub const fn is_SQRDMULH_asisdelem_R(d: u32) -> bool {
     (d & 0xff00f400) == 0x5f00d000
 }
-pub fn is_FMLA_asisdelem_RH_H(d: u32) -> bool {
+pub const fn is_FMLA_asisdelem_RH_H(d: u32) -> bool {
     (d & 0xffc0f400) == 0x5f001000
 }
-pub fn is_FMLS_asisdelem_RH_H(d: u32) -> bool {
+pub const fn is_FMLS_asisdelem_RH_H(d: u32) -> bool {
     (d & 0xffc0f400) == 0x5f005000
 }
-pub fn is_FMUL_asisdelem_RH_H(d: u32) -> bool {
+pub const fn is_FMUL_asisdelem_RH_H(d: u32) -> bool {
     (d & 0xffc0f400) == 0x5f009000
 }
-pub fn is_FMLA_asisdelem_R_SD(d: u32) -> bool {
+pub const fn is_FMLA_asisdelem_R_SD(d: u32) -> bool {
     (d & 0xff80f400) == 0x5f801000
 }
-pub fn is_FMLS_asisdelem_R_SD(d: u32) -> bool {
+pub const fn is_FMLS_asisdelem_R_SD(d: u32) -> bool {
     (d & 0xff80f400) == 0x5f805000
 }
-pub fn is_FMUL_asisdelem_R_SD(d: u32) -> bool {
+pub const fn is_FMUL_asisdelem_R_SD(d: u32) -> bool {
     (d & 0xff80f400) == 0x5f809000
 }
-pub fn is_SQRDMLAH_asisdelem_R(d: u32) -> bool {
+pub const fn is_SQRDMLAH_asisdelem_R(d: u32) -> bool {
     (d & 0xff00f400) == 0x7f00d000
 }
-pub fn is_SQRDMLSH_asisdelem_R(d: u32) -> bool {
+pub const fn is_SQRDMLSH_asisdelem_R(d: u32) -> bool {
     (d & 0xff00f400) == 0x7f00f000
 }
-pub fn is_FMULX_asisdelem_RH_H(d: u32) -> bool {
+pub const fn is_FMULX_asisdelem_RH_H(d: u32) -> bool {
     (d & 0xffc0f400) == 0x7f009000
 }
-pub fn is_FMULX_asisdelem_R_SD(d: u32) -> bool {
+pub const fn is_FMULX_asisdelem_R_SD(d: u32) -> bool {
     (d & 0xff80f400) == 0x7f809000
 }
-pub fn is_SSHR_asimdshf_R(d: u32) -> bool {
+pub const fn is_SSHR_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x0f000400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SSRA_asimdshf_R(d: u32) -> bool {
+pub const fn is_SSRA_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x0f001400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SRSHR_asimdshf_R(d: u32) -> bool {
+pub const fn is_SRSHR_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x0f002400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SRSRA_asimdshf_R(d: u32) -> bool {
+pub const fn is_SRSRA_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x0f003400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SHL_asimdshf_R(d: u32) -> bool {
+pub const fn is_SHL_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x0f005400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SQSHL_asimdshf_R(d: u32) -> bool {
+pub const fn is_SQSHL_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x0f007400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SHRN_asimdshf_N(d: u32) -> bool {
+pub const fn is_SHRN_asimdshf_N(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x0f008400 && (d & 0x780000) != 0x000000
 }
-pub fn is_RSHRN_asimdshf_N(d: u32) -> bool {
+pub const fn is_RSHRN_asimdshf_N(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x0f008c00 && (d & 0x780000) != 0x000000
 }
-pub fn is_SQSHRN_asimdshf_N(d: u32) -> bool {
+pub const fn is_SQSHRN_asimdshf_N(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x0f009400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SQRSHRN_asimdshf_N(d: u32) -> bool {
+pub const fn is_SQRSHRN_asimdshf_N(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x0f009c00 && (d & 0x780000) != 0x000000
 }
-pub fn is_SSHLL_asimdshf_L(d: u32) -> bool {
+pub const fn is_SSHLL_asimdshf_L(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x0f00a400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SCVTF_asimdshf_C(d: u32) -> bool {
+pub const fn is_SCVTF_asimdshf_C(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x0f00e400 && (d & 0x780000) != 0x000000
 }
-pub fn is_FCVTZS_asimdshf_C(d: u32) -> bool {
+pub const fn is_FCVTZS_asimdshf_C(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x0f00fc00 && (d & 0x780000) != 0x000000
 }
-pub fn is_USHR_asimdshf_R(d: u32) -> bool {
+pub const fn is_USHR_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f000400 && (d & 0x780000) != 0x000000
 }
-pub fn is_USRA_asimdshf_R(d: u32) -> bool {
+pub const fn is_USRA_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f001400 && (d & 0x780000) != 0x000000
 }
-pub fn is_URSHR_asimdshf_R(d: u32) -> bool {
+pub const fn is_URSHR_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f002400 && (d & 0x780000) != 0x000000
 }
-pub fn is_URSRA_asimdshf_R(d: u32) -> bool {
+pub const fn is_URSRA_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f003400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SRI_asimdshf_R(d: u32) -> bool {
+pub const fn is_SRI_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f004400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SLI_asimdshf_R(d: u32) -> bool {
+pub const fn is_SLI_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f005400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SQSHLU_asimdshf_R(d: u32) -> bool {
+pub const fn is_SQSHLU_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f006400 && (d & 0x780000) != 0x000000
 }
-pub fn is_UQSHL_asimdshf_R(d: u32) -> bool {
+pub const fn is_UQSHL_asimdshf_R(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f007400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SQSHRUN_asimdshf_N(d: u32) -> bool {
+pub const fn is_SQSHRUN_asimdshf_N(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f008400 && (d & 0x780000) != 0x000000
 }
-pub fn is_SQRSHRUN_asimdshf_N(d: u32) -> bool {
+pub const fn is_SQRSHRUN_asimdshf_N(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f008c00 && (d & 0x780000) != 0x000000
 }
-pub fn is_UQSHRN_asimdshf_N(d: u32) -> bool {
+pub const fn is_UQSHRN_asimdshf_N(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f009400 && (d & 0x780000) != 0x000000
 }
-pub fn is_UQRSHRN_asimdshf_N(d: u32) -> bool {
+pub const fn is_UQRSHRN_asimdshf_N(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f009c00 && (d & 0x780000) != 0x000000
 }
-pub fn is_USHLL_asimdshf_L(d: u32) -> bool {
+pub const fn is_USHLL_asimdshf_L(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f00a400 && (d & 0x780000) != 0x000000
 }
-pub fn is_UCVTF_asimdshf_C(d: u32) -> bool {
+pub const fn is_UCVTF_asimdshf_C(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f00e400 && (d & 0x780000) != 0x000000
 }
-pub fn is_FCVTZU_asimdshf_C(d: u32) -> bool {
+pub const fn is_FCVTZU_asimdshf_C(d: u32) -> bool {
     (d & 0xbf80fc00) == 0x2f00fc00 && (d & 0x780000) != 0x000000
 }
-pub fn is_TBL_asimdtbl_L1_1(d: u32) -> bool {
+pub const fn is_TBL_asimdtbl_L1_1(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e000000
 }
-pub fn is_TBX_asimdtbl_L1_1(d: u32) -> bool {
+pub const fn is_TBX_asimdtbl_L1_1(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e001000
 }
-pub fn is_TBL_asimdtbl_L2_2(d: u32) -> bool {
+pub const fn is_TBL_asimdtbl_L2_2(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e002000
 }
-pub fn is_TBX_asimdtbl_L2_2(d: u32) -> bool {
+pub const fn is_TBX_asimdtbl_L2_2(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e003000
 }
-pub fn is_TBL_asimdtbl_L3_3(d: u32) -> bool {
+pub const fn is_TBL_asimdtbl_L3_3(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e004000
 }
-pub fn is_TBX_asimdtbl_L3_3(d: u32) -> bool {
+pub const fn is_TBX_asimdtbl_L3_3(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e005000
 }
-pub fn is_TBL_asimdtbl_L4_4(d: u32) -> bool {
+pub const fn is_TBL_asimdtbl_L4_4(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e006000
 }
-pub fn is_TBX_asimdtbl_L4_4(d: u32) -> bool {
+pub const fn is_TBX_asimdtbl_L4_4(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e007000
 }
-pub fn is_SADDL_asimddiff_L(d: u32) -> bool {
+pub const fn is_SADDL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e200000
 }
-pub fn is_SADDW_asimddiff_W(d: u32) -> bool {
+pub const fn is_SADDW_asimddiff_W(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e201000
 }
-pub fn is_SSUBL_asimddiff_L(d: u32) -> bool {
+pub const fn is_SSUBL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e202000
 }
-pub fn is_SSUBW_asimddiff_W(d: u32) -> bool {
+pub const fn is_SSUBW_asimddiff_W(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e203000
 }
-pub fn is_ADDHN_asimddiff_N(d: u32) -> bool {
+pub const fn is_ADDHN_asimddiff_N(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e204000
 }
-pub fn is_SABAL_asimddiff_L(d: u32) -> bool {
+pub const fn is_SABAL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e205000
 }
-pub fn is_SUBHN_asimddiff_N(d: u32) -> bool {
+pub const fn is_SUBHN_asimddiff_N(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e206000
 }
-pub fn is_SABDL_asimddiff_L(d: u32) -> bool {
+pub const fn is_SABDL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e207000
 }
-pub fn is_SMLAL_asimddiff_L(d: u32) -> bool {
+pub const fn is_SMLAL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e208000
 }
-pub fn is_SQDMLAL_asimddiff_L(d: u32) -> bool {
+pub const fn is_SQDMLAL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e209000
 }
-pub fn is_SMLSL_asimddiff_L(d: u32) -> bool {
+pub const fn is_SMLSL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e20a000
 }
-pub fn is_SQDMLSL_asimddiff_L(d: u32) -> bool {
+pub const fn is_SQDMLSL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e20b000
 }
-pub fn is_SMULL_asimddiff_L(d: u32) -> bool {
+pub const fn is_SMULL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e20c000
 }
-pub fn is_SQDMULL_asimddiff_L(d: u32) -> bool {
+pub const fn is_SQDMULL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e20d000
 }
-pub fn is_PMULL_asimddiff_L(d: u32) -> bool {
+pub const fn is_PMULL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e20e000
 }
-pub fn is_UADDL_asimddiff_L(d: u32) -> bool {
+pub const fn is_UADDL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e200000
 }
-pub fn is_UADDW_asimddiff_W(d: u32) -> bool {
+pub const fn is_UADDW_asimddiff_W(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e201000
 }
-pub fn is_USUBL_asimddiff_L(d: u32) -> bool {
+pub const fn is_USUBL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e202000
 }
-pub fn is_USUBW_asimddiff_W(d: u32) -> bool {
+pub const fn is_USUBW_asimddiff_W(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e203000
 }
-pub fn is_RADDHN_asimddiff_N(d: u32) -> bool {
+pub const fn is_RADDHN_asimddiff_N(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e204000
 }
-pub fn is_UABAL_asimddiff_L(d: u32) -> bool {
+pub const fn is_UABAL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e205000
 }
-pub fn is_RSUBHN_asimddiff_N(d: u32) -> bool {
+pub const fn is_RSUBHN_asimddiff_N(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e206000
 }
-pub fn is_UABDL_asimddiff_L(d: u32) -> bool {
+pub const fn is_UABDL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e207000
 }
-pub fn is_UMLAL_asimddiff_L(d: u32) -> bool {
+pub const fn is_UMLAL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e208000
 }
-pub fn is_UMLSL_asimddiff_L(d: u32) -> bool {
+pub const fn is_UMLSL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e20a000
 }
-pub fn is_UMULL_asimddiff_L(d: u32) -> bool {
+pub const fn is_UMULL_asimddiff_L(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e20c000
 }
-pub fn is_SHADD_asimdsame_only(d: u32) -> bool {
+pub const fn is_SHADD_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e200400
 }
-pub fn is_SQADD_asimdsame_only(d: u32) -> bool {
+pub const fn is_SQADD_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e200c00
 }
-pub fn is_SRHADD_asimdsame_only(d: u32) -> bool {
+pub const fn is_SRHADD_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e201400
 }
-pub fn is_SHSUB_asimdsame_only(d: u32) -> bool {
+pub const fn is_SHSUB_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e202400
 }
-pub fn is_SQSUB_asimdsame_only(d: u32) -> bool {
+pub const fn is_SQSUB_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e202c00
 }
-pub fn is_CMGT_asimdsame_only(d: u32) -> bool {
+pub const fn is_CMGT_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e203400
 }
-pub fn is_CMGE_asimdsame_only(d: u32) -> bool {
+pub const fn is_CMGE_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e203c00
 }
-pub fn is_SSHL_asimdsame_only(d: u32) -> bool {
+pub const fn is_SSHL_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e204400
 }
-pub fn is_SQSHL_asimdsame_only(d: u32) -> bool {
+pub const fn is_SQSHL_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e204c00
 }
-pub fn is_SRSHL_asimdsame_only(d: u32) -> bool {
+pub const fn is_SRSHL_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e205400
 }
-pub fn is_SQRSHL_asimdsame_only(d: u32) -> bool {
+pub const fn is_SQRSHL_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e205c00
 }
-pub fn is_SMAX_asimdsame_only(d: u32) -> bool {
+pub const fn is_SMAX_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e206400
 }
-pub fn is_SMIN_asimdsame_only(d: u32) -> bool {
+pub const fn is_SMIN_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e206c00
 }
-pub fn is_SABD_asimdsame_only(d: u32) -> bool {
+pub const fn is_SABD_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e207400
 }
-pub fn is_SABA_asimdsame_only(d: u32) -> bool {
+pub const fn is_SABA_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e207c00
 }
-pub fn is_ADD_asimdsame_only(d: u32) -> bool {
+pub const fn is_ADD_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e208400
 }
-pub fn is_CMTST_asimdsame_only(d: u32) -> bool {
+pub const fn is_CMTST_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e208c00
 }
-pub fn is_MLA_asimdsame_only(d: u32) -> bool {
+pub const fn is_MLA_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e209400
 }
-pub fn is_MUL_asimdsame_only(d: u32) -> bool {
+pub const fn is_MUL_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e209c00
 }
-pub fn is_SMAXP_asimdsame_only(d: u32) -> bool {
+pub const fn is_SMAXP_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e20a400
 }
-pub fn is_SMINP_asimdsame_only(d: u32) -> bool {
+pub const fn is_SMINP_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e20ac00
 }
-pub fn is_SQDMULH_asimdsame_only(d: u32) -> bool {
+pub const fn is_SQDMULH_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e20b400
 }
-pub fn is_ADDP_asimdsame_only(d: u32) -> bool {
+pub const fn is_ADDP_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e20bc00
 }
-pub fn is_FMAXNM_asimdsame_only(d: u32) -> bool {
+pub const fn is_FMAXNM_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x0e20c400
 }
-pub fn is_FMLA_asimdsame_only(d: u32) -> bool {
+pub const fn is_FMLA_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x0e20cc00
 }
-pub fn is_FADD_asimdsame_only(d: u32) -> bool {
+pub const fn is_FADD_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x0e20d400
 }
-pub fn is_FMULX_asimdsame_only(d: u32) -> bool {
+pub const fn is_FMULX_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x0e20dc00
 }
-pub fn is_FCMEQ_asimdsame_only(d: u32) -> bool {
+pub const fn is_FCMEQ_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x0e20e400
 }
-pub fn is_FMAX_asimdsame_only(d: u32) -> bool {
+pub const fn is_FMAX_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x0e20f400
 }
-pub fn is_FRECPS_asimdsame_only(d: u32) -> bool {
+pub const fn is_FRECPS_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x0e20fc00
 }
-pub fn is_AND_asimdsame_only(d: u32) -> bool {
+pub const fn is_AND_asimdsame_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e201c00
 }
-pub fn is_BIC_asimdsame_only(d: u32) -> bool {
+pub const fn is_BIC_asimdsame_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e601c00
 }
-pub fn is_FMINNM_asimdsame_only(d: u32) -> bool {
+pub const fn is_FMINNM_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x0ea0c400
 }
-pub fn is_FMLS_asimdsame_only(d: u32) -> bool {
+pub const fn is_FMLS_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x0ea0cc00
 }
-pub fn is_FSUB_asimdsame_only(d: u32) -> bool {
+pub const fn is_FSUB_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x0ea0d400
 }
-pub fn is_FMIN_asimdsame_only(d: u32) -> bool {
+pub const fn is_FMIN_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x0ea0f400
 }
-pub fn is_FRSQRTS_asimdsame_only(d: u32) -> bool {
+pub const fn is_FRSQRTS_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x0ea0fc00
 }
-pub fn is_ORR_asimdsame_only(d: u32) -> bool {
+pub const fn is_ORR_asimdsame_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0ea01c00
 }
-pub fn is_ORN_asimdsame_only(d: u32) -> bool {
+pub const fn is_ORN_asimdsame_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0ee01c00
 }
-pub fn is_UHADD_asimdsame_only(d: u32) -> bool {
+pub const fn is_UHADD_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e200400
 }
-pub fn is_UQADD_asimdsame_only(d: u32) -> bool {
+pub const fn is_UQADD_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e200c00
 }
-pub fn is_URHADD_asimdsame_only(d: u32) -> bool {
+pub const fn is_URHADD_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e201400
 }
-pub fn is_UHSUB_asimdsame_only(d: u32) -> bool {
+pub const fn is_UHSUB_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e202400
 }
-pub fn is_UQSUB_asimdsame_only(d: u32) -> bool {
+pub const fn is_UQSUB_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e202c00
 }
-pub fn is_CMHI_asimdsame_only(d: u32) -> bool {
+pub const fn is_CMHI_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e203400
 }
-pub fn is_CMHS_asimdsame_only(d: u32) -> bool {
+pub const fn is_CMHS_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e203c00
 }
-pub fn is_USHL_asimdsame_only(d: u32) -> bool {
+pub const fn is_USHL_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e204400
 }
-pub fn is_UQSHL_asimdsame_only(d: u32) -> bool {
+pub const fn is_UQSHL_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e204c00
 }
-pub fn is_URSHL_asimdsame_only(d: u32) -> bool {
+pub const fn is_URSHL_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e205400
 }
-pub fn is_UQRSHL_asimdsame_only(d: u32) -> bool {
+pub const fn is_UQRSHL_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e205c00
 }
-pub fn is_UMAX_asimdsame_only(d: u32) -> bool {
+pub const fn is_UMAX_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e206400
 }
-pub fn is_UMIN_asimdsame_only(d: u32) -> bool {
+pub const fn is_UMIN_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e206c00
 }
-pub fn is_UABD_asimdsame_only(d: u32) -> bool {
+pub const fn is_UABD_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e207400
 }
-pub fn is_UABA_asimdsame_only(d: u32) -> bool {
+pub const fn is_UABA_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e207c00
 }
-pub fn is_SUB_asimdsame_only(d: u32) -> bool {
+pub const fn is_SUB_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e208400
 }
-pub fn is_CMEQ_asimdsame_only(d: u32) -> bool {
+pub const fn is_CMEQ_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e208c00
 }
-pub fn is_MLS_asimdsame_only(d: u32) -> bool {
+pub const fn is_MLS_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e209400
 }
-pub fn is_PMUL_asimdsame_only(d: u32) -> bool {
+pub const fn is_PMUL_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e209c00
 }
-pub fn is_UMAXP_asimdsame_only(d: u32) -> bool {
+pub const fn is_UMAXP_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e20a400
 }
-pub fn is_UMINP_asimdsame_only(d: u32) -> bool {
+pub const fn is_UMINP_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e20ac00
 }
-pub fn is_SQRDMULH_asimdsame_only(d: u32) -> bool {
+pub const fn is_SQRDMULH_asimdsame_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e20b400
 }
-pub fn is_FMAXNMP_asimdsame_only(d: u32) -> bool {
+pub const fn is_FMAXNMP_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x2e20c400
 }
-pub fn is_FADDP_asimdsame_only(d: u32) -> bool {
+pub const fn is_FADDP_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x2e20d400
 }
-pub fn is_FMUL_asimdsame_only(d: u32) -> bool {
+pub const fn is_FMUL_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x2e20dc00
 }
-pub fn is_FCMGE_asimdsame_only(d: u32) -> bool {
+pub const fn is_FCMGE_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x2e20e400
 }
-pub fn is_FACGE_asimdsame_only(d: u32) -> bool {
+pub const fn is_FACGE_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x2e20ec00
 }
-pub fn is_FMAXP_asimdsame_only(d: u32) -> bool {
+pub const fn is_FMAXP_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x2e20f400
 }
-pub fn is_FDIV_asimdsame_only(d: u32) -> bool {
+pub const fn is_FDIV_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x2e20fc00
 }
-pub fn is_EOR_asimdsame_only(d: u32) -> bool {
+pub const fn is_EOR_asimdsame_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2e201c00
 }
-pub fn is_BSL_asimdsame_only(d: u32) -> bool {
+pub const fn is_BSL_asimdsame_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2e601c00
 }
-pub fn is_FMINNMP_asimdsame_only(d: u32) -> bool {
+pub const fn is_FMINNMP_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x2ea0c400
 }
-pub fn is_FABD_asimdsame_only(d: u32) -> bool {
+pub const fn is_FABD_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x2ea0d400
 }
-pub fn is_FCMGT_asimdsame_only(d: u32) -> bool {
+pub const fn is_FCMGT_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x2ea0e400
 }
-pub fn is_FACGT_asimdsame_only(d: u32) -> bool {
+pub const fn is_FACGT_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x2ea0ec00
 }
-pub fn is_FMINP_asimdsame_only(d: u32) -> bool {
+pub const fn is_FMINP_asimdsame_only(d: u32) -> bool {
     (d & 0xbfa0fc00) == 0x2ea0f400
 }
-pub fn is_BIT_asimdsame_only(d: u32) -> bool {
+pub const fn is_BIT_asimdsame_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2ea01c00
 }
-pub fn is_BIF_asimdsame_only(d: u32) -> bool {
+pub const fn is_BIF_asimdsame_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2ee01c00
 }
-pub fn is_FMAXNM_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FMAXNM_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e400400
 }
-pub fn is_FMLA_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FMLA_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e400c00
 }
-pub fn is_FADD_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FADD_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e401400
 }
-pub fn is_FMULX_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FMULX_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e401c00
 }
-pub fn is_FCMEQ_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FCMEQ_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e402400
 }
-pub fn is_FMAX_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FMAX_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e403400
 }
-pub fn is_FRECPS_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FRECPS_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0e403c00
 }
-pub fn is_FMINNM_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FMINNM_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0ec00400
 }
-pub fn is_FMLS_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FMLS_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0ec00c00
 }
-pub fn is_FSUB_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FSUB_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0ec01400
 }
-pub fn is_FMIN_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FMIN_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0ec03400
 }
-pub fn is_FRSQRTS_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FRSQRTS_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x0ec03c00
 }
-pub fn is_FMAXNMP_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FMAXNMP_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2e400400
 }
-pub fn is_FADDP_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FADDP_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2e401400
 }
-pub fn is_FMUL_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FMUL_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2e401c00
 }
-pub fn is_FCMGE_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FCMGE_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2e402400
 }
-pub fn is_FACGE_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FACGE_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2e402c00
 }
-pub fn is_FMAXP_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FMAXP_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2e403400
 }
-pub fn is_FDIV_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FDIV_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2e403c00
 }
-pub fn is_FMINNMP_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FMINNMP_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2ec00400
 }
-pub fn is_FABD_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FABD_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2ec01400
 }
-pub fn is_FCMGT_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FCMGT_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2ec02400
 }
-pub fn is_FACGT_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FACGT_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2ec02c00
 }
-pub fn is_FMINP_asimdsamefp16_only(d: u32) -> bool {
+pub const fn is_FMINP_asimdsamefp16_only(d: u32) -> bool {
     (d & 0xbfe0fc00) == 0x2ec03400
 }
-pub fn is_SDOT_asimdsame2_D(d: u32) -> bool {
+pub const fn is_SDOT_asimdsame2_D(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x0e009400
 }
-pub fn is_SQRDMLAH_asimdsame2_only(d: u32) -> bool {
+pub const fn is_SQRDMLAH_asimdsame2_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e008400
 }
-pub fn is_SQRDMLSH_asimdsame2_only(d: u32) -> bool {
+pub const fn is_SQRDMLSH_asimdsame2_only(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e008c00
 }
-pub fn is_UDOT_asimdsame2_D(d: u32) -> bool {
+pub const fn is_UDOT_asimdsame2_D(d: u32) -> bool {
     (d & 0xbf20fc00) == 0x2e009400
 }
-pub fn is_FCMLA_asimdsame2_C(d: u32) -> bool {
+pub const fn is_FCMLA_asimdsame2_C(d: u32) -> bool {
     (d & 0xbf20e400) == 0x2e00c400
 }
-pub fn is_FCADD_asimdsame2_C(d: u32) -> bool {
+pub const fn is_FCADD_asimdsame2_C(d: u32) -> bool {
     (d & 0xbf20ec00) == 0x2e00e400
 }
-pub fn is_REV64_asimdmisc_R(d: u32) -> bool {
+pub const fn is_REV64_asimdmisc_R(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e200800
 }
-pub fn is_REV16_asimdmisc_R(d: u32) -> bool {
+pub const fn is_REV16_asimdmisc_R(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e201800
 }
-pub fn is_SADDLP_asimdmisc_P(d: u32) -> bool {
+pub const fn is_SADDLP_asimdmisc_P(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e202800
 }
-pub fn is_SUQADD_asimdmisc_R(d: u32) -> bool {
+pub const fn is_SUQADD_asimdmisc_R(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e203800
 }
-pub fn is_CLS_asimdmisc_R(d: u32) -> bool {
+pub const fn is_CLS_asimdmisc_R(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e204800
 }
-pub fn is_CNT_asimdmisc_R(d: u32) -> bool {
+pub const fn is_CNT_asimdmisc_R(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e205800
 }
-pub fn is_SADALP_asimdmisc_P(d: u32) -> bool {
+pub const fn is_SADALP_asimdmisc_P(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e206800
 }
-pub fn is_SQABS_asimdmisc_R(d: u32) -> bool {
+pub const fn is_SQABS_asimdmisc_R(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e207800
 }
-pub fn is_CMGT_asimdmisc_Z(d: u32) -> bool {
+pub const fn is_CMGT_asimdmisc_Z(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e208800
 }
-pub fn is_CMEQ_asimdmisc_Z(d: u32) -> bool {
+pub const fn is_CMEQ_asimdmisc_Z(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e209800
 }
-pub fn is_CMLT_asimdmisc_Z(d: u32) -> bool {
+pub const fn is_CMLT_asimdmisc_Z(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e20a800
 }
-pub fn is_ABS_asimdmisc_R(d: u32) -> bool {
+pub const fn is_ABS_asimdmisc_R(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e20b800
 }
-pub fn is_XTN_asimdmisc_N(d: u32) -> bool {
+pub const fn is_XTN_asimdmisc_N(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e212800
 }
-pub fn is_SQXTN_asimdmisc_N(d: u32) -> bool {
+pub const fn is_SQXTN_asimdmisc_N(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x0e214800
 }
-pub fn is_FCVTN_asimdmisc_N(d: u32) -> bool {
+pub const fn is_FCVTN_asimdmisc_N(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0e216800
 }
-pub fn is_FCVTL_asimdmisc_L(d: u32) -> bool {
+pub const fn is_FCVTL_asimdmisc_L(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0e217800
 }
-pub fn is_FRINTN_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FRINTN_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0e218800
 }
-pub fn is_FRINTM_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FRINTM_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0e219800
 }
-pub fn is_FCVTNS_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTNS_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0e21a800
 }
-pub fn is_FCVTMS_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTMS_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0e21b800
 }
-pub fn is_FCVTAS_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTAS_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0e21c800
 }
-pub fn is_SCVTF_asimdmisc_R(d: u32) -> bool {
+pub const fn is_SCVTF_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0e21d800
 }
-pub fn is_FCMGT_asimdmisc_FZ(d: u32) -> bool {
+pub const fn is_FCMGT_asimdmisc_FZ(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0ea0c800
 }
-pub fn is_FCMEQ_asimdmisc_FZ(d: u32) -> bool {
+pub const fn is_FCMEQ_asimdmisc_FZ(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0ea0d800
 }
-pub fn is_FCMLT_asimdmisc_FZ(d: u32) -> bool {
+pub const fn is_FCMLT_asimdmisc_FZ(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0ea0e800
 }
-pub fn is_FABS_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FABS_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0ea0f800
 }
-pub fn is_FRINTP_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FRINTP_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0ea18800
 }
-pub fn is_FRINTZ_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FRINTZ_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0ea19800
 }
-pub fn is_FCVTPS_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTPS_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0ea1a800
 }
-pub fn is_FCVTZS_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTZS_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0ea1b800
 }
-pub fn is_URECPE_asimdmisc_R(d: u32) -> bool {
+pub const fn is_URECPE_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0ea1c800
 }
-pub fn is_FRECPE_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FRECPE_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x0ea1d800
 }
-pub fn is_REV32_asimdmisc_R(d: u32) -> bool {
+pub const fn is_REV32_asimdmisc_R(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e200800
 }
-pub fn is_UADDLP_asimdmisc_P(d: u32) -> bool {
+pub const fn is_UADDLP_asimdmisc_P(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e202800
 }
-pub fn is_USQADD_asimdmisc_R(d: u32) -> bool {
+pub const fn is_USQADD_asimdmisc_R(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e203800
 }
-pub fn is_CLZ_asimdmisc_R(d: u32) -> bool {
+pub const fn is_CLZ_asimdmisc_R(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e204800
 }
-pub fn is_UADALP_asimdmisc_P(d: u32) -> bool {
+pub const fn is_UADALP_asimdmisc_P(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e206800
 }
-pub fn is_SQNEG_asimdmisc_R(d: u32) -> bool {
+pub const fn is_SQNEG_asimdmisc_R(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e207800
 }
-pub fn is_CMGE_asimdmisc_Z(d: u32) -> bool {
+pub const fn is_CMGE_asimdmisc_Z(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e208800
 }
-pub fn is_CMLE_asimdmisc_Z(d: u32) -> bool {
+pub const fn is_CMLE_asimdmisc_Z(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e209800
 }
-pub fn is_NEG_asimdmisc_R(d: u32) -> bool {
+pub const fn is_NEG_asimdmisc_R(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e20b800
 }
-pub fn is_SQXTUN_asimdmisc_N(d: u32) -> bool {
+pub const fn is_SQXTUN_asimdmisc_N(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e212800
 }
-pub fn is_SHLL_asimdmisc_S(d: u32) -> bool {
+pub const fn is_SHLL_asimdmisc_S(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e213800
 }
-pub fn is_UQXTN_asimdmisc_N(d: u32) -> bool {
+pub const fn is_UQXTN_asimdmisc_N(d: u32) -> bool {
     (d & 0xbf3ffc00) == 0x2e214800
 }
-pub fn is_FCVTXN_asimdmisc_N(d: u32) -> bool {
+pub const fn is_FCVTXN_asimdmisc_N(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2e216800
 }
-pub fn is_FRINTA_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FRINTA_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2e218800
 }
-pub fn is_FRINTX_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FRINTX_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2e219800
 }
-pub fn is_FCVTNU_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTNU_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2e21a800
 }
-pub fn is_FCVTMU_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTMU_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2e21b800
 }
-pub fn is_FCVTAU_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTAU_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2e21c800
 }
-pub fn is_UCVTF_asimdmisc_R(d: u32) -> bool {
+pub const fn is_UCVTF_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2e21d800
 }
-pub fn is_NOT_asimdmisc_R(d: u32) -> bool {
+pub const fn is_NOT_asimdmisc_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2e205800
 }
-pub fn is_RBIT_asimdmisc_R(d: u32) -> bool {
+pub const fn is_RBIT_asimdmisc_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2e605800
 }
-pub fn is_FCMGE_asimdmisc_FZ(d: u32) -> bool {
+pub const fn is_FCMGE_asimdmisc_FZ(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2ea0c800
 }
-pub fn is_FCMLE_asimdmisc_FZ(d: u32) -> bool {
+pub const fn is_FCMLE_asimdmisc_FZ(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2ea0d800
 }
-pub fn is_FNEG_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FNEG_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2ea0f800
 }
-pub fn is_FRINTI_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FRINTI_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2ea19800
 }
-pub fn is_FCVTPU_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTPU_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2ea1a800
 }
-pub fn is_FCVTZU_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FCVTZU_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2ea1b800
 }
-pub fn is_URSQRTE_asimdmisc_R(d: u32) -> bool {
+pub const fn is_URSQRTE_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2ea1c800
 }
-pub fn is_FRSQRTE_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FRSQRTE_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2ea1d800
 }
-pub fn is_FSQRT_asimdmisc_R(d: u32) -> bool {
+pub const fn is_FSQRT_asimdmisc_R(d: u32) -> bool {
     (d & 0xbfbffc00) == 0x2ea1f800
 }
-pub fn is_FRINTN_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FRINTN_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0e798800
 }
-pub fn is_FRINTM_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FRINTM_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0e799800
 }
-pub fn is_FCVTNS_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTNS_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0e79a800
 }
-pub fn is_FCVTMS_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTMS_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0e79b800
 }
-pub fn is_FCVTAS_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTAS_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0e79c800
 }
-pub fn is_SCVTF_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_SCVTF_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0e79d800
 }
-pub fn is_FCMGT_asimdmiscfp16_FZ(d: u32) -> bool {
+pub const fn is_FCMGT_asimdmiscfp16_FZ(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0ef8c800
 }
-pub fn is_FCMEQ_asimdmiscfp16_FZ(d: u32) -> bool {
+pub const fn is_FCMEQ_asimdmiscfp16_FZ(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0ef8d800
 }
-pub fn is_FCMLT_asimdmiscfp16_FZ(d: u32) -> bool {
+pub const fn is_FCMLT_asimdmiscfp16_FZ(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0ef8e800
 }
-pub fn is_FABS_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FABS_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0ef8f800
 }
-pub fn is_FRINTP_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FRINTP_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0ef98800
 }
-pub fn is_FRINTZ_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FRINTZ_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0ef99800
 }
-pub fn is_FCVTPS_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTPS_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0ef9a800
 }
-pub fn is_FCVTZS_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTZS_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0ef9b800
 }
-pub fn is_FRECPE_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FRECPE_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x0ef9d800
 }
-pub fn is_FRINTA_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FRINTA_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2e798800
 }
-pub fn is_FRINTX_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FRINTX_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2e799800
 }
-pub fn is_FCVTNU_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTNU_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2e79a800
 }
-pub fn is_FCVTMU_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTMU_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2e79b800
 }
-pub fn is_FCVTAU_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTAU_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2e79c800
 }
-pub fn is_UCVTF_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_UCVTF_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2e79d800
 }
-pub fn is_FCMGE_asimdmiscfp16_FZ(d: u32) -> bool {
+pub const fn is_FCMGE_asimdmiscfp16_FZ(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2ef8c800
 }
-pub fn is_FCMLE_asimdmiscfp16_FZ(d: u32) -> bool {
+pub const fn is_FCMLE_asimdmiscfp16_FZ(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2ef8d800
 }
-pub fn is_FNEG_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FNEG_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2ef8f800
 }
-pub fn is_FRINTI_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FRINTI_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2ef99800
 }
-pub fn is_FCVTPU_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTPU_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2ef9a800
 }
-pub fn is_FCVTZU_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FCVTZU_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2ef9b800
 }
-pub fn is_FRSQRTE_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FRSQRTE_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2ef9d800
 }
-pub fn is_FSQRT_asimdmiscfp16_R(d: u32) -> bool {
+pub const fn is_FSQRT_asimdmiscfp16_R(d: u32) -> bool {
     (d & 0xbffffc00) == 0x2ef9f800
 }
-pub fn is_SMLAL_asimdelem_L(d: u32) -> bool {
+pub const fn is_SMLAL_asimdelem_L(d: u32) -> bool {
     (d & 0xbf00f400) == 0x0f002000
 }
-pub fn is_SQDMLAL_asimdelem_L(d: u32) -> bool {
+pub const fn is_SQDMLAL_asimdelem_L(d: u32) -> bool {
     (d & 0xbf00f400) == 0x0f003000
 }
-pub fn is_SMLSL_asimdelem_L(d: u32) -> bool {
+pub const fn is_SMLSL_asimdelem_L(d: u32) -> bool {
     (d & 0xbf00f400) == 0x0f006000
 }
-pub fn is_SQDMLSL_asimdelem_L(d: u32) -> bool {
+pub const fn is_SQDMLSL_asimdelem_L(d: u32) -> bool {
     (d & 0xbf00f400) == 0x0f007000
 }
-pub fn is_MUL_asimdelem_R(d: u32) -> bool {
+pub const fn is_MUL_asimdelem_R(d: u32) -> bool {
     (d & 0xbf00f400) == 0x0f008000
 }
-pub fn is_SMULL_asimdelem_L(d: u32) -> bool {
+pub const fn is_SMULL_asimdelem_L(d: u32) -> bool {
     (d & 0xbf00f400) == 0x0f00a000
 }
-pub fn is_SQDMULL_asimdelem_L(d: u32) -> bool {
+pub const fn is_SQDMULL_asimdelem_L(d: u32) -> bool {
     (d & 0xbf00f400) == 0x0f00b000
 }
-pub fn is_SQDMULH_asimdelem_R(d: u32) -> bool {
+pub const fn is_SQDMULH_asimdelem_R(d: u32) -> bool {
     (d & 0xbf00f400) == 0x0f00c000
 }
-pub fn is_SQRDMULH_asimdelem_R(d: u32) -> bool {
+pub const fn is_SQRDMULH_asimdelem_R(d: u32) -> bool {
     (d & 0xbf00f400) == 0x0f00d000
 }
-pub fn is_SDOT_asimdelem_D(d: u32) -> bool {
+pub const fn is_SDOT_asimdelem_D(d: u32) -> bool {
     (d & 0xbf00f400) == 0x0f00e000
 }
-pub fn is_FMLA_asimdelem_RH_H(d: u32) -> bool {
+pub const fn is_FMLA_asimdelem_RH_H(d: u32) -> bool {
     (d & 0xbfc0f400) == 0x0f001000
 }
-pub fn is_FMLS_asimdelem_RH_H(d: u32) -> bool {
+pub const fn is_FMLS_asimdelem_RH_H(d: u32) -> bool {
     (d & 0xbfc0f400) == 0x0f005000
 }
-pub fn is_FMUL_asimdelem_RH_H(d: u32) -> bool {
+pub const fn is_FMUL_asimdelem_RH_H(d: u32) -> bool {
     (d & 0xbfc0f400) == 0x0f009000
 }
-pub fn is_FMLA_asimdelem_R_SD(d: u32) -> bool {
+pub const fn is_FMLA_asimdelem_R_SD(d: u32) -> bool {
     (d & 0xbf80f400) == 0x0f801000
 }
-pub fn is_FMLS_asimdelem_R_SD(d: u32) -> bool {
+pub const fn is_FMLS_asimdelem_R_SD(d: u32) -> bool {
     (d & 0xbf80f400) == 0x0f805000
 }
-pub fn is_FMUL_asimdelem_R_SD(d: u32) -> bool {
+pub const fn is_FMUL_asimdelem_R_SD(d: u32) -> bool {
     (d & 0xbf80f400) == 0x0f809000
 }
-pub fn is_MLA_asimdelem_R(d: u32) -> bool {
+pub const fn is_MLA_asimdelem_R(d: u32) -> bool {
     (d & 0xbf00f400) == 0x2f000000
 }
-pub fn is_UMLAL_asimdelem_L(d: u32) -> bool {
+pub const fn is_UMLAL_asimdelem_L(d: u32) -> bool {
     (d & 0xbf00f400) == 0x2f002000
 }
-pub fn is_MLS_asimdelem_R(d: u32) -> bool {
+pub const fn is_MLS_asimdelem_R(d: u32) -> bool {
     (d & 0xbf00f400) == 0x2f004000
 }
-pub fn is_UMLSL_asimdelem_L(d: u32) -> bool {
+pub const fn is_UMLSL_asimdelem_L(d: u32) -> bool {
     (d & 0xbf00f400) == 0x2f006000
 }
-pub fn is_UMULL_asimdelem_L(d: u32) -> bool {
+pub const fn is_UMULL_asimdelem_L(d: u32) -> bool {
     (d & 0xbf00f400) == 0x2f00a000
 }
-pub fn is_SQRDMLAH_asimdelem_R(d: u32) -> bool {
+pub const fn is_SQRDMLAH_asimdelem_R(d: u32) -> bool {
     (d & 0xbf00f400) == 0x2f00d000
 }
-pub fn is_UDOT_asimdelem_D(d: u32) -> bool {
+pub const fn is_UDOT_asimdelem_D(d: u32) -> bool {
     (d & 0xbf00f400) == 0x2f00e000
 }
-pub fn is_SQRDMLSH_asimdelem_R(d: u32) -> bool {
+pub const fn is_SQRDMLSH_asimdelem_R(d: u32) -> bool {
     (d & 0xbf00f400) == 0x2f00f000
 }
-pub fn is_FMULX_asimdelem_RH_H(d: u32) -> bool {
+pub const fn is_FMULX_asimdelem_RH_H(d: u32) -> bool {
     (d & 0xbfc0f400) == 0x2f009000
 }
-pub fn is_FCMLA_asimdelem_C_H(d: u32) -> bool {
+pub const fn is_FCMLA_asimdelem_C_H(d: u32) -> bool {
     (d & 0xbfc09400) == 0x2f401000
 }
-pub fn is_FMULX_asimdelem_R_SD(d: u32) -> bool {
+pub const fn is_FMULX_asimdelem_R_SD(d: u32) -> bool {
     (d & 0xbf80f400) == 0x2f809000
 }
-pub fn is_FCMLA_asimdelem_C_S(d: u32) -> bool {
+pub const fn is_FCMLA_asimdelem_C_S(d: u32) -> bool {
     (d & 0xbfc09400) == 0x2f801000
 }
-pub fn is_SCVTF_S32_float2fix(d: u32) -> bool {
+pub const fn is_SCVTF_S32_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x1e020000
 }
-pub fn is_UCVTF_S32_float2fix(d: u32) -> bool {
+pub const fn is_UCVTF_S32_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x1e030000
 }
-pub fn is_FCVTZS_32S_float2fix(d: u32) -> bool {
+pub const fn is_FCVTZS_32S_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x1e180000
 }
-pub fn is_FCVTZU_32S_float2fix(d: u32) -> bool {
+pub const fn is_FCVTZU_32S_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x1e190000
 }
-pub fn is_SCVTF_D32_float2fix(d: u32) -> bool {
+pub const fn is_SCVTF_D32_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x1e420000
 }
-pub fn is_UCVTF_D32_float2fix(d: u32) -> bool {
+pub const fn is_UCVTF_D32_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x1e430000
 }
-pub fn is_FCVTZS_32D_float2fix(d: u32) -> bool {
+pub const fn is_FCVTZS_32D_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x1e580000
 }
-pub fn is_FCVTZU_32D_float2fix(d: u32) -> bool {
+pub const fn is_FCVTZU_32D_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x1e590000
 }
-pub fn is_SCVTF_H32_float2fix(d: u32) -> bool {
+pub const fn is_SCVTF_H32_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x1ec20000
 }
-pub fn is_UCVTF_H32_float2fix(d: u32) -> bool {
+pub const fn is_UCVTF_H32_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x1ec30000
 }
-pub fn is_FCVTZS_32H_float2fix(d: u32) -> bool {
+pub const fn is_FCVTZS_32H_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x1ed80000
 }
-pub fn is_FCVTZU_32H_float2fix(d: u32) -> bool {
+pub const fn is_FCVTZU_32H_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x1ed90000
 }
-pub fn is_SCVTF_S64_float2fix(d: u32) -> bool {
+pub const fn is_SCVTF_S64_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x9e020000
 }
-pub fn is_UCVTF_S64_float2fix(d: u32) -> bool {
+pub const fn is_UCVTF_S64_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x9e030000
 }
-pub fn is_FCVTZS_64S_float2fix(d: u32) -> bool {
+pub const fn is_FCVTZS_64S_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x9e180000
 }
-pub fn is_FCVTZU_64S_float2fix(d: u32) -> bool {
+pub const fn is_FCVTZU_64S_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x9e190000
 }
-pub fn is_SCVTF_D64_float2fix(d: u32) -> bool {
+pub const fn is_SCVTF_D64_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x9e420000
 }
-pub fn is_UCVTF_D64_float2fix(d: u32) -> bool {
+pub const fn is_UCVTF_D64_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x9e430000
 }
-pub fn is_FCVTZS_64D_float2fix(d: u32) -> bool {
+pub const fn is_FCVTZS_64D_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x9e580000
 }
-pub fn is_FCVTZU_64D_float2fix(d: u32) -> bool {
+pub const fn is_FCVTZU_64D_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x9e590000
 }
-pub fn is_SCVTF_H64_float2fix(d: u32) -> bool {
+pub const fn is_SCVTF_H64_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x9ec20000
 }
-pub fn is_UCVTF_H64_float2fix(d: u32) -> bool {
+pub const fn is_UCVTF_H64_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x9ec30000
 }
-pub fn is_FCVTZS_64H_float2fix(d: u32) -> bool {
+pub const fn is_FCVTZS_64H_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x9ed80000
 }
-pub fn is_FCVTZU_64H_float2fix(d: u32) -> bool {
+pub const fn is_FCVTZU_64H_float2fix(d: u32) -> bool {
     (d & 0xffff0000) == 0x9ed90000
 }
-pub fn is_FCVTNS_32S_float2int(d: u32) -> bool {
+pub const fn is_FCVTNS_32S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e200000
 }
-pub fn is_FCVTNU_32S_float2int(d: u32) -> bool {
+pub const fn is_FCVTNU_32S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e210000
 }
-pub fn is_SCVTF_S32_float2int(d: u32) -> bool {
+pub const fn is_SCVTF_S32_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e220000
 }
-pub fn is_UCVTF_S32_float2int(d: u32) -> bool {
+pub const fn is_UCVTF_S32_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e230000
 }
-pub fn is_FCVTAS_32S_float2int(d: u32) -> bool {
+pub const fn is_FCVTAS_32S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e240000
 }
-pub fn is_FCVTAU_32S_float2int(d: u32) -> bool {
+pub const fn is_FCVTAU_32S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e250000
 }
-pub fn is_FMOV_32S_float2int(d: u32) -> bool {
+pub const fn is_FMOV_32S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e260000
 }
-pub fn is_FMOV_S32_float2int(d: u32) -> bool {
+pub const fn is_FMOV_S32_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e270000
 }
-pub fn is_FCVTPS_32S_float2int(d: u32) -> bool {
+pub const fn is_FCVTPS_32S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e280000
 }
-pub fn is_FCVTPU_32S_float2int(d: u32) -> bool {
+pub const fn is_FCVTPU_32S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e290000
 }
-pub fn is_FCVTMS_32S_float2int(d: u32) -> bool {
+pub const fn is_FCVTMS_32S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e300000
 }
-pub fn is_FCVTMU_32S_float2int(d: u32) -> bool {
+pub const fn is_FCVTMU_32S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e310000
 }
-pub fn is_FCVTZS_32S_float2int(d: u32) -> bool {
+pub const fn is_FCVTZS_32S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e380000
 }
-pub fn is_FCVTZU_32S_float2int(d: u32) -> bool {
+pub const fn is_FCVTZU_32S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e390000
 }
-pub fn is_FCVTNS_32D_float2int(d: u32) -> bool {
+pub const fn is_FCVTNS_32D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e600000
 }
-pub fn is_FCVTNU_32D_float2int(d: u32) -> bool {
+pub const fn is_FCVTNU_32D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e610000
 }
-pub fn is_SCVTF_D32_float2int(d: u32) -> bool {
+pub const fn is_SCVTF_D32_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e620000
 }
-pub fn is_UCVTF_D32_float2int(d: u32) -> bool {
+pub const fn is_UCVTF_D32_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e630000
 }
-pub fn is_FCVTAS_32D_float2int(d: u32) -> bool {
+pub const fn is_FCVTAS_32D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e640000
 }
-pub fn is_FCVTAU_32D_float2int(d: u32) -> bool {
+pub const fn is_FCVTAU_32D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e650000
 }
-pub fn is_FCVTPS_32D_float2int(d: u32) -> bool {
+pub const fn is_FCVTPS_32D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e680000
 }
-pub fn is_FCVTPU_32D_float2int(d: u32) -> bool {
+pub const fn is_FCVTPU_32D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e690000
 }
-pub fn is_FCVTMS_32D_float2int(d: u32) -> bool {
+pub const fn is_FCVTMS_32D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e700000
 }
-pub fn is_FCVTMU_32D_float2int(d: u32) -> bool {
+pub const fn is_FCVTMU_32D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e710000
 }
-pub fn is_FCVTZS_32D_float2int(d: u32) -> bool {
+pub const fn is_FCVTZS_32D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e780000
 }
-pub fn is_FCVTZU_32D_float2int(d: u32) -> bool {
+pub const fn is_FCVTZU_32D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e790000
 }
-pub fn is_FJCVTZS_32D_float2int(d: u32) -> bool {
+pub const fn is_FJCVTZS_32D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e7e0000
 }
-pub fn is_FCVTNS_32H_float2int(d: u32) -> bool {
+pub const fn is_FCVTNS_32H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee00000
 }
-pub fn is_FCVTNU_32H_float2int(d: u32) -> bool {
+pub const fn is_FCVTNU_32H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee10000
 }
-pub fn is_SCVTF_H32_float2int(d: u32) -> bool {
+pub const fn is_SCVTF_H32_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee20000
 }
-pub fn is_UCVTF_H32_float2int(d: u32) -> bool {
+pub const fn is_UCVTF_H32_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee30000
 }
-pub fn is_FCVTAS_32H_float2int(d: u32) -> bool {
+pub const fn is_FCVTAS_32H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee40000
 }
-pub fn is_FCVTAU_32H_float2int(d: u32) -> bool {
+pub const fn is_FCVTAU_32H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee50000
 }
-pub fn is_FMOV_32H_float2int(d: u32) -> bool {
+pub const fn is_FMOV_32H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee60000
 }
-pub fn is_FMOV_H32_float2int(d: u32) -> bool {
+pub const fn is_FMOV_H32_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee70000
 }
-pub fn is_FCVTPS_32H_float2int(d: u32) -> bool {
+pub const fn is_FCVTPS_32H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee80000
 }
-pub fn is_FCVTPU_32H_float2int(d: u32) -> bool {
+pub const fn is_FCVTPU_32H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee90000
 }
-pub fn is_FCVTMS_32H_float2int(d: u32) -> bool {
+pub const fn is_FCVTMS_32H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ef00000
 }
-pub fn is_FCVTMU_32H_float2int(d: u32) -> bool {
+pub const fn is_FCVTMU_32H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ef10000
 }
-pub fn is_FCVTZS_32H_float2int(d: u32) -> bool {
+pub const fn is_FCVTZS_32H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ef80000
 }
-pub fn is_FCVTZU_32H_float2int(d: u32) -> bool {
+pub const fn is_FCVTZU_32H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ef90000
 }
-pub fn is_FCVTNS_64S_float2int(d: u32) -> bool {
+pub const fn is_FCVTNS_64S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e200000
 }
-pub fn is_FCVTNU_64S_float2int(d: u32) -> bool {
+pub const fn is_FCVTNU_64S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e210000
 }
-pub fn is_SCVTF_S64_float2int(d: u32) -> bool {
+pub const fn is_SCVTF_S64_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e220000
 }
-pub fn is_UCVTF_S64_float2int(d: u32) -> bool {
+pub const fn is_UCVTF_S64_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e230000
 }
-pub fn is_FCVTAS_64S_float2int(d: u32) -> bool {
+pub const fn is_FCVTAS_64S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e240000
 }
-pub fn is_FCVTAU_64S_float2int(d: u32) -> bool {
+pub const fn is_FCVTAU_64S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e250000
 }
-pub fn is_FCVTPS_64S_float2int(d: u32) -> bool {
+pub const fn is_FCVTPS_64S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e280000
 }
-pub fn is_FCVTPU_64S_float2int(d: u32) -> bool {
+pub const fn is_FCVTPU_64S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e290000
 }
-pub fn is_FCVTMS_64S_float2int(d: u32) -> bool {
+pub const fn is_FCVTMS_64S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e300000
 }
-pub fn is_FCVTMU_64S_float2int(d: u32) -> bool {
+pub const fn is_FCVTMU_64S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e310000
 }
-pub fn is_FCVTZS_64S_float2int(d: u32) -> bool {
+pub const fn is_FCVTZS_64S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e380000
 }
-pub fn is_FCVTZU_64S_float2int(d: u32) -> bool {
+pub const fn is_FCVTZU_64S_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e390000
 }
-pub fn is_FCVTNS_64D_float2int(d: u32) -> bool {
+pub const fn is_FCVTNS_64D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e600000
 }
-pub fn is_FCVTNU_64D_float2int(d: u32) -> bool {
+pub const fn is_FCVTNU_64D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e610000
 }
-pub fn is_SCVTF_D64_float2int(d: u32) -> bool {
+pub const fn is_SCVTF_D64_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e620000
 }
-pub fn is_UCVTF_D64_float2int(d: u32) -> bool {
+pub const fn is_UCVTF_D64_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e630000
 }
-pub fn is_FCVTAS_64D_float2int(d: u32) -> bool {
+pub const fn is_FCVTAS_64D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e640000
 }
-pub fn is_FCVTAU_64D_float2int(d: u32) -> bool {
+pub const fn is_FCVTAU_64D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e650000
 }
-pub fn is_FMOV_64D_float2int(d: u32) -> bool {
+pub const fn is_FMOV_64D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e660000
 }
-pub fn is_FMOV_D64_float2int(d: u32) -> bool {
+pub const fn is_FMOV_D64_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e670000
 }
-pub fn is_FCVTPS_64D_float2int(d: u32) -> bool {
+pub const fn is_FCVTPS_64D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e680000
 }
-pub fn is_FCVTPU_64D_float2int(d: u32) -> bool {
+pub const fn is_FCVTPU_64D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e690000
 }
-pub fn is_FCVTMS_64D_float2int(d: u32) -> bool {
+pub const fn is_FCVTMS_64D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e700000
 }
-pub fn is_FCVTMU_64D_float2int(d: u32) -> bool {
+pub const fn is_FCVTMU_64D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e710000
 }
-pub fn is_FCVTZS_64D_float2int(d: u32) -> bool {
+pub const fn is_FCVTZS_64D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e780000
 }
-pub fn is_FCVTZU_64D_float2int(d: u32) -> bool {
+pub const fn is_FCVTZU_64D_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9e790000
 }
-pub fn is_FMOV_64VX_float2int(d: u32) -> bool {
+pub const fn is_FMOV_64VX_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9eae0000
 }
-pub fn is_FMOV_V64I_float2int(d: u32) -> bool {
+pub const fn is_FMOV_V64I_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9eaf0000
 }
-pub fn is_FCVTNS_64H_float2int(d: u32) -> bool {
+pub const fn is_FCVTNS_64H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ee00000
 }
-pub fn is_FCVTNU_64H_float2int(d: u32) -> bool {
+pub const fn is_FCVTNU_64H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ee10000
 }
-pub fn is_SCVTF_H64_float2int(d: u32) -> bool {
+pub const fn is_SCVTF_H64_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ee20000
 }
-pub fn is_UCVTF_H64_float2int(d: u32) -> bool {
+pub const fn is_UCVTF_H64_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ee30000
 }
-pub fn is_FCVTAS_64H_float2int(d: u32) -> bool {
+pub const fn is_FCVTAS_64H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ee40000
 }
-pub fn is_FCVTAU_64H_float2int(d: u32) -> bool {
+pub const fn is_FCVTAU_64H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ee50000
 }
-pub fn is_FMOV_64H_float2int(d: u32) -> bool {
+pub const fn is_FMOV_64H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ee60000
 }
-pub fn is_FMOV_H64_float2int(d: u32) -> bool {
+pub const fn is_FMOV_H64_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ee70000
 }
-pub fn is_FCVTPS_64H_float2int(d: u32) -> bool {
+pub const fn is_FCVTPS_64H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ee80000
 }
-pub fn is_FCVTPU_64H_float2int(d: u32) -> bool {
+pub const fn is_FCVTPU_64H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ee90000
 }
-pub fn is_FCVTMS_64H_float2int(d: u32) -> bool {
+pub const fn is_FCVTMS_64H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ef00000
 }
-pub fn is_FCVTMU_64H_float2int(d: u32) -> bool {
+pub const fn is_FCVTMU_64H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ef10000
 }
-pub fn is_FCVTZS_64H_float2int(d: u32) -> bool {
+pub const fn is_FCVTZS_64H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ef80000
 }
-pub fn is_FCVTZU_64H_float2int(d: u32) -> bool {
+pub const fn is_FCVTZU_64H_float2int(d: u32) -> bool {
     (d & 0xfffffc00) == 0x9ef90000
 }
-pub fn is_AESE_B_cryptoaes(d: u32) -> bool {
+pub const fn is_AESE_B_cryptoaes(d: u32) -> bool {
     (d & 0xfffffc00) == 0x4e284800
 }
-pub fn is_AESD_B_cryptoaes(d: u32) -> bool {
+pub const fn is_AESD_B_cryptoaes(d: u32) -> bool {
     (d & 0xfffffc00) == 0x4e285800
 }
-pub fn is_AESMC_B_cryptoaes(d: u32) -> bool {
+pub const fn is_AESMC_B_cryptoaes(d: u32) -> bool {
     (d & 0xfffffc00) == 0x4e286800
 }
-pub fn is_AESIMC_B_cryptoaes(d: u32) -> bool {
+pub const fn is_AESIMC_B_cryptoaes(d: u32) -> bool {
     (d & 0xfffffc00) == 0x4e287800
 }
-pub fn is_EOR3_VVV16_crypto4(d: u32) -> bool {
+pub const fn is_EOR3_VVV16_crypto4(d: u32) -> bool {
     (d & 0xffe08000) == 0xce000000
 }
-pub fn is_BCAX_VVV16_crypto4(d: u32) -> bool {
+pub const fn is_BCAX_VVV16_crypto4(d: u32) -> bool {
     (d & 0xffe08000) == 0xce200000
 }
-pub fn is_SM3SS1_VVV4_crypto4(d: u32) -> bool {
+pub const fn is_SM3SS1_VVV4_crypto4(d: u32) -> bool {
     (d & 0xffe08000) == 0xce400000
 }
-pub fn is_SHA1C_QSV_cryptosha3(d: u32) -> bool {
+pub const fn is_SHA1C_QSV_cryptosha3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x5e000000
 }
-pub fn is_SHA1P_QSV_cryptosha3(d: u32) -> bool {
+pub const fn is_SHA1P_QSV_cryptosha3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x5e001000
 }
-pub fn is_SHA1M_QSV_cryptosha3(d: u32) -> bool {
+pub const fn is_SHA1M_QSV_cryptosha3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x5e002000
 }
-pub fn is_SHA1SU0_VVV_cryptosha3(d: u32) -> bool {
+pub const fn is_SHA1SU0_VVV_cryptosha3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x5e003000
 }
-pub fn is_SHA256H_QQV_cryptosha3(d: u32) -> bool {
+pub const fn is_SHA256H_QQV_cryptosha3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x5e004000
 }
-pub fn is_SHA256H2_QQV_cryptosha3(d: u32) -> bool {
+pub const fn is_SHA256H2_QQV_cryptosha3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x5e005000
 }
-pub fn is_SHA256SU1_VVV_cryptosha3(d: u32) -> bool {
+pub const fn is_SHA256SU1_VVV_cryptosha3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x5e006000
 }
-pub fn is_SHA512H_QQV_cryptosha512_3(d: u32) -> bool {
+pub const fn is_SHA512H_QQV_cryptosha512_3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xce608000
 }
-pub fn is_SHA512H2_QQV_cryptosha512_3(d: u32) -> bool {
+pub const fn is_SHA512H2_QQV_cryptosha512_3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xce608400
 }
-pub fn is_SHA512SU1_VVV2_cryptosha512_3(d: u32) -> bool {
+pub const fn is_SHA512SU1_VVV2_cryptosha512_3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xce608800
 }
-pub fn is_RAX1_VVV2_cryptosha512_3(d: u32) -> bool {
+pub const fn is_RAX1_VVV2_cryptosha512_3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xce608c00
 }
-pub fn is_SM3PARTW1_VVV4_cryptosha512_3(d: u32) -> bool {
+pub const fn is_SM3PARTW1_VVV4_cryptosha512_3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xce60c000
 }
-pub fn is_SM3PARTW2_VVV4_cryptosha512_3(d: u32) -> bool {
+pub const fn is_SM3PARTW2_VVV4_cryptosha512_3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xce60c400
 }
-pub fn is_SM4EKEY_VVV4_cryptosha512_3(d: u32) -> bool {
+pub const fn is_SM4EKEY_VVV4_cryptosha512_3(d: u32) -> bool {
     (d & 0xffe0fc00) == 0xce60c800
 }
-pub fn is_SM3TT1A_VVV4_crypto3_imm2(d: u32) -> bool {
+pub const fn is_SM3TT1A_VVV4_crypto3_imm2(d: u32) -> bool {
     (d & 0xffe0cc00) == 0xce408000
 }
-pub fn is_SM3TT1B_VVV4_crypto3_imm2(d: u32) -> bool {
+pub const fn is_SM3TT1B_VVV4_crypto3_imm2(d: u32) -> bool {
     (d & 0xffe0cc00) == 0xce408400
 }
-pub fn is_SM3TT2A_VVV4_crypto3_imm2(d: u32) -> bool {
+pub const fn is_SM3TT2A_VVV4_crypto3_imm2(d: u32) -> bool {
     (d & 0xffe0cc00) == 0xce408800
 }
-pub fn is_SM3TT2B_VVV_crypto3_imm2(d: u32) -> bool {
+pub const fn is_SM3TT2B_VVV_crypto3_imm2(d: u32) -> bool {
     (d & 0xffe0cc00) == 0xce408c00
 }
-pub fn is_XAR_VVV2_crypto3_imm6(d: u32) -> bool {
+pub const fn is_XAR_VVV2_crypto3_imm6(d: u32) -> bool {
     (d & 0xffe00000) == 0xce800000
 }
-pub fn is_SHA1H_SS_cryptosha2(d: u32) -> bool {
+pub const fn is_SHA1H_SS_cryptosha2(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5e280800
 }
-pub fn is_SHA1SU1_VV_cryptosha2(d: u32) -> bool {
+pub const fn is_SHA1SU1_VV_cryptosha2(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5e281800
 }
-pub fn is_SHA256SU0_VV_cryptosha2(d: u32) -> bool {
+pub const fn is_SHA256SU0_VV_cryptosha2(d: u32) -> bool {
     (d & 0xfffffc00) == 0x5e282800
 }
-pub fn is_SHA512SU0_VV2_cryptosha512_2(d: u32) -> bool {
+pub const fn is_SHA512SU0_VV2_cryptosha512_2(d: u32) -> bool {
     (d & 0xfffffc00) == 0xcec08000
 }
-pub fn is_SM4E_VV4_cryptosha512_2(d: u32) -> bool {
+pub const fn is_SM4E_VV4_cryptosha512_2(d: u32) -> bool {
     (d & 0xfffffc00) == 0xcec08400
 }
-pub fn is_FCMP_S_floatcmp(d: u32) -> bool {
+pub const fn is_FCMP_S_floatcmp(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x1e202000
 }
-pub fn is_FCMP_SZ_floatcmp(d: u32) -> bool {
+pub const fn is_FCMP_SZ_floatcmp(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x1e202008
 }
-pub fn is_FCMPE_S_floatcmp(d: u32) -> bool {
+pub const fn is_FCMPE_S_floatcmp(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x1e202010
 }
-pub fn is_FCMPE_SZ_floatcmp(d: u32) -> bool {
+pub const fn is_FCMPE_SZ_floatcmp(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x1e202018
 }
-pub fn is_FCMP_D_floatcmp(d: u32) -> bool {
+pub const fn is_FCMP_D_floatcmp(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x1e602000
 }
-pub fn is_FCMP_DZ_floatcmp(d: u32) -> bool {
+pub const fn is_FCMP_DZ_floatcmp(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x1e602008
 }
-pub fn is_FCMPE_D_floatcmp(d: u32) -> bool {
+pub const fn is_FCMPE_D_floatcmp(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x1e602010
 }
-pub fn is_FCMPE_DZ_floatcmp(d: u32) -> bool {
+pub const fn is_FCMPE_DZ_floatcmp(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x1e602018
 }
-pub fn is_FCMP_H_floatcmp(d: u32) -> bool {
+pub const fn is_FCMP_H_floatcmp(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x1ee02000
 }
-pub fn is_FCMP_HZ_floatcmp(d: u32) -> bool {
+pub const fn is_FCMP_HZ_floatcmp(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x1ee02008
 }
-pub fn is_FCMPE_H_floatcmp(d: u32) -> bool {
+pub const fn is_FCMPE_H_floatcmp(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x1ee02010
 }
-pub fn is_FCMPE_HZ_floatcmp(d: u32) -> bool {
+pub const fn is_FCMPE_HZ_floatcmp(d: u32) -> bool {
     (d & 0xffe0fc1f) == 0x1ee02018
 }
-pub fn is_FCCMP_S_floatccmp(d: u32) -> bool {
+pub const fn is_FCCMP_S_floatccmp(d: u32) -> bool {
     (d & 0xffe00c10) == 0x1e200400
 }
-pub fn is_FCCMPE_S_floatccmp(d: u32) -> bool {
+pub const fn is_FCCMPE_S_floatccmp(d: u32) -> bool {
     (d & 0xffe00c10) == 0x1e200410
 }
-pub fn is_FCCMP_D_floatccmp(d: u32) -> bool {
+pub const fn is_FCCMP_D_floatccmp(d: u32) -> bool {
     (d & 0xffe00c10) == 0x1e600400
 }
-pub fn is_FCCMPE_D_floatccmp(d: u32) -> bool {
+pub const fn is_FCCMPE_D_floatccmp(d: u32) -> bool {
     (d & 0xffe00c10) == 0x1e600410
 }
-pub fn is_FCCMP_H_floatccmp(d: u32) -> bool {
+pub const fn is_FCCMP_H_floatccmp(d: u32) -> bool {
     (d & 0xffe00c10) == 0x1ee00400
 }
-pub fn is_FCCMPE_H_floatccmp(d: u32) -> bool {
+pub const fn is_FCCMPE_H_floatccmp(d: u32) -> bool {
     (d & 0xffe00c10) == 0x1ee00410
 }
-pub fn is_FCSEL_S_floatsel(d: u32) -> bool {
+pub const fn is_FCSEL_S_floatsel(d: u32) -> bool {
     (d & 0xffe00c00) == 0x1e200c00
 }
-pub fn is_FCSEL_D_floatsel(d: u32) -> bool {
+pub const fn is_FCSEL_D_floatsel(d: u32) -> bool {
     (d & 0xffe00c00) == 0x1e600c00
 }
-pub fn is_FCSEL_H_floatsel(d: u32) -> bool {
+pub const fn is_FCSEL_H_floatsel(d: u32) -> bool {
     (d & 0xffe00c00) == 0x1ee00c00
 }
-pub fn is_FMOV_S_floatdp1(d: u32) -> bool {
+pub const fn is_FMOV_S_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e204000
 }
-pub fn is_FABS_S_floatdp1(d: u32) -> bool {
+pub const fn is_FABS_S_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e20c000
 }
-pub fn is_FNEG_S_floatdp1(d: u32) -> bool {
+pub const fn is_FNEG_S_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e214000
 }
-pub fn is_FSQRT_S_floatdp1(d: u32) -> bool {
+pub const fn is_FSQRT_S_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e21c000
 }
-pub fn is_FCVT_DS_floatdp1(d: u32) -> bool {
+pub const fn is_FCVT_DS_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e22c000
 }
-pub fn is_FCVT_HS_floatdp1(d: u32) -> bool {
+pub const fn is_FCVT_HS_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e23c000
 }
-pub fn is_FRINTN_S_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTN_S_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e244000
 }
-pub fn is_FRINTP_S_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTP_S_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e24c000
 }
-pub fn is_FRINTM_S_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTM_S_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e254000
 }
-pub fn is_FRINTZ_S_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTZ_S_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e25c000
 }
-pub fn is_FRINTA_S_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTA_S_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e264000
 }
-pub fn is_FRINTX_S_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTX_S_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e274000
 }
-pub fn is_FRINTI_S_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTI_S_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e27c000
 }
-pub fn is_FMOV_D_floatdp1(d: u32) -> bool {
+pub const fn is_FMOV_D_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e604000
 }
-pub fn is_FABS_D_floatdp1(d: u32) -> bool {
+pub const fn is_FABS_D_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e60c000
 }
-pub fn is_FNEG_D_floatdp1(d: u32) -> bool {
+pub const fn is_FNEG_D_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e614000
 }
-pub fn is_FSQRT_D_floatdp1(d: u32) -> bool {
+pub const fn is_FSQRT_D_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e61c000
 }
-pub fn is_FCVT_SD_floatdp1(d: u32) -> bool {
+pub const fn is_FCVT_SD_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e624000
 }
-pub fn is_FCVT_HD_floatdp1(d: u32) -> bool {
+pub const fn is_FCVT_HD_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e63c000
 }
-pub fn is_FRINTN_D_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTN_D_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e644000
 }
-pub fn is_FRINTP_D_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTP_D_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e64c000
 }
-pub fn is_FRINTM_D_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTM_D_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e654000
 }
-pub fn is_FRINTZ_D_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTZ_D_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e65c000
 }
-pub fn is_FRINTA_D_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTA_D_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e664000
 }
-pub fn is_FRINTX_D_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTX_D_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e674000
 }
-pub fn is_FRINTI_D_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTI_D_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1e67c000
 }
-pub fn is_FMOV_H_floatdp1(d: u32) -> bool {
+pub const fn is_FMOV_H_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee04000
 }
-pub fn is_FABS_H_floatdp1(d: u32) -> bool {
+pub const fn is_FABS_H_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee0c000
 }
-pub fn is_FNEG_H_floatdp1(d: u32) -> bool {
+pub const fn is_FNEG_H_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee14000
 }
-pub fn is_FSQRT_H_floatdp1(d: u32) -> bool {
+pub const fn is_FSQRT_H_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee1c000
 }
-pub fn is_FCVT_SH_floatdp1(d: u32) -> bool {
+pub const fn is_FCVT_SH_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee24000
 }
-pub fn is_FCVT_DH_floatdp1(d: u32) -> bool {
+pub const fn is_FCVT_DH_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee2c000
 }
-pub fn is_FRINTN_H_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTN_H_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee44000
 }
-pub fn is_FRINTP_H_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTP_H_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee4c000
 }
-pub fn is_FRINTM_H_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTM_H_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee54000
 }
-pub fn is_FRINTZ_H_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTZ_H_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee5c000
 }
-pub fn is_FRINTA_H_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTA_H_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee64000
 }
-pub fn is_FRINTX_H_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTX_H_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee74000
 }
-pub fn is_FRINTI_H_floatdp1(d: u32) -> bool {
+pub const fn is_FRINTI_H_floatdp1(d: u32) -> bool {
     (d & 0xfffffc00) == 0x1ee7c000
 }
-pub fn is_FMUL_S_floatdp2(d: u32) -> bool {
+pub const fn is_FMUL_S_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e200800
 }
-pub fn is_FDIV_S_floatdp2(d: u32) -> bool {
+pub const fn is_FDIV_S_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e201800
 }
-pub fn is_FADD_S_floatdp2(d: u32) -> bool {
+pub const fn is_FADD_S_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e202800
 }
-pub fn is_FSUB_S_floatdp2(d: u32) -> bool {
+pub const fn is_FSUB_S_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e203800
 }
-pub fn is_FMAX_S_floatdp2(d: u32) -> bool {
+pub const fn is_FMAX_S_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e204800
 }
-pub fn is_FMIN_S_floatdp2(d: u32) -> bool {
+pub const fn is_FMIN_S_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e205800
 }
-pub fn is_FMAXNM_S_floatdp2(d: u32) -> bool {
+pub const fn is_FMAXNM_S_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e206800
 }
-pub fn is_FMINNM_S_floatdp2(d: u32) -> bool {
+pub const fn is_FMINNM_S_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e207800
 }
-pub fn is_FNMUL_S_floatdp2(d: u32) -> bool {
+pub const fn is_FNMUL_S_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e208800
 }
-pub fn is_FMUL_D_floatdp2(d: u32) -> bool {
+pub const fn is_FMUL_D_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e600800
 }
-pub fn is_FDIV_D_floatdp2(d: u32) -> bool {
+pub const fn is_FDIV_D_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e601800
 }
-pub fn is_FADD_D_floatdp2(d: u32) -> bool {
+pub const fn is_FADD_D_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e602800
 }
-pub fn is_FSUB_D_floatdp2(d: u32) -> bool {
+pub const fn is_FSUB_D_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e603800
 }
-pub fn is_FMAX_D_floatdp2(d: u32) -> bool {
+pub const fn is_FMAX_D_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e604800
 }
-pub fn is_FMIN_D_floatdp2(d: u32) -> bool {
+pub const fn is_FMIN_D_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e605800
 }
-pub fn is_FMAXNM_D_floatdp2(d: u32) -> bool {
+pub const fn is_FMAXNM_D_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e606800
 }
-pub fn is_FMINNM_D_floatdp2(d: u32) -> bool {
+pub const fn is_FMINNM_D_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e607800
 }
-pub fn is_FNMUL_D_floatdp2(d: u32) -> bool {
+pub const fn is_FNMUL_D_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1e608800
 }
-pub fn is_FMUL_H_floatdp2(d: u32) -> bool {
+pub const fn is_FMUL_H_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ee00800
 }
-pub fn is_FDIV_H_floatdp2(d: u32) -> bool {
+pub const fn is_FDIV_H_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ee01800
 }
-pub fn is_FADD_H_floatdp2(d: u32) -> bool {
+pub const fn is_FADD_H_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ee02800
 }
-pub fn is_FSUB_H_floatdp2(d: u32) -> bool {
+pub const fn is_FSUB_H_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ee03800
 }
-pub fn is_FMAX_H_floatdp2(d: u32) -> bool {
+pub const fn is_FMAX_H_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ee04800
 }
-pub fn is_FMIN_H_floatdp2(d: u32) -> bool {
+pub const fn is_FMIN_H_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ee05800
 }
-pub fn is_FMAXNM_H_floatdp2(d: u32) -> bool {
+pub const fn is_FMAXNM_H_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ee06800
 }
-pub fn is_FMINNM_H_floatdp2(d: u32) -> bool {
+pub const fn is_FMINNM_H_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ee07800
 }
-pub fn is_FNMUL_H_floatdp2(d: u32) -> bool {
+pub const fn is_FNMUL_H_floatdp2(d: u32) -> bool {
     (d & 0xffe0fc00) == 0x1ee08800
 }
-pub fn is_FMADD_S_floatdp3(d: u32) -> bool {
+pub const fn is_FMADD_S_floatdp3(d: u32) -> bool {
     (d & 0xffe08000) == 0x1f000000
 }
-pub fn is_FMSUB_S_floatdp3(d: u32) -> bool {
+pub const fn is_FMSUB_S_floatdp3(d: u32) -> bool {
     (d & 0xffe08000) == 0x1f008000
 }
-pub fn is_FNMADD_S_floatdp3(d: u32) -> bool {
+pub const fn is_FNMADD_S_floatdp3(d: u32) -> bool {
     (d & 0xffe08000) == 0x1f200000
 }
-pub fn is_FNMSUB_S_floatdp3(d: u32) -> bool {
+pub const fn is_FNMSUB_S_floatdp3(d: u32) -> bool {
     (d & 0xffe08000) == 0x1f208000
 }
-pub fn is_FMADD_D_floatdp3(d: u32) -> bool {
+pub const fn is_FMADD_D_floatdp3(d: u32) -> bool {
     (d & 0xffe08000) == 0x1f400000
 }
-pub fn is_FMSUB_D_floatdp3(d: u32) -> bool {
+pub const fn is_FMSUB_D_floatdp3(d: u32) -> bool {
     (d & 0xffe08000) == 0x1f408000
 }
-pub fn is_FNMADD_D_floatdp3(d: u32) -> bool {
+pub const fn is_FNMADD_D_floatdp3(d: u32) -> bool {
     (d & 0xffe08000) == 0x1f600000
 }
-pub fn is_FNMSUB_D_floatdp3(d: u32) -> bool {
+pub const fn is_FNMSUB_D_floatdp3(d: u32) -> bool {
     (d & 0xffe08000) == 0x1f608000
 }
-pub fn is_FMADD_H_floatdp3(d: u32) -> bool {
+pub const fn is_FMADD_H_floatdp3(d: u32) -> bool {
     (d & 0xffe08000) == 0x1fc00000
 }
-pub fn is_FMSUB_H_floatdp3(d: u32) -> bool {
+pub const fn is_FMSUB_H_floatdp3(d: u32) -> bool {
     (d & 0xffe08000) == 0x1fc08000
 }
-pub fn is_FNMADD_H_floatdp3(d: u32) -> bool {
+pub const fn is_FNMADD_H_floatdp3(d: u32) -> bool {
     (d & 0xffe08000) == 0x1fe00000
 }
-pub fn is_FNMSUB_H_floatdp3(d: u32) -> bool {
+pub const fn is_FNMSUB_H_floatdp3(d: u32) -> bool {
     (d & 0xffe08000) == 0x1fe08000
 }
-pub fn is_FMOV_S_floatimm(d: u32) -> bool {
+pub const fn is_FMOV_S_floatimm(d: u32) -> bool {
     (d & 0xffe01fe0) == 0x1e201000
 }
-pub fn is_FMOV_D_floatimm(d: u32) -> bool {
+pub const fn is_FMOV_D_floatimm(d: u32) -> bool {
     (d & 0xffe01fe0) == 0x1e601000
 }
-pub fn is_FMOV_H_floatimm(d: u32) -> bool {
+pub const fn is_FMOV_H_floatimm(d: u32) -> bool {
     (d & 0xffe01fe0) == 0x1ee01000
 }
 
-pub fn get_A(d: u32) -> u32 {
+pub const fn get_A(d: u32) -> u32 {
     (d >> 23) & 1
 }
-pub fn get_CRm(d: u32) -> u32 {
+pub const fn get_CRm(d: u32) -> u32 {
     (d >> 8) & 0xF
 }
-pub fn get_CRn(d: u32) -> u32 {
+pub const fn get_CRn(d: u32) -> u32 {
     (d >> 12) & 0xF
 }
-pub fn get_H(d: u32) -> u32 {
+pub const fn get_H(d: u32) -> u32 {
     (d >> 11) & 1
 }
-// pub fn get_L(d: u32) -> u32 {(d >> 21) & 1	// system, asisdelem, asimdelem
-// pub fn get_L(d: u32) -> u32 {(d >> 22) & 1	// asisdlse, asisdlsep, asisdlso, asisdlsop, ldstexcl, ldstnapair_offs, ldstpair_off, ldstpair_post, ldstpair_pre
-pub fn get_LL(d: u32) -> u32 {
+// pub const fn get_L(d: u32) -> u32 {(d >> 21) & 1	// system, asisdelem, asimdelem
+// pub const fn get_L(d: u32) -> u32 {(d >> 22) & 1	// asisdlse, asisdlsep, asisdlso, asisdlsop, ldstexcl, ldstnapair_offs, ldstpair_off, ldstpair_post, ldstpair_pre
+pub const fn get_LL(d: u32) -> u32 {
     d & 3
 }
-// pub fn get_M(d: u32) -> u32 {(d >> 20) & 1	// asisdelem, asimdelem
-// pub fn get_M(d: u32) -> u32 {(d >> 23) & 1	// ldst_pac
-// pub fn get_M(d: u32) -> u32 {(d >> 31) & 1	// floatcmp, floatccmp, floatsel, floatdp1, floatdp2, floatdp3, floatimm
-// pub fn get_N(d: u32) -> u32 {(d >> 21) & 1	// log_shift
-// pub fn get_N(d: u32) -> u32 {(d >> 22) & 1	// bitfield, extract, log_imm
-pub fn get_O(d: u32) -> u32 {
+// pub const fn get_M(d: u32) -> u32 {(d >> 20) & 1	// asisdelem, asimdelem
+// pub const fn get_M(d: u32) -> u32 {(d >> 23) & 1	// ldst_pac
+// pub const fn get_M(d: u32) -> u32 {(d >> 31) & 1	// floatcmp, floatccmp, floatsel, floatdp1, floatdp2, floatdp3, floatimm
+// pub const fn get_N(d: u32) -> u32 {(d >> 21) & 1	// log_shift
+// pub const fn get_N(d: u32) -> u32 {(d >> 22) & 1	// bitfield, extract, log_imm
+pub const fn get_O(d: u32) -> u32 {
     (d >> 14) & 1
 }
-pub fn get_Op0(d: u32) -> u32 {
+pub const fn get_Op0(d: u32) -> u32 {
     (d >> 21) & 3
 }
-pub fn get_Q(d: u32) -> u32 {
+pub const fn get_Q(d: u32) -> u32 {
     (d >> 30) & 1
 }
-// pub fn get_R(d: u32) -> u32 {(d >> 21) & 1	// asisdlso, asisdlsop
-// pub fn get_R(d: u32) -> u32 {(d >> 22) & 1	// memop
-pub fn get_Ra(d: u32) -> u32 {
+// pub const fn get_R(d: u32) -> u32 {(d >> 21) & 1	// asisdlso, asisdlsop
+// pub const fn get_R(d: u32) -> u32 {(d >> 22) & 1	// memop
+pub const fn get_Ra(d: u32) -> u32 {
     (d >> 10) & 0x1F
 }
-pub fn get_Rd(d: u32) -> u32 {
+pub const fn get_Rd(d: u32) -> u32 {
     d & 0x1F
 }
-// pub fn get_Rm(d: u32) -> u32 {(d >> 16) & 0x1F	// asisdlsep, asisdlsop, ldst_regoff, extract, addsub_ext, addsub_shift, addsub_carry, condcmp_reg, condsel, dp_2src, dp_3src, log_shift, asimdext, asimdperm, asisddiff, asisdsame, asisdsamefp16, asisdsame2, asimdtbl, asimddiff, asimdsame, asimdsamefp16, asimdsame2, crypto4, cryptosha3, cryptosha512_3, crypto3_imm2, crypto3_imm6, floatcmp, floatccmp, floatsel, floatdp2, floatdp3
-// pub fn get_Rm(d: u32) -> u32 {(d >> 16) & 0xF	// asisdelem, asimdelem
-pub fn get_Rn(d: u32) -> u32 {
+// pub const fn get_Rm(d: u32) -> u32 {(d >> 16) & 0x1F	// asisdlsep, asisdlsop, ldst_regoff, extract, addsub_ext, addsub_shift, addsub_carry, condcmp_reg, condsel, dp_2src, dp_3src, log_shift, asimdext, asimdperm, asisddiff, asisdsame, asisdsamefp16, asisdsame2, asimdtbl, asimddiff, asimdsame, asimdsamefp16, asimdsame2, crypto4, cryptosha3, cryptosha512_3, crypto3_imm2, crypto3_imm6, floatcmp, floatccmp, floatsel, floatdp2, floatdp3
+// pub const fn get_Rm(d: u32) -> u32 {(d >> 16) & 0xF	// asisdelem, asimdelem
+pub const fn get_Rn(d: u32) -> u32 {
     (d >> 5) & 0x1F
 }
-pub fn get_Rs(d: u32) -> u32 {
+pub const fn get_Rs(d: u32) -> u32 {
     (d >> 16) & 0x1F
 }
-pub fn get_Rt(d: u32) -> u32 {
+pub const fn get_Rt(d: u32) -> u32 {
     d & 0x1F
 }
-pub fn get_Rt2(d: u32) -> u32 {
+pub const fn get_Rt2(d: u32) -> u32 {
     (d >> 10) & 0x1F
 }
-// pub fn get_S(d: u32) -> u32 {(d >> 12) & 1	// asisdlso, asisdlsop, ldst_regoff
-// pub fn get_S(d: u32) -> u32 {(d >> 22) & 1	// ldst_pac
-// pub fn get_S(d: u32) -> u32 {(d >> 29) & 1	// addsub_imm, addsub_ext, addsub_shift, addsub_carry, condcmp_imm, condcmp_reg, condsel, dp_1src, dp_2src, float2fix, float2int, floatcmp, floatccmp, floatsel, floatdp1, floatdp2, floatdp3, floatimm
-pub fn get_U(d: u32) -> u32 {
+// pub const fn get_S(d: u32) -> u32 {(d >> 12) & 1	// asisdlso, asisdlsop, ldst_regoff
+// pub const fn get_S(d: u32) -> u32 {(d >> 22) & 1	// ldst_pac
+// pub const fn get_S(d: u32) -> u32 {(d >> 29) & 1	// addsub_imm, addsub_ext, addsub_shift, addsub_carry, condcmp_imm, condcmp_reg, condsel, dp_1src, dp_2src, float2fix, float2int, floatcmp, floatccmp, floatsel, floatdp1, floatdp2, floatdp3, floatimm
+pub const fn get_U(d: u32) -> u32 {
     (d >> 29) & 1
 }
-pub fn get_V(d: u32) -> u32 {
+pub const fn get_V(d: u32) -> u32 {
     (d >> 26) & 1
 }
-pub fn get_W(d: u32) -> u32 {
+pub const fn get_W(d: u32) -> u32 {
     (d >> 11) & 1
 }
-// pub fn get_a(d: u32) -> u32 {(d >> 18) & 1	// asimdimm
-// pub fn get_a(d: u32) -> u32 {(d >> 23) & 1	// asisdsamefp16, asisdmiscfp16, asimdsamefp16, asimdmiscfp16
-pub fn get_b(d: u32) -> u32 {
+// pub const fn get_a(d: u32) -> u32 {(d >> 18) & 1	// asimdimm
+// pub const fn get_a(d: u32) -> u32 {(d >> 23) & 1	// asisdsamefp16, asisdmiscfp16, asimdsamefp16, asimdmiscfp16
+pub const fn get_b(d: u32) -> u32 {
     (d >> 17) & 1
 }
-pub fn get_b40(d: u32) -> u32 {
+pub const fn get_b40(d: u32) -> u32 {
     (d >> 19) & 0x1F
 }
-pub fn get_b5(d: u32) -> u32 {
+pub const fn get_b5(d: u32) -> u32 {
     (d >> 31) & 1
 }
-pub fn get_c(d: u32) -> u32 {
+pub const fn get_c(d: u32) -> u32 {
     (d >> 16) & 1
 }
-pub fn get_cmode(d: u32) -> u32 {
+pub const fn get_cmode(d: u32) -> u32 {
     (d >> 12) & 0xF
 }
-// pub fn get_cond(d: u32) -> u32 {d & 0xF	// condbranch
-// pub fn get_cond(d: u32) -> u32 {(d >> 12) & 0xF	// condcmp_imm, condcmp_reg, condsel, floatccmp, floatsel
-pub fn get_d(d: u32) -> u32 {
+// pub const fn get_cond(d: u32) -> u32 {d & 0xF	// condbranch
+// pub const fn get_cond(d: u32) -> u32 {(d >> 12) & 0xF	// condcmp_imm, condcmp_reg, condsel, floatccmp, floatsel
+pub const fn get_d(d: u32) -> u32 {
     (d >> 9) & 1
 }
-pub fn get_e(d: u32) -> u32 {
+pub const fn get_e(d: u32) -> u32 {
     (d >> 8) & 1
 }
-pub fn get_f(d: u32) -> u32 {
+pub const fn get_f(d: u32) -> u32 {
     (d >> 7) & 1
 }
-pub fn get_g(d: u32) -> u32 {
+pub const fn get_g(d: u32) -> u32 {
     (d >> 6) & 1
 }
-pub fn get_h(d: u32) -> u32 {
+pub const fn get_h(d: u32) -> u32 {
     (d >> 5) & 1
 }
-pub fn get_hw(d: u32) -> u32 {
+pub const fn get_hw(d: u32) -> u32 {
     (d >> 21) & 3
 }
-pub fn get_imm12(d: u32) -> u32 {
+pub const fn get_imm12(d: u32) -> u32 {
     (d >> 10) & 0xFFF
 }
-pub fn get_imm14(d: u32) -> u32 {
+pub const fn get_imm14(d: u32) -> u32 {
     (d >> 5) & 0x3FFF
 }
-pub fn get_imm16(d: u32) -> u32 {
+pub const fn get_imm16(d: u32) -> u32 {
     (d >> 5) & 0xFFFF
 }
-pub fn get_imm19(d: u32) -> u32 {
+pub const fn get_imm19(d: u32) -> u32 {
     (d >> 5) & 0x7FFFF
 }
-pub fn get_imm2(d: u32) -> u32 {
+pub const fn get_imm2(d: u32) -> u32 {
     (d >> 12) & 3
 }
-pub fn get_imm26(d: u32) -> u32 {
+pub const fn get_imm26(d: u32) -> u32 {
     d & 0x3FFFFFF
 }
-pub fn get_imm3(d: u32) -> u32 {
+pub const fn get_imm3(d: u32) -> u32 {
     (d >> 10) & 7
 }
-pub fn get_imm4(d: u32) -> u32 {
+pub const fn get_imm4(d: u32) -> u32 {
     (d >> 11) & 0xF
 }
-// pub fn get_imm5(d: u32) -> u32 {(d >> 16) & 0x1F	// condcmp_imm, asimdins, asisdone
-// pub fn get_imm5(d: u32) -> u32 {(d >> 5) & 0x1F	// floatimm
-pub fn get_imm6(d: u32) -> u32 {
+// pub const fn get_imm5(d: u32) -> u32 {(d >> 16) & 0x1F	// condcmp_imm, asimdins, asisdone
+// pub const fn get_imm5(d: u32) -> u32 {(d >> 5) & 0x1F	// floatimm
+pub const fn get_imm6(d: u32) -> u32 {
     (d >> 10) & 0x3F
 }
-pub fn get_imm7(d: u32) -> u32 {
+pub const fn get_imm7(d: u32) -> u32 {
     (d >> 15) & 0x7F
 }
-pub fn get_imm8(d: u32) -> u32 {
+pub const fn get_imm8(d: u32) -> u32 {
     (d >> 13) & 0xFF
 }
-pub fn get_imm9(d: u32) -> u32 {
+pub const fn get_imm9(d: u32) -> u32 {
     (d >> 12) & 0x1FF
 }
-pub fn get_immb(d: u32) -> u32 {
+pub const fn get_immb(d: u32) -> u32 {
     (d >> 16) & 7
 }
-pub fn get_immh(d: u32) -> u32 {
+pub const fn get_immh(d: u32) -> u32 {
     (d >> 19) & 0xF
 }
-pub fn get_immhi(d: u32) -> u32 {
+pub const fn get_immhi(d: u32) -> u32 {
     (d >> 5) & 0x7FFFF
 }
-pub fn get_immlo(d: u32) -> u32 {
+pub const fn get_immlo(d: u32) -> u32 {
     (d >> 29) & 3
 }
-pub fn get_immr(d: u32) -> u32 {
+pub const fn get_immr(d: u32) -> u32 {
     (d >> 16) & 0x3F
 }
-pub fn get_imms(d: u32) -> u32 {
+pub const fn get_imms(d: u32) -> u32 {
     (d >> 10) & 0x3F
 }
-pub fn get_len(d: u32) -> u32 {
+pub const fn get_len(d: u32) -> u32 {
     (d >> 13) & 3
 }
-pub fn get_nzcv(d: u32) -> u32 {
+pub const fn get_nzcv(d: u32) -> u32 {
     d & 0xF
 }
-pub fn get_rmode(d: u32) -> u32 {
+pub const fn get_rmode(d: u32) -> u32 {
     (d >> 19) & 3
 }
-pub fn get_scale(d: u32) -> u32 {
+pub const fn get_scale(d: u32) -> u32 {
     (d >> 10) & 0x3F
 }
-pub fn get_sf(d: u32) -> u32 {
+pub const fn get_sf(d: u32) -> u32 {
     (d >> 31) & 1
 }
-pub fn get_shift(d: u32) -> u32 {
+pub const fn get_shift(d: u32) -> u32 {
     (d >> 22) & 3
 }
-// pub fn get_size(d: u32) -> u32 {(d >> 10) & 3	// asisdlse, asisdlsep, asisdlso, asisdlsop
-// pub fn get_size(d: u32) -> u32 {(d >> 22) & 3	// asimdall, asimdperm, asisdpair, asisddiff, asisdsame, asisdsame2, asisdmisc, asisdelem, asimddiff, asimdsame, asimdsame2, asimdmisc, asimdelem, cryptoaes, cryptosha3, cryptosha2
-// pub fn get_size(d: u32) -> u32 {(d >> 30) & 3	// memop, ldstexcl, ldst_immpost, ldst_immpre, ldst_pac, ldst_regoff, ldst_unpriv, ldst_unscaled, ldst_pos
-pub fn get_type(d: u32) -> u32 {
+// pub const fn get_size(d: u32) -> u32 {(d >> 10) & 3	// asisdlse, asisdlsep, asisdlso, asisdlsop
+// pub const fn get_size(d: u32) -> u32 {(d >> 22) & 3	// asimdall, asimdperm, asisdpair, asisddiff, asisdsame, asisdsame2, asisdmisc, asisdelem, asimddiff, asimdsame, asimdsame2, asimdmisc, asimdelem, cryptoaes, cryptosha3, cryptosha2
+// pub const fn get_size(d: u32) -> u32 {(d >> 30) & 3	// memop, ldstexcl, ldst_immpost, ldst_immpre, ldst_pac, ldst_regoff, ldst_unpriv, ldst_unscaled, ldst_pos
+pub const fn get_type(d: u32) -> u32 {
     (d >> 22) & 3
 }
 
-pub fn get_A_s(d: u32) -> u32 {
+pub const fn get_A_s(d: u32) -> u32 {
     ((d >> 23) & 1) | (if (d & 0x800000) != 0 { !1 } else { 0 })
 }
-pub fn get_CRm_s(d: u32) -> u32 {
+pub const fn get_CRm_s(d: u32) -> u32 {
     ((d >> 8) & 0xF) | (if (d & 0x800) != 0 { !0xF } else { 0 })
 }
-pub fn get_CRn_s(d: u32) -> u32 {
+pub const fn get_CRn_s(d: u32) -> u32 {
     ((d >> 12) & 0xF) | (if (d & 0x8000) != 0 { !0xF } else { 0 })
 }
-pub fn get_H_s(d: u32) -> u32 {
+pub const fn get_H_s(d: u32) -> u32 {
     ((d >> 11) & 1) | (if (d & 0x800) != 0 { !1 } else { 0 })
 }
-// pub fn get_L_s(d: u32) -> u32 { ((d >> 21) & 1) | ( if (d & 0x200000) != 0 { !1 } else { 0}) }
-// pub fn get_L_s(d: u32) -> u32 { ((d >> 22) & 1) | ( if (d & 0x400000) != 0 { !1 } else { 0}) }
-pub fn get_LL_s(d: u32) -> u32 {
+// pub const fn get_L_s(d: u32) -> u32 { ((d >> 21) & 1) | ( if (d & 0x200000) != 0 { !1 } else { 0}) }
+// pub const fn get_L_s(d: u32) -> u32 { ((d >> 22) & 1) | ( if (d & 0x400000) != 0 { !1 } else { 0}) }
+pub const fn get_LL_s(d: u32) -> u32 {
     (d & 3) | (if (d & 2) != 0 { !3 } else { 0 })
 }
-// pub fn get_M_s(d: u32) -> u32 { ((d >> 20) & 1) | ( if (d & 0x100000) != 0 { !1 } else { 0}) }
-// pub fn get_M_s(d: u32) -> u32 { ((d >> 23) & 1) | ( if (d & 0x800000) != 0 { !1 } else { 0}) }
-// pub fn get_M_s(d: u32) -> u32 { ((d >> 31) & 1) | ( if (d & 0x80000000) != 0 { !1 } else { 0}) }
-// pub fn get_N_s(d: u32) -> u32 { ((d >> 21) & 1) | ( if (d & 0x200000) != 0 { !1 } else { 0}) }
-// pub fn get_N_s(d: u32) -> u32 { ((d >> 22) & 1) | ( if (d & 0x400000) != 0 { !1 } else { 0}) }
-pub fn get_O_s(d: u32) -> u32 {
+// pub const fn get_M_s(d: u32) -> u32 { ((d >> 20) & 1) | ( if (d & 0x100000) != 0 { !1 } else { 0}) }
+// pub const fn get_M_s(d: u32) -> u32 { ((d >> 23) & 1) | ( if (d & 0x800000) != 0 { !1 } else { 0}) }
+// pub const fn get_M_s(d: u32) -> u32 { ((d >> 31) & 1) | ( if (d & 0x80000000) != 0 { !1 } else { 0}) }
+// pub const fn get_N_s(d: u32) -> u32 { ((d >> 21) & 1) | ( if (d & 0x200000) != 0 { !1 } else { 0}) }
+// pub const fn get_N_s(d: u32) -> u32 { ((d >> 22) & 1) | ( if (d & 0x400000) != 0 { !1 } else { 0}) }
+pub const fn get_O_s(d: u32) -> u32 {
     ((d >> 14) & 1) | (if (d & 0x4000) != 0 { !1 } else { 0 })
 }
-pub fn get_Op0_s(d: u32) -> u32 {
+pub const fn get_Op0_s(d: u32) -> u32 {
     ((d >> 21) & 3) | (if (d & 0x400000) != 0 { !3 } else { 0 })
 }
-pub fn get_Q_s(d: u32) -> u32 {
+pub const fn get_Q_s(d: u32) -> u32 {
     ((d >> 30) & 1) | (if (d & 0x40000000) != 0 { !1 } else { 0 })
 }
-// pub fn get_R_s(d: u32) -> u32 { ((d >> 21) & 1) | ( if (d & 0x200000) != 0 { !1 } else { 0}) }
-// pub fn get_R_s(d: u32) -> u32 { ((d >> 22) & 1) | ( if (d & 0x400000) != 0 { !1 } else { 0}) }
-pub fn get_Ra_s(d: u32) -> u32 {
+// pub const fn get_R_s(d: u32) -> u32 { ((d >> 21) & 1) | ( if (d & 0x200000) != 0 { !1 } else { 0}) }
+// pub const fn get_R_s(d: u32) -> u32 { ((d >> 22) & 1) | ( if (d & 0x400000) != 0 { !1 } else { 0}) }
+pub const fn get_Ra_s(d: u32) -> u32 {
     ((d >> 10) & 0x1F) | (if (d & 0x4000) != 0 { !0x1F } else { 0 })
 }
-pub fn get_Rd_s(d: u32) -> u32 {
+pub const fn get_Rd_s(d: u32) -> u32 {
     (d & 0x1F) | (if (d & 0x10) != 0 { !0x1F } else { 0 })
 }
-// pub fn get_Rm_s(d: u32) -> u32 { ((d >> 16) & 0x1F) | ( if (d & 0x100000) != 0 { !0x1F } else { 0}) }
-// pub fn get_Rm_s(d: u32) -> u32 { ((d >> 16) & 0xF) | ( if (d & 0x80000) != 0 { !0xF } else { 0}) }
-pub fn get_Rn_s(d: u32) -> u32 {
+// pub const fn get_Rm_s(d: u32) -> u32 { ((d >> 16) & 0x1F) | ( if (d & 0x100000) != 0 { !0x1F } else { 0}) }
+// pub const fn get_Rm_s(d: u32) -> u32 { ((d >> 16) & 0xF) | ( if (d & 0x80000) != 0 { !0xF } else { 0}) }
+pub const fn get_Rn_s(d: u32) -> u32 {
     ((d >> 5) & 0x1F) | (if (d & 0x200) != 0 { !0x1F } else { 0 })
 }
-pub fn get_Rs_s(d: u32) -> u32 {
+pub const fn get_Rs_s(d: u32) -> u32 {
     ((d >> 16) & 0x1F) | (if (d & 0x100000) != 0 { !0x1F } else { 0 })
 }
-pub fn get_Rt_s(d: u32) -> u32 {
+pub const fn get_Rt_s(d: u32) -> u32 {
     (d & 0x1F) | (if (d & 0x10) != 0 { !0x1F } else { 0 })
 }
-pub fn get_Rt2_s(d: u32) -> u32 {
+pub const fn get_Rt2_s(d: u32) -> u32 {
     ((d >> 10) & 0x1F) | (if (d & 0x4000) != 0 { !0x1F } else { 0 })
 }
-// pub fn get_S_s(d: u32) -> u32 { ((d >> 12) & 1) | ( if (d & 0x1000) != 0 { !1 } else { 0}) }
-// pub fn get_S_s(d: u32) -> u32 { ((d >> 22) & 1) | ( if (d & 0x400000) != 0 { !1 } else { 0}) }
-// pub fn get_S_s(d: u32) -> u32 { ((d >> 29) & 1) | ( if (d & 0x20000000) != 0 { !1 } else { 0}) }
-pub fn get_U_s(d: u32) -> u32 {
+// pub const fn get_S_s(d: u32) -> u32 { ((d >> 12) & 1) | ( if (d & 0x1000) != 0 { !1 } else { 0}) }
+// pub const fn get_S_s(d: u32) -> u32 { ((d >> 22) & 1) | ( if (d & 0x400000) != 0 { !1 } else { 0}) }
+// pub const fn get_S_s(d: u32) -> u32 { ((d >> 29) & 1) | ( if (d & 0x20000000) != 0 { !1 } else { 0}) }
+pub const fn get_U_s(d: u32) -> u32 {
     ((d >> 29) & 1) | (if (d & 0x20000000) != 0 { !1 } else { 0 })
 }
-pub fn get_V_s(d: u32) -> u32 {
+pub const fn get_V_s(d: u32) -> u32 {
     ((d >> 26) & 1) | (if (d & 0x4000000) != 0 { !1 } else { 0 })
 }
-pub fn get_W_s(d: u32) -> u32 {
+pub const fn get_W_s(d: u32) -> u32 {
     ((d >> 11) & 1) | (if (d & 0x800) != 0 { !1 } else { 0 })
 }
-// pub fn get_a_s(d: u32) -> u32 { ((d >> 18) & 1) | ( if (d & 0x40000) != 0 { !1 } else { 0}) }
-// pub fn get_a_s(d: u32) -> u32 { ((d >> 23) & 1) | ( if (d & 0x800000) != 0 { !1 } else { 0}) }
-pub fn get_b_s(d: u32) -> u32 {
+// pub const fn get_a_s(d: u32) -> u32 { ((d >> 18) & 1) | ( if (d & 0x40000) != 0 { !1 } else { 0}) }
+// pub const fn get_a_s(d: u32) -> u32 { ((d >> 23) & 1) | ( if (d & 0x800000) != 0 { !1 } else { 0}) }
+pub const fn get_b_s(d: u32) -> u32 {
     ((d >> 17) & 1) | (if (d & 0x20000) != 0 { !1 } else { 0 })
 }
-pub fn get_b40_s(d: u32) -> u32 {
+pub const fn get_b40_s(d: u32) -> u32 {
     ((d >> 19) & 0x1F) | (if (d & 0x800000) != 0 { !0x1F } else { 0 })
 }
-pub fn get_b5_s(d: u32) -> u32 {
+pub const fn get_b5_s(d: u32) -> u32 {
     ((d >> 31) & 1) | (if (d & 0x80000000) != 0 { !1 } else { 0 })
 }
-pub fn get_c_s(d: u32) -> u32 {
+pub const fn get_c_s(d: u32) -> u32 {
     ((d >> 16) & 1) | (if (d & 0x10000) != 0 { !1 } else { 0 })
 }
-pub fn get_cmode_s(d: u32) -> u32 {
+pub const fn get_cmode_s(d: u32) -> u32 {
     ((d >> 12) & 0xF) | (if (d & 0x8000) != 0 { !0xF } else { 0 })
 }
-// pub fn get_cond_s(d: u32) -> u32 { (d & 0xF) | ( if (d & 8 {) != 0 !0xF } else { 0}) }
-// pub fn get_cond_s(d: u32) -> u32 { ((d >> 12) & 0xF) | ( if (d & 0x8000) != 0 { !0xF } else { 0}) }
-pub fn get_d_s(d: u32) -> u32 {
+// pub const fn get_cond_s(d: u32) -> u32 { (d & 0xF) | ( if (d & 8 {) != 0 !0xF } else { 0}) }
+// pub const fn get_cond_s(d: u32) -> u32 { ((d >> 12) & 0xF) | ( if (d & 0x8000) != 0 { !0xF } else { 0}) }
+pub const fn get_d_s(d: u32) -> u32 {
     ((d >> 9) & 1) | (if (d & 0x200) != 0 { !1 } else { 0 })
 }
-pub fn get_e_s(d: u32) -> u32 {
+pub const fn get_e_s(d: u32) -> u32 {
     ((d >> 8) & 1) | (if (d & 0x100) != 0 { !1 } else { 0 })
 }
-pub fn get_f_s(d: u32) -> u32 {
+pub const fn get_f_s(d: u32) -> u32 {
     ((d >> 7) & 1) | (if (d & 0x80) != 0 { !1 } else { 0 })
 }
-pub fn get_g_s(d: u32) -> u32 {
+pub const fn get_g_s(d: u32) -> u32 {
     ((d >> 6) & 1) | (if (d & 0x40) != 0 { !1 } else { 0 })
 }
-pub fn get_h_s(d: u32) -> u32 {
+pub const fn get_h_s(d: u32) -> u32 {
     ((d >> 5) & 1) | (if (d & 0x20) != 0 { !1 } else { 0 })
 }
-pub fn get_hw_s(d: u32) -> u32 {
+pub const fn get_hw_s(d: u32) -> u32 {
     ((d >> 21) & 3) | (if (d & 0x400000) != 0 { !3 } else { 0 })
 }
-pub fn get_imm12_s(d: u32) -> u32 {
+pub const fn get_imm12_s(d: u32) -> u32 {
     ((d >> 10) & 0xFFF) | (if (d & 0x200000) != 0 { !0xFFF } else { 0 })
 }
-pub fn get_imm14_s(d: u32) -> u32 {
+pub const fn get_imm14_s(d: u32) -> u32 {
     ((d >> 5) & 0x3FFF) | (if (d & 0x40000) != 0 { !0x3FFF } else { 0 })
 }
-pub fn get_imm16_s(d: u32) -> u32 {
+pub const fn get_imm16_s(d: u32) -> u32 {
     ((d >> 5) & 0xFFFF) | (if (d & 0x100000) != 0 { !0xFFFF } else { 0 })
 }
-pub fn get_imm19_s(d: u32) -> u32 {
+pub const fn get_imm19_s(d: u32) -> u32 {
     ((d >> 5) & 0x7FFFF) | (if (d & 0x800000) != 0 { !0x7FFFF } else { 0 })
 }
-pub fn get_imm2_s(d: u32) -> u32 {
+pub const fn get_imm2_s(d: u32) -> u32 {
     ((d >> 12) & 3) | (if (d & 0x2000) != 0 { !3 } else { 0 })
 }
-pub fn get_imm26_s(d: u32) -> u32 {
+pub const fn get_imm26_s(d: u32) -> u32 {
     (d & 0x3FFFFFF) | (if (d & 0x2000000) != 0 { !0x3FFFFFF } else { 0 })
 }
-pub fn get_imm3_s(d: u32) -> u32 {
+pub const fn get_imm3_s(d: u32) -> u32 {
     ((d >> 10) & 7) | (if (d & 0x1000) != 0 { !7 } else { 0 })
 }
-pub fn get_imm4_s(d: u32) -> u32 {
+pub const fn get_imm4_s(d: u32) -> u32 {
     ((d >> 11) & 0xF) | (if (d & 0x4000) != 0 { !0xF } else { 0 })
 }
-// pub fn get_imm5_s(d: u32) -> u32 { ((d >> 16) & 0x1F) | ( if (d & 0x100000) != 0 { !0x1F } else { 0}) }
-// pub fn get_imm5_s(d: u32) -> u32 { ((d >> 5) & 0x1F) | ( if (d & 0x200) != 0 { !0x1F } else { 0}) }
-pub fn get_imm6_s(d: u32) -> u32 {
+// pub const fn get_imm5_s(d: u32) -> u32 { ((d >> 16) & 0x1F) | ( if (d & 0x100000) != 0 { !0x1F } else { 0}) }
+// pub const fn get_imm5_s(d: u32) -> u32 { ((d >> 5) & 0x1F) | ( if (d & 0x200) != 0 { !0x1F } else { 0}) }
+pub const fn get_imm6_s(d: u32) -> u32 {
     ((d >> 10) & 0x3F) | (if (d & 0x8000) != 0 { !0x3F } else { 0 })
 }
-pub fn get_imm7_s(d: u32) -> u32 {
+pub const fn get_imm7_s(d: u32) -> u32 {
     ((d >> 15) & 0x7F) | (if (d & 0x200000) != 0 { !0x7F } else { 0 })
 }
-pub fn get_imm8_s(d: u32) -> u32 {
+pub const fn get_imm8_s(d: u32) -> u32 {
     ((d >> 13) & 0xFF) | (if (d & 0x100000) != 0 { !0xFF } else { 0 })
 }
-pub fn get_imm9_s(d: u32) -> u32 {
+pub const fn get_imm9_s(d: u32) -> u32 {
     ((d >> 12) & 0x1FF) | (if (d & 0x100000) != 0 { !0x1FF } else { 0 })
 }
-pub fn get_immb_s(d: u32) -> u32 {
+pub const fn get_immb_s(d: u32) -> u32 {
     ((d >> 16) & 7) | (if (d & 0x40000) != 0 { !7 } else { 0 })
 }
-pub fn get_immh_s(d: u32) -> u32 {
+pub const fn get_immh_s(d: u32) -> u32 {
     ((d >> 19) & 0xF) | (if (d & 0x400000) != 0 { !0xF } else { 0 })
 }
-pub fn get_immhi_s(d: u32) -> u32 {
+pub const fn get_immhi_s(d: u32) -> u32 {
     ((d >> 5) & 0x7FFFF) | (if (d & 0x800000) != 0 { !0x7FFFF } else { 0 })
 }
-pub fn get_immlo_s(d: u32) -> u32 {
+pub const fn get_immlo_s(d: u32) -> u32 {
     ((d >> 29) & 3) | (if (d & 0x40000000) != 0 { !3 } else { 0 })
 }
-pub fn get_immr_s(d: u32) -> u32 {
+pub const fn get_immr_s(d: u32) -> u32 {
     ((d >> 16) & 0x3F) | (if (d & 0x200000) != 0 { !0x3F } else { 0 })
 }
-pub fn get_imms_s(d: u32) -> u32 {
+pub const fn get_imms_s(d: u32) -> u32 {
     ((d >> 10) & 0x3F) | (if (d & 0x8000) != 0 { !0x3F } else { 0 })
 }
-pub fn get_len_s(d: u32) -> u32 {
+pub const fn get_len_s(d: u32) -> u32 {
     ((d >> 13) & 3) | (if (d & 0x4000) != 0 { !3 } else { 0 })
 }
-pub fn get_nzcv_s(d: u32) -> u32 {
+pub const fn get_nzcv_s(d: u32) -> u32 {
     (d & 0xF) | (if (d & 8) != 0 { !0xF } else { 0 })
 }
-pub fn get_rmode_s(d: u32) -> u32 {
+pub const fn get_rmode_s(d: u32) -> u32 {
     ((d >> 19) & 3) | (if (d & 0x100000) != 0 { !3 } else { 0 })
 }
-pub fn get_scale_s(d: u32) -> u32 {
+pub const fn get_scale_s(d: u32) -> u32 {
     ((d >> 10) & 0x3F) | (if (d & 0x8000) != 0 { !0x3F } else { 0 })
 }
-pub fn get_sf_s(d: u32) -> u32 {
+pub const fn get_sf_s(d: u32) -> u32 {
     ((d >> 31) & 1) | (if (d & 0x80000000) != 0 { !1 } else { 0 })
 }
-pub fn get_shift_s(d: u32) -> u32 {
+pub const fn get_shift_s(d: u32) -> u32 {
     ((d >> 22) & 3) | (if (d & 0x800000) != 0 { !3 } else { 0 })
 }
-// pub fn get_size_s(d: u32) -> u32 { ((d >> 10) & 3) | ( if (d & 0x800) != 0 { !3 } else { 0}) }
-// pub fn get_size_s(d: u32) -> u32 { ((d >> 22) & 3) | ( if (d & 0x800000) != 0 { !3 } else { 0}) }
-// pub fn get_size_s(d: u32) -> u32 { ((d >> 30) & 3) | ( if (d & 0x80000000) != 0 { !3 } else { 0}) }
-pub fn get_type_s(d: u32) -> u32 {
+// pub const fn get_size_s(d: u32) -> u32 { ((d >> 10) & 3) | ( if (d & 0x800) != 0 { !3 } else { 0}) }
+// pub const fn get_size_s(d: u32) -> u32 { ((d >> 22) & 3) | ( if (d & 0x800000) != 0 { !3 } else { 0}) }
+// pub const fn get_size_s(d: u32) -> u32 { ((d >> 30) & 3) | ( if (d & 0x80000000) != 0 { !3 } else { 0}) }
+pub const fn get_type_s(d: u32) -> u32 {
     ((d >> 22) & 3) | (if (d & 0x800000) != 0 { !3 } else { 0 })
 }
 
-pub fn decode_root(d: u32) -> Option<InstructionKind> {
+pub const fn decode_root(d: u32) -> Option<InstructionKind> {
     let op0 = (d >> 25) & 0xF;
     if (d & 0x0e000000) == 0x0a000000 {
         return decode_dataproc_register(d);
@@ -5229,8 +5229,8 @@ pub fn decode_root(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_dataproc_immediate(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1c000000) == 0x10000000);
+pub const fn decode_dataproc_immediate(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1c000000) == 0x10000000) as usize];
     let op0 = (d >> 23) & 7;
     if (d & 0x1f800000) == 0x12000000 {
         return decode_log_imm(d);
@@ -5252,8 +5252,8 @@ pub fn decode_dataproc_immediate(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_branch_and_sys(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1c000000) == 0x14000000);
+pub const fn decode_branch_and_sys(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1c000000) == 0x14000000) as usize];
     let op0 = (d >> 29) & 7;
     let op1 = (d >> 22) & 0xF;
     if (d & 0xffc00000) == 0xd5000000 {
@@ -5279,8 +5279,8 @@ pub fn decode_branch_and_sys(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_load_and_store(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x0a000000) == 0x08000000);
+pub const fn decode_load_and_store(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x0a000000) == 0x08000000) as usize];
     let op0 = (d >> 31) & 1;
     let op1 = (d >> 28) & 3;
     let op2 = (d >> 26) & 1;
@@ -5343,8 +5343,8 @@ pub fn decode_load_and_store(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_dataproc_register(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x0e000000) == 0x0a000000);
+pub const fn decode_dataproc_register(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x0e000000) == 0x0a000000) as usize];
     let op0 = (d >> 30) & 1;
     let op1 = (d >> 28) & 1;
     let op2 = (d >> 21) & 0xF;
@@ -5381,8 +5381,8 @@ pub fn decode_dataproc_register(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_dataproc_simd(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x0e000000) == 0x0e000000);
+pub const fn decode_dataproc_simd(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x0e000000) == 0x0e000000) as usize];
     let op0 = (d >> 28) & 0xF;
     let op1 = (d >> 23) & 3;
     let op2 = (d >> 19) & 0xF;
@@ -5512,8 +5512,8 @@ pub fn decode_dataproc_simd(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_compbranch(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x7e000000) == 0x34000000);
+pub const fn decode_compbranch(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x7e000000) == 0x34000000) as usize];
     let Rt = d & 0x1F;
     let imm19 = (d >> 5) & 0x7FFFF;
     let op = (d >> 24) & 1;
@@ -5544,8 +5544,8 @@ pub fn decode_compbranch(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_condbranch(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xfe000000) == 0x54000000);
+pub const fn decode_condbranch(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xfe000000) == 0x54000000) as usize];
     let cond = d & 0xF;
     let imm19 = (d >> 5) & 0x7FFFF;
     let o0 = (d >> 4) & 1;
@@ -5558,8 +5558,8 @@ pub fn decode_condbranch(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_exception(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xff000000) == 0xd4000000);
+pub const fn decode_exception(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xff000000) == 0xd4000000) as usize];
     let LL = d & 3;
     let imm16 = (d >> 5) & 0xFFFF;
     let op2 = (d >> 2) & 7;
@@ -5590,8 +5590,8 @@ pub fn decode_exception(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_system(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xffc00000) == 0xd5000000);
+pub const fn decode_system(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xffc00000) == 0xd5000000) as usize];
     let CRm = (d >> 8) & 0xF;
     let CRn = (d >> 12) & 0xF;
     let L = (d >> 21) & 1;
@@ -5733,8 +5733,8 @@ pub fn decode_system(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_testbranch(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x7e000000) == 0x36000000);
+pub const fn decode_testbranch(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x7e000000) == 0x36000000) as usize];
     let Rt = d & 0x1F;
     let b40 = (d >> 19) & 0x1F;
     let b5 = (d >> 31) & 1;
@@ -5758,8 +5758,8 @@ pub fn decode_testbranch(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_branch_imm(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x7c000000) == 0x14000000);
+pub const fn decode_branch_imm(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x7c000000) == 0x14000000) as usize];
     let imm26 = d & 0x3FFFFFF;
     let op = (d >> 31) & 1;
     if (d & 0xfc000000) == 0x14000000 {
@@ -5770,8 +5770,8 @@ pub fn decode_branch_imm(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_branch_reg(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xfe000000) == 0xd6000000);
+pub const fn decode_branch_reg(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xfe000000) == 0xd6000000) as usize];
     let Rn = (d >> 5) & 0x1F;
     let op2 = (d >> 16) & 0x1F;
     let op3 = (d >> 10) & 0x3F;
@@ -5842,8 +5842,8 @@ pub fn decode_branch_reg(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisdlse(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xbfbf0000) == 0x0c000000);
+pub const fn decode_asisdlse(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xbfbf0000) == 0x0c000000) as usize];
     let L = (d >> 22) & 1;
     let Q = (d >> 30) & 1;
     let Rn = (d >> 5) & 0x1F;
@@ -5964,8 +5964,8 @@ pub fn decode_asisdlse(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisdlsep(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xbfa00000) == 0x0c800000);
+pub const fn decode_asisdlsep(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xbfa00000) == 0x0c800000) as usize];
     let L = (d >> 22) & 1;
     let Q = (d >> 30) & 1;
     let Rm = (d >> 16) & 0x1F;
@@ -6213,8 +6213,8 @@ pub fn decode_asisdlsep(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisdlso(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xbf9f0000) == 0x0d000000);
+pub const fn decode_asisdlso(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xbf9f0000) == 0x0d000000) as usize];
     let L = (d >> 22) & 1;
     let Q = (d >> 30) & 1;
     let R = (d >> 21) & 1;
@@ -6521,8 +6521,8 @@ pub fn decode_asisdlso(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisdlsop(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xbf800000) == 0x0d800000);
+pub const fn decode_asisdlsop(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xbf800000) == 0x0d800000) as usize];
     let L = (d >> 22) & 1;
     let Q = (d >> 30) & 1;
     let R = (d >> 21) & 1;
@@ -7162,8 +7162,8 @@ pub fn decode_asisdlsop(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_memop(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3b200c00) == 0x38200000);
+pub const fn decode_memop(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3b200c00) == 0x38200000) as usize];
     let A = (d >> 23) & 1;
     let R = (d >> 22) & 1;
     let Rn = (d >> 5) & 0x1F;
@@ -8595,8 +8595,8 @@ pub fn decode_memop(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_loadlit(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3b000000) == 0x18000000);
+pub const fn decode_loadlit(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3b000000) == 0x18000000) as usize];
     let Rt = d & 0x1F;
     let V = (d >> 26) & 1;
     let imm19 = (d >> 5) & 0x7FFFF;
@@ -8645,8 +8645,8 @@ pub fn decode_loadlit(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_ldstexcl(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3f000000) == 0x08000000);
+pub const fn decode_ldstexcl(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3f000000) == 0x08000000) as usize];
     let L = (d >> 22) & 1;
     let Rn = (d >> 5) & 0x1F;
     let Rs = (d >> 16) & 0x1F;
@@ -9146,8 +9146,8 @@ pub fn decode_ldstexcl(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_ldstnapair_offs(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3b800000) == 0x28000000);
+pub const fn decode_ldstnapair_offs(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3b800000) == 0x28000000) as usize];
     let L = (d >> 22) & 1;
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
@@ -9237,8 +9237,8 @@ pub fn decode_ldstnapair_offs(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_ldst_immpost(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3b200c00) == 0x38000400);
+pub const fn decode_ldst_immpost(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3b200c00) == 0x38000400) as usize];
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
     let V = (d >> 26) & 1;
@@ -9408,8 +9408,8 @@ pub fn decode_ldst_immpost(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_ldst_immpre(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3b200c00) == 0x38000c00);
+pub const fn decode_ldst_immpre(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3b200c00) == 0x38000c00) as usize];
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
     let V = (d >> 26) & 1;
@@ -9579,8 +9579,8 @@ pub fn decode_ldst_immpre(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_ldst_pac(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3b200400) == 0x38200400);
+pub const fn decode_ldst_pac(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3b200400) == 0x38200400) as usize];
     let M = (d >> 23) & 1;
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
@@ -9627,8 +9627,8 @@ pub fn decode_ldst_pac(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_ldst_regoff(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3b200c00) == 0x38200800);
+pub const fn decode_ldst_regoff(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3b200c00) == 0x38200800) as usize];
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
@@ -9903,8 +9903,8 @@ pub fn decode_ldst_regoff(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_ldst_unpriv(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3b200c00) == 0x38000800);
+pub const fn decode_ldst_unpriv(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3b200c00) == 0x38000800) as usize];
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
     let V = (d >> 26) & 1;
@@ -10004,8 +10004,8 @@ pub fn decode_ldst_unpriv(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_ldst_unscaled(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3b200c00) == 0x38000000);
+pub const fn decode_ldst_unscaled(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3b200c00) == 0x38000000) as usize];
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
     let V = (d >> 26) & 1;
@@ -10182,8 +10182,8 @@ pub fn decode_ldst_unscaled(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_ldst_pos(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3b000000) == 0x39000000);
+pub const fn decode_ldst_pos(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3b000000) == 0x39000000) as usize];
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
     let V = (d >> 26) & 1;
@@ -10360,8 +10360,8 @@ pub fn decode_ldst_pos(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_ldstpair_off(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3b800000) == 0x29000000);
+pub const fn decode_ldstpair_off(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3b800000) == 0x29000000) as usize];
     let L = (d >> 22) & 1;
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
@@ -10459,8 +10459,8 @@ pub fn decode_ldstpair_off(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_ldstpair_post(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3b800000) == 0x28800000);
+pub const fn decode_ldstpair_post(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3b800000) == 0x28800000) as usize];
     let L = (d >> 22) & 1;
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
@@ -10558,8 +10558,8 @@ pub fn decode_ldstpair_post(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_ldstpair_pre(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x3b800000) == 0x29800000);
+pub const fn decode_ldstpair_pre(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x3b800000) == 0x29800000) as usize];
     let L = (d >> 22) & 1;
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
@@ -10657,8 +10657,8 @@ pub fn decode_ldstpair_pre(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_addsub_imm(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1f000000) == 0x11000000);
+pub const fn decode_addsub_imm(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1f000000) == 0x11000000) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let S = (d >> 29) & 1;
@@ -10732,8 +10732,8 @@ pub fn decode_addsub_imm(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_bitfield(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1f800000) == 0x13000000);
+pub const fn decode_bitfield(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1f800000) == 0x13000000) as usize];
     let N = (d >> 22) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -10791,8 +10791,8 @@ pub fn decode_bitfield(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_extract(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1f800000) == 0x13800000);
+pub const fn decode_extract(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1f800000) == 0x13800000) as usize];
     let N = (d >> 22) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -10819,8 +10819,8 @@ pub fn decode_extract(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_log_imm(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1f800000) == 0x12000000);
+pub const fn decode_log_imm(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1f800000) == 0x12000000) as usize];
     let N = (d >> 22) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -10898,8 +10898,8 @@ pub fn decode_log_imm(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_movewide(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1f800000) == 0x12800000);
+pub const fn decode_movewide(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1f800000) == 0x12800000) as usize];
     let Rd = d & 0x1F;
     let hw = (d >> 21) & 3;
     let imm16 = (d >> 5) & 0xFFFF;
@@ -10949,8 +10949,8 @@ pub fn decode_movewide(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_pcreladdr(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1f000000) == 0x10000000);
+pub const fn decode_pcreladdr(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1f000000) == 0x10000000) as usize];
     let Rd = d & 0x1F;
     let immhi = (d >> 5) & 0x7FFFF;
     let immlo = (d >> 29) & 3;
@@ -10971,8 +10971,8 @@ pub fn decode_pcreladdr(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_addsub_ext(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1f200000) == 0x0b200000);
+pub const fn decode_addsub_ext(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1f200000) == 0x0b200000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -11056,8 +11056,8 @@ pub fn decode_addsub_ext(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_addsub_shift(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1f200000) == 0x0b000000);
+pub const fn decode_addsub_shift(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1f200000) == 0x0b000000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -11140,8 +11140,8 @@ pub fn decode_addsub_shift(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_addsub_carry(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1fe00000) == 0x1a000000);
+pub const fn decode_addsub_carry(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1fe00000) == 0x1a000000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -11207,8 +11207,8 @@ pub fn decode_addsub_carry(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_condcmp_imm(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1fe00800) == 0x1a400800);
+pub const fn decode_condcmp_imm(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1fe00800) == 0x1a400800) as usize];
     let Rn = (d >> 5) & 0x1F;
     let S = (d >> 29) & 1;
     let cond = (d >> 12) & 0xF;
@@ -11252,8 +11252,8 @@ pub fn decode_condcmp_imm(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_condcmp_reg(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1fe00800) == 0x1a400000);
+pub const fn decode_condcmp_reg(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1fe00800) == 0x1a400000) as usize];
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let S = (d >> 29) & 1;
@@ -11297,8 +11297,8 @@ pub fn decode_condcmp_reg(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_condsel(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1fe00000) == 0x1a800000);
+pub const fn decode_condsel(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1fe00000) == 0x1a800000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -11373,8 +11373,8 @@ pub fn decode_condsel(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_dp_1src(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x5fe00000) == 0x5ac00000);
+pub const fn decode_dp_1src(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x5fe00000) == 0x5ac00000) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let S = (d >> 29) & 1;
@@ -11527,8 +11527,8 @@ pub fn decode_dp_1src(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_dp_2src(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x5fe00000) == 0x1ac00000);
+pub const fn decode_dp_2src(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x5fe00000) == 0x1ac00000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -11684,8 +11684,8 @@ pub fn decode_dp_2src(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_dp_3src(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1f000000) == 0x1b000000);
+pub const fn decode_dp_3src(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1f000000) == 0x1b000000) as usize];
     let Ra = (d >> 10) & 0x1F;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -11776,8 +11776,8 @@ pub fn decode_dp_3src(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_log_shift(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x1f000000) == 0x0a000000);
+pub const fn decode_log_shift(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x1f000000) == 0x0a000000) as usize];
     let N = (d >> 21) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -11932,8 +11932,8 @@ pub fn decode_log_shift(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimdall(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x9f3e0c00) == 0x0e300800);
+pub const fn decode_asimdall(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x9f3e0c00) == 0x0e300800) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -12058,8 +12058,8 @@ pub fn decode_asimdall(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimdins(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x9fe08400) == 0x0e000400);
+pub const fn decode_asimdins(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x9fe08400) == 0x0e000400) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -12127,8 +12127,8 @@ pub fn decode_asimdins(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimdext(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xbf208400) == 0x2e000000);
+pub const fn decode_asimdext(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xbf208400) == 0x2e000000) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -12146,8 +12146,8 @@ pub fn decode_asimdext(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimdimm(v: u32) -> Option<InstructionKind> {
-    assert!((v & 0x9ff80400) == 0x0f000400);
+pub const fn decode_asimdimm(v: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((v & 0x9ff80400) == 0x0f000400) as usize];
     let Q = (v >> 30) & 1;
     let Rd = v & 0x1F;
     let a = (v >> 18) & 1;
@@ -12394,8 +12394,8 @@ pub fn decode_asimdimm(v: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimdperm(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xbf208c00) == 0x0e000800);
+pub const fn decode_asimdperm(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xbf208c00) == 0x0e000800) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -12458,8 +12458,8 @@ pub fn decode_asimdperm(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisdone(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xdfe08400) == 0x5e000400);
+pub const fn decode_asisdone(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xdfe08400) == 0x5e000400) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let imm4 = (d >> 11) & 0xF;
@@ -12474,8 +12474,8 @@ pub fn decode_asisdone(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisdpair(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xdf3e0c00) == 0x5e300800);
+pub const fn decode_asisdpair(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xdf3e0c00) == 0x5e300800) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let U = (d >> 29) & 1;
@@ -12555,8 +12555,8 @@ pub fn decode_asisdpair(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisdshf(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xdf800400) == 0x5f000400);
+pub const fn decode_asisdshf(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xdf800400) == 0x5f000400) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let U = (d >> 29) & 1;
@@ -12757,8 +12757,8 @@ pub fn decode_asisdshf(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisddiff(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xdf200c00) == 0x5e200000);
+pub const fn decode_asisddiff(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xdf200c00) == 0x5e200000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -12791,8 +12791,8 @@ pub fn decode_asisddiff(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisdsame(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xdf200400) == 0x5e200400);
+pub const fn decode_asisdsame(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xdf200400) == 0x5e200400) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -13049,8 +13049,8 @@ pub fn decode_asisdsame(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisdsamefp16(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xdf60c400) == 0x5e400400);
+pub const fn decode_asisdsamefp16(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xdf60c400) == 0x5e400400) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -13122,8 +13122,8 @@ pub fn decode_asisdsamefp16(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisdsame2(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xdf208400) == 0x5e008400);
+pub const fn decode_asisdsame2(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xdf208400) == 0x5e008400) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -13148,8 +13148,8 @@ pub fn decode_asisdsame2(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisdmisc(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xdf3e0c00) == 0x5e200800);
+pub const fn decode_asisdmisc(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xdf3e0c00) == 0x5e200800) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let U = (d >> 29) & 1;
@@ -13402,8 +13402,8 @@ pub fn decode_asisdmisc(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisdmiscfp16(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xdf7e0c00) == 0x5e780800);
+pub const fn decode_asisdmiscfp16(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xdf7e0c00) == 0x5e780800) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let U = (d >> 29) & 1;
@@ -13531,8 +13531,8 @@ pub fn decode_asisdmiscfp16(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asisdelem(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xdf000400) == 0x5f000000);
+pub const fn decode_asisdelem(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xdf000400) == 0x5f000000) as usize];
     let H = (d >> 11) & 1;
     let L = (d >> 21) & 1;
     let M = (d >> 20) & 1;
@@ -13705,8 +13705,8 @@ pub fn decode_asisdelem(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimdshf(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x9f800400) == 0x0f000400 && (d & 0x780000) != 0x000000);
+pub const fn decode_asimdshf(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x9f800400) == 0x0f000400 && (d & 0x780000) != 0x000000) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -13968,8 +13968,8 @@ pub fn decode_asimdshf(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimdtbl(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xbf208c00) == 0x0e000000);
+pub const fn decode_asimdtbl(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xbf208c00) == 0x0e000000) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -14043,8 +14043,8 @@ pub fn decode_asimdtbl(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimddiff(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x9f200c00) == 0x0e200000);
+pub const fn decode_asimddiff(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x9f200c00) == 0x0e200000) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -14288,8 +14288,8 @@ pub fn decode_asimddiff(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimdsame(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x9f200400) == 0x0e200400);
+pub const fn decode_asimdsame(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x9f200400) == 0x0e200400) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -14984,8 +14984,8 @@ pub fn decode_asimdsame(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimdsamefp16(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x9f60c400) == 0x0e400400);
+pub const fn decode_asimdsamefp16(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x9f60c400) == 0x0e400400) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -15187,8 +15187,8 @@ pub fn decode_asimdsamefp16(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimdsame2(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x9f208400) == 0x0e008400);
+pub const fn decode_asimdsame2(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x9f208400) == 0x0e008400) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -15254,8 +15254,8 @@ pub fn decode_asimdsame2(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimdmisc(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x9f3e0c00) == 0x0e200800);
+pub const fn decode_asimdmisc(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x9f3e0c00) == 0x0e200800) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -15758,8 +15758,8 @@ pub fn decode_asimdmisc(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimdmiscfp16(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x9f7e0c00) == 0x0e780800);
+pub const fn decode_asimdmiscfp16(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x9f7e0c00) == 0x0e780800) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -15971,8 +15971,8 @@ pub fn decode_asimdmiscfp16(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_asimdelem(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x9f000400) == 0x0f000000);
+pub const fn decode_asimdelem(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x9f000400) == 0x0f000000) as usize];
     let H = (d >> 11) & 1;
     let L = (d >> 21) & 1;
     let M = (d >> 20) & 1;
@@ -16317,8 +16317,8 @@ pub fn decode_asimdelem(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_float2fix(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x5f200000) == 0x1e000000);
+pub const fn decode_float2fix(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x5f200000) == 0x1e000000) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let S = (d >> 29) & 1;
@@ -16497,8 +16497,8 @@ pub fn decode_float2fix(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_float2int(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x5f20fc00) == 0x1e200000);
+pub const fn decode_float2int(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x5f20fc00) == 0x1e200000) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let S = (d >> 29) & 1;
@@ -17006,8 +17006,8 @@ pub fn decode_float2int(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_cryptoaes(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xff3e0c00) == 0x4e280800);
+pub const fn decode_cryptoaes(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xff3e0c00) == 0x4e280800) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let opcode = (d >> 12) & 0x1F;
@@ -17038,8 +17038,8 @@ pub fn decode_cryptoaes(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_crypto4(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xff808000) == 0xce000000);
+pub const fn decode_crypto4(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xff808000) == 0xce000000) as usize];
     let Op0 = (d >> 21) & 3;
     let Ra = (d >> 10) & 0x1F;
     let Rd = d & 0x1F;
@@ -17071,8 +17071,8 @@ pub fn decode_crypto4(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_cryptosha3(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xff208c00) == 0x5e000000);
+pub const fn decode_cryptosha3(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xff208c00) == 0x5e000000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -17129,8 +17129,8 @@ pub fn decode_cryptosha3(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_cryptosha512_3(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xffe0b000) == 0xce608000);
+pub const fn decode_cryptosha512_3(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xffe0b000) == 0xce608000) as usize];
     let O = (d >> 14) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -17187,8 +17187,8 @@ pub fn decode_cryptosha512_3(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_crypto3_imm2(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xffe0c000) == 0xce408000);
+pub const fn decode_crypto3_imm2(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xffe0c000) == 0xce408000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -17228,8 +17228,8 @@ pub fn decode_crypto3_imm2(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_crypto3_imm6(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xffe00000) == 0xce800000);
+pub const fn decode_crypto3_imm6(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xffe00000) == 0xce800000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -17244,8 +17244,8 @@ pub fn decode_crypto3_imm6(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_cryptosha2(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xff3e0c00) == 0x5e280800);
+pub const fn decode_cryptosha2(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xff3e0c00) == 0x5e280800) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let opcode = (d >> 12) & 0x1F;
@@ -17270,8 +17270,8 @@ pub fn decode_cryptosha2(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_cryptosha512_2(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0xfffff000) == 0xcec08000);
+pub const fn decode_cryptosha512_2(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0xfffff000) == 0xcec08000) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let opcode = (d >> 10) & 3;
@@ -17289,8 +17289,8 @@ pub fn decode_cryptosha512_2(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_floatcmp(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x5f203c00) == 0x1e202000);
+pub const fn decode_floatcmp(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x5f203c00) == 0x1e202000) as usize];
     let M = (d >> 31) & 1;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -17372,8 +17372,8 @@ pub fn decode_floatcmp(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_floatccmp(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x5f200c00) == 0x1e200400);
+pub const fn decode_floatccmp(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x5f200c00) == 0x1e200400) as usize];
     let M = (d >> 31) & 1;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -17432,8 +17432,8 @@ pub fn decode_floatccmp(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_floatsel(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x5f200c00) == 0x1e200c00);
+pub const fn decode_floatsel(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x5f200c00) == 0x1e200c00) as usize];
     let M = (d >> 31) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -17467,8 +17467,8 @@ pub fn decode_floatsel(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_floatdp1(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x5f207c00) == 0x1e204000);
+pub const fn decode_floatdp1(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x5f207c00) == 0x1e204000) as usize];
     let M = (d >> 31) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -17711,8 +17711,8 @@ pub fn decode_floatdp1(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_floatdp2(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x5f200c00) == 0x1e200800);
+pub const fn decode_floatdp2(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x5f200c00) == 0x1e200800) as usize];
     let M = (d >> 31) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -17911,8 +17911,8 @@ pub fn decode_floatdp2(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_floatdp3(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x5f000000) == 0x1f000000);
+pub const fn decode_floatdp3(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x5f000000) == 0x1f000000) as usize];
     let M = (d >> 31) & 1;
     let Ra = (d >> 10) & 0x1F;
     let Rd = d & 0x1F;
@@ -18020,8 +18020,8 @@ pub fn decode_floatdp3(d: u32) -> Option<InstructionKind> {
     }
     None
 }
-pub fn decode_floatimm(d: u32) -> Option<InstructionKind> {
-    assert!((d & 0x5f201c00) == 0x1e201000);
+pub const fn decode_floatimm(d: u32) -> Option<InstructionKind> {
+    ["Could not decode."][!((d & 0x5f201c00) == 0x1e201000) as usize];
     let M = (d >> 31) & 1;
     let Rd = d & 0x1F;
     let S = (d >> 29) & 1;

@@ -25,7 +25,7 @@ pub const fn decode_root(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_dataproc_immediate(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1c000000) == 0x10000000) as usize];
+    ["Could not decode."][((d & 0x1c000000) != 0x10000000) as usize];
     let op0 = (d >> 23) & 7;
     if (d & 0x1f800000) == 0x12000000 {
         return decode_log_imm(d);
@@ -48,7 +48,7 @@ pub const fn decode_dataproc_immediate(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_branch_and_sys(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1c000000) == 0x14000000) as usize];
+    ["Could not decode."][((d & 0x1c000000) != 0x14000000) as usize];
     let op0 = (d >> 29) & 7;
     let op1 = (d >> 22) & 0xF;
     if (d & 0xffc00000) == 0xd5000000 {
@@ -75,7 +75,7 @@ pub const fn decode_branch_and_sys(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_load_and_store(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x0a000000) == 0x08000000) as usize];
+    ["Could not decode."][((d & 0x0a000000) != 0x08000000) as usize];
     let op0 = (d >> 31) & 1;
     let op1 = (d >> 28) & 3;
     let op2 = (d >> 26) & 1;
@@ -139,7 +139,7 @@ pub const fn decode_load_and_store(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_dataproc_register(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x0e000000) == 0x0a000000) as usize];
+    ["Could not decode."][((d & 0x0e000000) != 0x0a000000) as usize];
     let op0 = (d >> 30) & 1;
     let op1 = (d >> 28) & 1;
     let op2 = (d >> 21) & 0xF;
@@ -177,7 +177,7 @@ pub const fn decode_dataproc_register(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_dataproc_simd(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x0e000000) == 0x0e000000) as usize];
+    ["Could not decode."][((d & 0x0e000000) != 0x0e000000) as usize];
     let op0 = (d >> 28) & 0xF;
     let op1 = (d >> 23) & 3;
     let op2 = (d >> 19) & 0xF;
@@ -308,7 +308,7 @@ pub const fn decode_dataproc_simd(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_compbranch(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x7e000000) == 0x34000000) as usize];
+    ["Could not decode."][((d & 0x7e000000) != 0x34000000) as usize];
     let Rt = d & 0x1F;
     let imm19 = (d >> 5) & 0x7FFFF;
     let op = (d >> 24) & 1;
@@ -340,7 +340,7 @@ pub const fn decode_compbranch(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_condbranch(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xfe000000) == 0x54000000) as usize];
+    ["Could not decode."][((d & 0xfe000000) != 0x54000000) as usize];
     let cond = d & 0xF;
     let imm19 = (d >> 5) & 0x7FFFF;
     let o0 = (d >> 4) & 1;
@@ -354,7 +354,7 @@ pub const fn decode_condbranch(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_exception(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xff000000) == 0xd4000000) as usize];
+    ["Could not decode."][((d & 0xff000000) != 0xd4000000) as usize];
     let LL = d & 3;
     let imm16 = (d >> 5) & 0xFFFF;
     let op2 = (d >> 2) & 7;
@@ -386,7 +386,7 @@ pub const fn decode_exception(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_system(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xffc00000) == 0xd5000000) as usize];
+    ["Could not decode."][((d & 0xffc00000) != 0xd5000000) as usize];
     let CRm = (d >> 8) & 0xF;
     let CRn = (d >> 12) & 0xF;
     let L = (d >> 21) & 1;
@@ -529,7 +529,7 @@ pub const fn decode_system(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_testbranch(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x7e000000) == 0x36000000) as usize];
+    ["Could not decode."][((d & 0x7e000000) != 0x36000000) as usize];
     let Rt = d & 0x1F;
     let b40 = (d >> 19) & 0x1F;
     let b5 = (d >> 31) & 1;
@@ -554,7 +554,7 @@ pub const fn decode_testbranch(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_branch_imm(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x7c000000) == 0x14000000) as usize];
+    ["Could not decode."][((d & 0x7c000000) != 0x14000000) as usize];
     let imm26 = d & 0x3FFFFFF;
     let op = (d >> 31) & 1;
     if (d & 0xfc000000) == 0x14000000 {
@@ -566,7 +566,7 @@ pub const fn decode_branch_imm(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_branch_reg(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xfe000000) == 0xd6000000) as usize];
+    ["Could not decode."][((d & 0xfe000000) != 0xd6000000) as usize];
     let Rn = (d >> 5) & 0x1F;
     let op2 = (d >> 16) & 0x1F;
     let op3 = (d >> 10) & 0x3F;
@@ -638,7 +638,7 @@ pub const fn decode_branch_reg(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisdlse(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xbfbf0000) == 0x0c000000) as usize];
+    ["Could not decode."][((d & 0xbfbf0000) != 0x0c000000) as usize];
     let L = (d >> 22) & 1;
     let Q = (d >> 30) & 1;
     let Rn = (d >> 5) & 0x1F;
@@ -760,7 +760,7 @@ pub const fn decode_asisdlse(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisdlsep(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xbfa00000) == 0x0c800000) as usize];
+    ["Could not decode."][((d & 0xbfa00000) != 0x0c800000) as usize];
     let L = (d >> 22) & 1;
     let Q = (d >> 30) & 1;
     let Rm = (d >> 16) & 0x1F;
@@ -1009,7 +1009,7 @@ pub const fn decode_asisdlsep(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisdlso(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xbf9f0000) == 0x0d000000) as usize];
+    ["Could not decode."][((d & 0xbf9f0000) != 0x0d000000) as usize];
     let L = (d >> 22) & 1;
     let Q = (d >> 30) & 1;
     let R = (d >> 21) & 1;
@@ -1317,7 +1317,7 @@ pub const fn decode_asisdlso(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisdlsop(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xbf800000) == 0x0d800000) as usize];
+    ["Could not decode."][((d & 0xbf800000) != 0x0d800000) as usize];
     let L = (d >> 22) & 1;
     let Q = (d >> 30) & 1;
     let R = (d >> 21) & 1;
@@ -1958,7 +1958,7 @@ pub const fn decode_asisdlsop(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_memop(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3b200c00) == 0x38200000) as usize];
+    ["Could not decode."][((d & 0x3b200c00) != 0x38200000) as usize];
     let A = (d >> 23) & 1;
     let R = (d >> 22) & 1;
     let Rn = (d >> 5) & 0x1F;
@@ -3391,7 +3391,7 @@ pub const fn decode_memop(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_loadlit(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3b000000) == 0x18000000) as usize];
+    ["Could not decode."][((d & 0x3b000000) != 0x18000000) as usize];
     let Rt = d & 0x1F;
     let V = (d >> 26) & 1;
     let imm19 = (d >> 5) & 0x7FFFF;
@@ -3441,7 +3441,7 @@ pub const fn decode_loadlit(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_ldstexcl(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3f000000) == 0x08000000) as usize];
+    ["Could not decode."][((d & 0x3f000000) != 0x08000000) as usize];
     let L = (d >> 22) & 1;
     let Rn = (d >> 5) & 0x1F;
     let Rs = (d >> 16) & 0x1F;
@@ -3942,7 +3942,7 @@ pub const fn decode_ldstexcl(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_ldstnapair_offs(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3b800000) == 0x28000000) as usize];
+    ["Could not decode."][((d & 0x3b800000) != 0x28000000) as usize];
     let L = (d >> 22) & 1;
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
@@ -4033,7 +4033,7 @@ pub const fn decode_ldstnapair_offs(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_ldst_immpost(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3b200c00) == 0x38000400) as usize];
+    ["Could not decode."][((d & 0x3b200c00) != 0x38000400) as usize];
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
     let V = (d >> 26) & 1;
@@ -4204,7 +4204,7 @@ pub const fn decode_ldst_immpost(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_ldst_immpre(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3b200c00) == 0x38000c00) as usize];
+    ["Could not decode."][((d & 0x3b200c00) != 0x38000c00) as usize];
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
     let V = (d >> 26) & 1;
@@ -4375,7 +4375,7 @@ pub const fn decode_ldst_immpre(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_ldst_pac(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3b200400) == 0x38200400) as usize];
+    ["Could not decode."][((d & 0x3b200400) != 0x38200400) as usize];
     let M = (d >> 23) & 1;
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
@@ -4423,7 +4423,7 @@ pub const fn decode_ldst_pac(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_ldst_regoff(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3b200c00) == 0x38200800) as usize];
+    ["Could not decode."][((d & 0x3b200c00) != 0x38200800) as usize];
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
@@ -4699,7 +4699,7 @@ pub const fn decode_ldst_regoff(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_ldst_unpriv(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3b200c00) == 0x38000800) as usize];
+    ["Could not decode."][((d & 0x3b200c00) != 0x38000800) as usize];
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
     let V = (d >> 26) & 1;
@@ -4800,7 +4800,7 @@ pub const fn decode_ldst_unpriv(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_ldst_unscaled(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3b200c00) == 0x38000000) as usize];
+    ["Could not decode."][((d & 0x3b200c00) != 0x38000000) as usize];
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
     let V = (d >> 26) & 1;
@@ -4978,7 +4978,7 @@ pub const fn decode_ldst_unscaled(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_ldst_pos(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3b000000) == 0x39000000) as usize];
+    ["Could not decode."][((d & 0x3b000000) != 0x39000000) as usize];
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
     let V = (d >> 26) & 1;
@@ -5156,7 +5156,7 @@ pub const fn decode_ldst_pos(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_ldstpair_off(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3b800000) == 0x29000000) as usize];
+    ["Could not decode."][((d & 0x3b800000) != 0x29000000) as usize];
     let L = (d >> 22) & 1;
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
@@ -5255,7 +5255,7 @@ pub const fn decode_ldstpair_off(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_ldstpair_post(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3b800000) == 0x28800000) as usize];
+    ["Could not decode."][((d & 0x3b800000) != 0x28800000) as usize];
     let L = (d >> 22) & 1;
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
@@ -5354,7 +5354,7 @@ pub const fn decode_ldstpair_post(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_ldstpair_pre(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x3b800000) == 0x29800000) as usize];
+    ["Could not decode."][((d & 0x3b800000) != 0x29800000) as usize];
     let L = (d >> 22) & 1;
     let Rn = (d >> 5) & 0x1F;
     let Rt = d & 0x1F;
@@ -5453,7 +5453,7 @@ pub const fn decode_ldstpair_pre(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_addsub_imm(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1f000000) == 0x11000000) as usize];
+    ["Could not decode."][((d & 0x1f000000) != 0x11000000) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let S = (d >> 29) & 1;
@@ -5528,7 +5528,7 @@ pub const fn decode_addsub_imm(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_bitfield(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1f800000) == 0x13000000) as usize];
+    ["Could not decode."][((d & 0x1f800000) != 0x13000000) as usize];
     let N = (d >> 22) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -5587,7 +5587,7 @@ pub const fn decode_bitfield(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_extract(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1f800000) == 0x13800000) as usize];
+    ["Could not decode."][((d & 0x1f800000) != 0x13800000) as usize];
     let N = (d >> 22) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -5615,7 +5615,7 @@ pub const fn decode_extract(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_log_imm(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1f800000) == 0x12000000) as usize];
+    ["Could not decode."][((d & 0x1f800000) != 0x12000000) as usize];
     let N = (d >> 22) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -5694,7 +5694,7 @@ pub const fn decode_log_imm(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_movewide(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1f800000) == 0x12800000) as usize];
+    ["Could not decode."][((d & 0x1f800000) != 0x12800000) as usize];
     let Rd = d & 0x1F;
     let hw = (d >> 21) & 3;
     let imm16 = (d >> 5) & 0xFFFF;
@@ -5745,7 +5745,7 @@ pub const fn decode_movewide(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_pcreladdr(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1f000000) == 0x10000000) as usize];
+    ["Could not decode."][((d & 0x1f000000) != 0x10000000) as usize];
     let Rd = d & 0x1F;
     let immhi = (d >> 5) & 0x7FFFF;
     let immlo = (d >> 29) & 3;
@@ -5767,7 +5767,7 @@ pub const fn decode_pcreladdr(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_addsub_ext(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1f200000) == 0x0b200000) as usize];
+    ["Could not decode."][((d & 0x1f200000) != 0x0b200000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -5852,7 +5852,7 @@ pub const fn decode_addsub_ext(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_addsub_shift(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1f200000) == 0x0b000000) as usize];
+    ["Could not decode."][((d & 0x1f200000) != 0x0b000000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -5936,7 +5936,7 @@ pub const fn decode_addsub_shift(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_addsub_carry(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1fe00000) == 0x1a000000) as usize];
+    ["Could not decode."][((d & 0x1fe00000) != 0x1a000000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -6003,7 +6003,7 @@ pub const fn decode_addsub_carry(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_condcmp_imm(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1fe00800) == 0x1a400800) as usize];
+    ["Could not decode."][((d & 0x1fe00800) != 0x1a400800) as usize];
     let Rn = (d >> 5) & 0x1F;
     let S = (d >> 29) & 1;
     let cond = (d >> 12) & 0xF;
@@ -6048,7 +6048,7 @@ pub const fn decode_condcmp_imm(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_condcmp_reg(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1fe00800) == 0x1a400000) as usize];
+    ["Could not decode."][((d & 0x1fe00800) != 0x1a400000) as usize];
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let S = (d >> 29) & 1;
@@ -6093,7 +6093,7 @@ pub const fn decode_condcmp_reg(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_condsel(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1fe00000) == 0x1a800000) as usize];
+    ["Could not decode."][((d & 0x1fe00000) != 0x1a800000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -6169,7 +6169,7 @@ pub const fn decode_condsel(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_dp_1src(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x5fe00000) == 0x5ac00000) as usize];
+    ["Could not decode."][((d & 0x5fe00000) != 0x5ac00000) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let S = (d >> 29) & 1;
@@ -6323,7 +6323,7 @@ pub const fn decode_dp_1src(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_dp_2src(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x5fe00000) == 0x1ac00000) as usize];
+    ["Could not decode."][((d & 0x5fe00000) != 0x1ac00000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -6480,7 +6480,7 @@ pub const fn decode_dp_2src(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_dp_3src(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1f000000) == 0x1b000000) as usize];
+    ["Could not decode."][((d & 0x1f000000) != 0x1b000000) as usize];
     let Ra = (d >> 10) & 0x1F;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -6572,7 +6572,7 @@ pub const fn decode_dp_3src(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_log_shift(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x1f000000) == 0x0a000000) as usize];
+    ["Could not decode."][((d & 0x1f000000) != 0x0a000000) as usize];
     let N = (d >> 21) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -6728,7 +6728,7 @@ pub const fn decode_log_shift(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimdall(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x9f3e0c00) == 0x0e300800) as usize];
+    ["Could not decode."][((d & 0x9f3e0c00) != 0x0e300800) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -6854,7 +6854,7 @@ pub const fn decode_asimdall(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimdins(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x9fe08400) == 0x0e000400) as usize];
+    ["Could not decode."][((d & 0x9fe08400) != 0x0e000400) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -6923,7 +6923,7 @@ pub const fn decode_asimdins(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimdext(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xbf208400) == 0x2e000000) as usize];
+    ["Could not decode."][((d & 0xbf208400) != 0x2e000000) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -6942,7 +6942,7 @@ pub const fn decode_asimdext(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimdimm(v: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((v & 0x9ff80400) == 0x0f000400) as usize];
+    ["Could not decode."][((v & 0x9ff80400) != 0x0f000400) as usize];
     let Q = (v >> 30) & 1;
     let Rd = v & 0x1F;
     let a = (v >> 18) & 1;
@@ -7190,7 +7190,7 @@ pub const fn decode_asimdimm(v: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimdperm(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xbf208c00) == 0x0e000800) as usize];
+    ["Could not decode."][((d & 0xbf208c00) != 0x0e000800) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -7254,7 +7254,7 @@ pub const fn decode_asimdperm(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisdone(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xdfe08400) == 0x5e000400) as usize];
+    ["Could not decode."][((d & 0xdfe08400) != 0x5e000400) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let imm4 = (d >> 11) & 0xF;
@@ -7270,7 +7270,7 @@ pub const fn decode_asisdone(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisdpair(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xdf3e0c00) == 0x5e300800) as usize];
+    ["Could not decode."][((d & 0xdf3e0c00) != 0x5e300800) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let U = (d >> 29) & 1;
@@ -7351,7 +7351,7 @@ pub const fn decode_asisdpair(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisdshf(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xdf800400) == 0x5f000400) as usize];
+    ["Could not decode."][((d & 0xdf800400) != 0x5f000400) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let U = (d >> 29) & 1;
@@ -7553,7 +7553,7 @@ pub const fn decode_asisdshf(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisddiff(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xdf200c00) == 0x5e200000) as usize];
+    ["Could not decode."][((d & 0xdf200c00) != 0x5e200000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -7587,7 +7587,7 @@ pub const fn decode_asisddiff(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisdsame(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xdf200400) == 0x5e200400) as usize];
+    ["Could not decode."][((d & 0xdf200400) != 0x5e200400) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -7845,7 +7845,7 @@ pub const fn decode_asisdsame(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisdsamefp16(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xdf60c400) == 0x5e400400) as usize];
+    ["Could not decode."][((d & 0xdf60c400) != 0x5e400400) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -7918,7 +7918,7 @@ pub const fn decode_asisdsamefp16(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisdsame2(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xdf208400) == 0x5e008400) as usize];
+    ["Could not decode."][((d & 0xdf208400) != 0x5e008400) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -7944,7 +7944,7 @@ pub const fn decode_asisdsame2(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisdmisc(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xdf3e0c00) == 0x5e200800) as usize];
+    ["Could not decode."][((d & 0xdf3e0c00) != 0x5e200800) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let U = (d >> 29) & 1;
@@ -8198,7 +8198,7 @@ pub const fn decode_asisdmisc(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisdmiscfp16(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xdf7e0c00) == 0x5e780800) as usize];
+    ["Could not decode."][((d & 0xdf7e0c00) != 0x5e780800) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let U = (d >> 29) & 1;
@@ -8327,7 +8327,7 @@ pub const fn decode_asisdmiscfp16(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asisdelem(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xdf000400) == 0x5f000000) as usize];
+    ["Could not decode."][((d & 0xdf000400) != 0x5f000000) as usize];
     let H = (d >> 11) & 1;
     let L = (d >> 21) & 1;
     let M = (d >> 20) & 1;
@@ -8501,7 +8501,7 @@ pub const fn decode_asisdelem(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimdshf(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x9f800400) == 0x0f000400 && (d & 0x780000) != 0x000000) as usize];
+    ["Could not decode."][((d & 0x9f800400) != 0x0f000400 && (d & 0x780000) != 0x000000) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -8764,7 +8764,7 @@ pub const fn decode_asimdshf(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimdtbl(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xbf208c00) == 0x0e000000) as usize];
+    ["Could not decode."][((d & 0xbf208c00) != 0x0e000000) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -8839,7 +8839,7 @@ pub const fn decode_asimdtbl(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimddiff(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x9f200c00) == 0x0e200000) as usize];
+    ["Could not decode."][((d & 0x9f200c00) != 0x0e200000) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -9084,7 +9084,7 @@ pub const fn decode_asimddiff(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimdsame(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x9f200400) == 0x0e200400) as usize];
+    ["Could not decode."][((d & 0x9f200400) != 0x0e200400) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -9780,7 +9780,7 @@ pub const fn decode_asimdsame(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimdsamefp16(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x9f60c400) == 0x0e400400) as usize];
+    ["Could not decode."][((d & 0x9f60c400) != 0x0e400400) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -9983,7 +9983,7 @@ pub const fn decode_asimdsamefp16(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimdsame2(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x9f208400) == 0x0e008400) as usize];
+    ["Could not decode."][((d & 0x9f208400) != 0x0e008400) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -10050,7 +10050,7 @@ pub const fn decode_asimdsame2(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimdmisc(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x9f3e0c00) == 0x0e200800) as usize];
+    ["Could not decode."][((d & 0x9f3e0c00) != 0x0e200800) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -10554,7 +10554,7 @@ pub const fn decode_asimdmisc(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimdmiscfp16(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x9f7e0c00) == 0x0e780800) as usize];
+    ["Could not decode."][((d & 0x9f7e0c00) != 0x0e780800) as usize];
     let Q = (d >> 30) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -10767,7 +10767,7 @@ pub const fn decode_asimdmiscfp16(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_asimdelem(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x9f000400) == 0x0f000000) as usize];
+    ["Could not decode."][((d & 0x9f000400) != 0x0f000000) as usize];
     let H = (d >> 11) & 1;
     let L = (d >> 21) & 1;
     let M = (d >> 20) & 1;
@@ -11113,7 +11113,7 @@ pub const fn decode_asimdelem(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_float2fix(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x5f200000) == 0x1e000000) as usize];
+    ["Could not decode."][((d & 0x5f200000) != 0x1e000000) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let S = (d >> 29) & 1;
@@ -11293,7 +11293,7 @@ pub const fn decode_float2fix(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_float2int(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x5f20fc00) == 0x1e200000) as usize];
+    ["Could not decode."][((d & 0x5f20fc00) != 0x1e200000) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let S = (d >> 29) & 1;
@@ -11802,7 +11802,7 @@ pub const fn decode_float2int(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_cryptoaes(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xff3e0c00) == 0x4e280800) as usize];
+    ["Could not decode."][((d & 0xff3e0c00) != 0x4e280800) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let opcode = (d >> 12) & 0x1F;
@@ -11834,7 +11834,7 @@ pub const fn decode_cryptoaes(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_crypto4(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xff808000) == 0xce000000) as usize];
+    ["Could not decode."][((d & 0xff808000) != 0xce000000) as usize];
     let Op0 = (d >> 21) & 3;
     let Ra = (d >> 10) & 0x1F;
     let Rd = d & 0x1F;
@@ -11867,7 +11867,7 @@ pub const fn decode_crypto4(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_cryptosha3(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xff208c00) == 0x5e000000) as usize];
+    ["Could not decode."][((d & 0xff208c00) != 0x5e000000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -11925,7 +11925,7 @@ pub const fn decode_cryptosha3(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_cryptosha512_3(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xffe0b000) == 0xce608000) as usize];
+    ["Could not decode."][((d & 0xffe0b000) != 0xce608000) as usize];
     let O = (d >> 14) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -11983,7 +11983,7 @@ pub const fn decode_cryptosha512_3(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_crypto3_imm2(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xffe0c000) == 0xce408000) as usize];
+    ["Could not decode."][((d & 0xffe0c000) != 0xce408000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -12024,7 +12024,7 @@ pub const fn decode_crypto3_imm2(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_crypto3_imm6(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xffe00000) == 0xce800000) as usize];
+    ["Could not decode."][((d & 0xffe00000) != 0xce800000) as usize];
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -12040,7 +12040,7 @@ pub const fn decode_crypto3_imm6(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_cryptosha2(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xff3e0c00) == 0x5e280800) as usize];
+    ["Could not decode."][((d & 0xff3e0c00) != 0x5e280800) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let opcode = (d >> 12) & 0x1F;
@@ -12066,7 +12066,7 @@ pub const fn decode_cryptosha2(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_cryptosha512_2(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0xfffff000) == 0xcec08000) as usize];
+    ["Could not decode."][((d & 0xfffff000) != 0xcec08000) as usize];
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
     let opcode = (d >> 10) & 3;
@@ -12085,7 +12085,7 @@ pub const fn decode_cryptosha512_2(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_floatcmp(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x5f203c00) == 0x1e202000) as usize];
+    ["Could not decode."][((d & 0x5f203c00) != 0x1e202000) as usize];
     let M = (d >> 31) & 1;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -12168,7 +12168,7 @@ pub const fn decode_floatcmp(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_floatccmp(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x5f200c00) == 0x1e200400) as usize];
+    ["Could not decode."][((d & 0x5f200c00) != 0x1e200400) as usize];
     let M = (d >> 31) & 1;
     let Rm = (d >> 16) & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -12228,7 +12228,7 @@ pub const fn decode_floatccmp(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_floatsel(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x5f200c00) == 0x1e200c00) as usize];
+    ["Could not decode."][((d & 0x5f200c00) != 0x1e200c00) as usize];
     let M = (d >> 31) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -12263,7 +12263,7 @@ pub const fn decode_floatsel(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_floatdp1(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x5f207c00) == 0x1e204000) as usize];
+    ["Could not decode."][((d & 0x5f207c00) != 0x1e204000) as usize];
     let M = (d >> 31) & 1;
     let Rd = d & 0x1F;
     let Rn = (d >> 5) & 0x1F;
@@ -12507,7 +12507,7 @@ pub const fn decode_floatdp1(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_floatdp2(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x5f200c00) == 0x1e200800) as usize];
+    ["Could not decode."][((d & 0x5f200c00) != 0x1e200800) as usize];
     let M = (d >> 31) & 1;
     let Rd = d & 0x1F;
     let Rm = (d >> 16) & 0x1F;
@@ -12707,7 +12707,7 @@ pub const fn decode_floatdp2(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_floatdp3(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x5f000000) == 0x1f000000) as usize];
+    ["Could not decode."][((d & 0x5f000000) != 0x1f000000) as usize];
     let M = (d >> 31) & 1;
     let Ra = (d >> 10) & 0x1F;
     let Rd = d & 0x1F;
@@ -12816,7 +12816,7 @@ pub const fn decode_floatdp3(d: u32) -> Option<InstructionKind> {
     None
 }
 pub const fn decode_floatimm(d: u32) -> Option<InstructionKind> {
-    ["Could not decode."][!((d & 0x5f201c00) == 0x1e201000) as usize];
+    ["Could not decode."][((d & 0x5f201c00) != 0x1e201000) as usize];
     let M = (d >> 31) & 1;
     let Rd = d & 0x1F;
     let S = (d >> 29) & 1;

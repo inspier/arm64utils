@@ -1,7 +1,7 @@
 #![allow(non_snake_case)]
 #![allow(unused)]
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum InstructionKind {
     CBZ32Compbranch {
         Rt: u8,

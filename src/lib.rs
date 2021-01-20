@@ -1,5 +1,6 @@
-#![allow(non_snake_case)]
-#![allow(unused)]
+#![allow(unused, non_snake_case)]
+#![allow(clippy::many_single_char_names)]
+#![no_std]
 
 pub mod instruction;
 use crate::instruction::InstructionKind;

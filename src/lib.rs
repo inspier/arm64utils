@@ -1,5 +1,6 @@
 #![allow(unused, non_snake_case)]
 #![allow(clippy::many_single_char_names)]
+#![allow(clippy::no_effect)]
 #![no_std]
 
 pub mod instruction;

@@ -2,7 +2,7 @@
 #![allow(unused)]
 #![allow(clippy::upper_case_acronyms)]
 
-#[derive(Debug, PartialEq, Clone)]
+#[derive(Debug, PartialEq, Copy, Clone)]
 pub enum InstructionKind {
     CBZ32Compbranch {
         Rt: u8,
